@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+    container_name: "portfolio"
+    ports:
+      - "8080:8000"
+    volumes:
+      - .env:/app/.env:ro
+      - ./src:/app/src
+    restart: unless-stopped
+

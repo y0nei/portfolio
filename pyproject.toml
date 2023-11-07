@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "yonei-dev portfolio"
+version = "0.0.1"
+description = "Portfolio for the yonei.dev website"
+authors = ["y0nei <y0nei@proton.me>"]
+license = "AGPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+Jinja2 = "^3.1.2"
+pydantic-settings = "^2.0.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
