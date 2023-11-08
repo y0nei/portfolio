@@ -15,6 +15,7 @@ import {
 
 import {OrbitControls} from "OrbitControls";
 import {ImprovedNoise} from "ImprovedNoise";
+import Stats from "stats.module";
 
 // * Renderer
 const renderer = new WebGLRenderer({
@@ -56,6 +57,10 @@ orbitControls.enabled = true;
 
 // * Grid helper
 scene.add(new GridHelper(100, 10));
+
+// Small FPS display
+const stats = new Stats()
+document.body.appendChild(stats.dom)
 
 // Perlin noise shaping function
 const perlin = new ImprovedNoise();
@@ -118,5 +123,6 @@ function render() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
     orbitControls.update();
+    stats.update();
 };
 render();
