@@ -1,6 +1,8 @@
 import {
+    DoubleSide,
+    GridHelper,
     Mesh,
-    MeshBasicMaterial,
+    MeshStandardMaterial,
     PerspectiveCamera,
     PlaneGeometry,
     Scene,
@@ -35,6 +37,10 @@ camera.position.z = 50;
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 orbitControls.enabled = true;
 
+// * Grid helper
+scene.add(new GridHelper(100, 10));
+
+
 let planeParams = {
     baseColor: 0x7f7f7f,
     size: 60,
@@ -51,13 +57,17 @@ function createPlane(step, color) {
         planeParams.subdivs,
         planeParams.subdivs
     );
-    let material = new MeshBasicMaterial({ color: color });
+    let material = new MeshStandardMaterial({
+        side: DoubleSide,
+        wireframe: planeParams.wireframe,
+        color: color
+    });
     let mesh = new Mesh(geometry, material);
     return mesh;
 }
 
 // Add demo plane
-scene.add(createPlane(planeParams.size, "#433F81"));
+scene.add(createPlane(planeParams.size, planeParams.baseColor));
 
 // Animation loop
 function render() {
