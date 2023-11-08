@@ -131,6 +131,13 @@ for (let i = 0; i < 3; i++) {
 }
 
 
+// Resize handler
+window.addEventListener("resize", function() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
 // Animation loop
 function render() {
     requestAnimationFrame(render);
