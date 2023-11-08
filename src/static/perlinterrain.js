@@ -1,5 +1,7 @@
 import {
     AmbientLight,
+    DirectionalLight,
+    DirectionalLightHelper,
     DoubleSide,
     GridHelper,
     Mesh,
@@ -37,8 +39,16 @@ const camera = new PerspectiveCamera(
 camera.position.z = 50;
 
 // * Lighting
-const ambientLight = new AmbientLight("#ffffff")
+// Ambient light used to not make shadows too dark
+const ambientLight = new AmbientLight("#505050")
 scene.add(ambientLight)
+const directionalLight = new DirectionalLight("#ffffff", Math.PI)
+directionalLight.position.x = -15;
+directionalLight.position.y = 30;
+scene.add(directionalLight);
+
+const helper = new DirectionalLightHelper(directionalLight)
+scene.add(helper)
 
 // * Orbit controls
 const orbitControls = new OrbitControls(camera, renderer.domElement);
@@ -62,8 +72,8 @@ function applyPerlinNoise(g, uvShift, multiplier, amplitude){
 
 let planeParams = {
     baseColor: "#2424e2",
-    size: 60,
-    subdivs: 20,
+    size: 50,
+    subdivs: 100,
     randomColor: false,
     wireframe: false
 }
@@ -98,8 +108,10 @@ applyPerlinNoise(
     perlinParams.multiplier,
     perlinParams.amplitude
 );
+
 // ! Important to do it after applying perlin noise
 demoPlane.geometry.rotateX(0.5 * Math.PI); // Lay it flat
+demoPlane.geometry.computeVertexNormals();
 
 // Animation loop
 function render() {
