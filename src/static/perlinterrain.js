@@ -1,41 +1,68 @@
 import {
-    BoxGeometry,
     Mesh,
     MeshBasicMaterial,
     PerspectiveCamera,
+    PlaneGeometry,
     Scene,
     WebGLRenderer
 } from "three";
 
-let scene = new Scene();
+import {OrbitControls} from "OrbitControls";
 
-let camera = new PerspectiveCamera(
+// * Renderer
+const renderer = new WebGLRenderer({
+    antialias: true,
+    alpha: true // Transparent background
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled = true;
+document.body.appendChild(renderer.domElement);
+
+// * Scene
+const scene = new Scene();
+
+// * Camera
+const camera = new PerspectiveCamera(
     75,
-    window.innerWidth/window.innerHeight,
+    window.innerWidth / window.innerHeight,
     0.1,
     1000
 );
-camera.position.z = 4;
+camera.position.z = 50;
 
-let renderer = new WebGLRenderer({ antialias:true });
-renderer.setClearColor("#000000");
-renderer.setSize(window.innerWidth, window.innerHeight);
+// * Orbit controls
+const orbitControls = new OrbitControls(camera, renderer.domElement);
+orbitControls.enabled = true;
 
-document.body.appendChild(renderer.domElement);
+let planeParams = {
+    baseColor: 0x7f7f7f,
+    size: 60,
+    subdivs: 20,
+    randomColor: false,
+    wireframe: false
+}
 
-let geometry = new BoxGeometry(1, 1, 1);
-let material = new MeshBasicMaterial({ color: "#433F81" });
-let cube = new Mesh(geometry, material);
+// Plane object template
+function createPlane(step, color) {
+    let geometry = new PlaneGeometry(
+        step,
+        step,
+        planeParams.subdivs,
+        planeParams.subdivs
+    );
+    let material = new MeshBasicMaterial({ color: color });
+    let mesh = new Mesh(geometry, material);
+    return mesh;
+}
 
-scene.add(cube);
+// Add demo plane
+scene.add(createPlane(planeParams.size, "#433F81"));
 
-let render = function () {
-    requestAnimationFrame( render );
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
+// Animation loop
+function render() {
+    requestAnimationFrame(render);
     renderer.render(scene, camera);
+    orbitControls.update();
 };
-
 render();
