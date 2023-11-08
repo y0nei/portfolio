@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
+{% block home_head %}
+{# TODO: Use a bundler later instead of an importmap #}
+<script type="importmap">
+    {
+        "imports": {
+            "three": "{{ url_for(
+                'static',
+                path='node_modules/three/build/three.module.min.js')
+            }}"
+        }
+    }
+</script>
+{% endblock %}
+
 {% block home %}
 <h1>{{ helloworld }}</h1>
+<script type="module" src="{{ url_for('static', path='perlinterrain.js') }}"></script>
 {% endblock %}
