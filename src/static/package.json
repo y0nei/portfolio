@@ -1,0 +1,6 @@
+{
+  "main": "main.js",
+  "dependencies": {
+    "three": "^0.158.0"
+  }
+}
