@@ -7,10 +7,12 @@ import {
     PerspectiveCamera,
     PlaneGeometry,
     Scene,
+    Vector2,
     WebGLRenderer
 } from "three";
 
 import {OrbitControls} from "OrbitControls";
+import {ImprovedNoise} from "ImprovedNoise";
 
 // * Renderer
 const renderer = new WebGLRenderer({
@@ -45,6 +47,18 @@ orbitControls.enabled = true;
 // * Grid helper
 scene.add(new GridHelper(100, 10));
 
+// Perlin noise shaping function
+const perlin = new ImprovedNoise();
+function applyPerlinNoise(g, uvShift, multiplier, amplitude){
+    let pos = g.attributes.position;
+    let uv = g.attributes.uv;
+    let vec2 = new Vector2();
+    for(let i = 0; i < pos.count; i++){
+        vec2.fromBufferAttribute(uv, i).add(uvShift).multiplyScalar(multiplier);
+        pos.setZ(i, perlin.noise(vec2.x, vec2.y, 0) * amplitude);
+    }
+}
+
 
 let planeParams = {
     baseColor: "#2424e2",
@@ -52,6 +66,10 @@ let planeParams = {
     subdivs: 20,
     randomColor: false,
     wireframe: false
+}
+let perlinParams = {
+    multiplier: 5,
+    amplitude: 20,
 }
 
 // Plane object template
@@ -72,7 +90,16 @@ function createPlane(step, color) {
 }
 
 // Add demo plane
-scene.add(createPlane(planeParams.size, planeParams.baseColor));
+let demoPlane = createPlane(planeParams.size, planeParams.baseColor);
+scene.add(demoPlane);
+applyPerlinNoise(
+    demoPlane.geometry,
+    new Vector2(demoPlane.position.x, demoPlane.position.y),
+    perlinParams.multiplier,
+    perlinParams.amplitude
+);
+// ! Important to do it after applying perlin noise
+demoPlane.geometry.rotateX(0.5 * Math.PI); // Lay it flat
 
 // Animation loop
 function render() {
