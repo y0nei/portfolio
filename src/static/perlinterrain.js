@@ -1,4 +1,5 @@
 import {
+    AmbientLight,
     DoubleSide,
     GridHelper,
     Mesh,
@@ -33,6 +34,10 @@ const camera = new PerspectiveCamera(
 );
 camera.position.z = 50;
 
+// * Lighting
+const ambientLight = new AmbientLight("#ffffff")
+scene.add(ambientLight)
+
 // * Orbit controls
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 orbitControls.enabled = true;
@@ -42,7 +47,7 @@ scene.add(new GridHelper(100, 10));
 
 
 let planeParams = {
-    baseColor: 0x7f7f7f,
+    baseColor: "#2424e2",
     size: 60,
     subdivs: 20,
     randomColor: false,
