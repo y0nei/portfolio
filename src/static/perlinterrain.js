@@ -10,6 +10,7 @@ import {
     PlaneGeometry,
     Scene,
     Vector2,
+    Vector3,
     WebGLRenderer
 } from "three";
 
@@ -75,6 +76,7 @@ function applyPerlinNoise(g, uvShift, multiplier, amplitude){
 }
 
 
+let plane;
 let planeParams = {
     baseColor: "#2424e2",
     size: 50,
@@ -104,19 +106,30 @@ function createPlane(step, color) {
     return mesh;
 }
 
-// Add demo plane
-let demoPlane = createPlane(planeParams.size, planeParams.baseColor);
-scene.add(demoPlane);
-applyPerlinNoise(
-    demoPlane.geometry,
-    new Vector2(demoPlane.position.x, demoPlane.position.y),
-    perlinParams.multiplier,
-    perlinParams.amplitude
-);
+// Chunk creation
+function createChunk(pos) {
+    plane = createPlane(planeParams.size, planeParams.baseColor);
+    plane.receiveShadow = true;
+    applyPerlinNoise(
+        plane.geometry,
+        new Vector2(pos.x, pos.z), // Offset
+        perlinParams.multiplier,
+        perlinParams.amplitude
+    );
+    plane.geometry.rotateX(0.5 * Math.PI); // Lay it flat
+    // Displace the chunk by it's own size
+    plane.position.set(pos.x, 0, pos.z).multiplyScalar(planeParams.size);
+    plane.geometry.computeVertexNormals();
+    scene.add(plane);
+}
 
-// ! Important to do it after applying perlin noise
-demoPlane.geometry.rotateX(0.5 * Math.PI); // Lay it flat
-demoPlane.geometry.computeVertexNormals();
+// Add (a larger) demo plane
+for (let i = 0; i < 3; i++) {
+    createChunk(new Vector3(1, 0, i -1));
+    createChunk(new Vector3(0, 0, i -1));
+    createChunk(new Vector3(-1, 0, i -1));
+}
+
 
 // Animation loop
 function render() {
