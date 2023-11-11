@@ -75,6 +75,20 @@ function applyPerlinNoise(g, uvShift, multiplier, amplitude) {
     }
 }
 
+// Translate object X or Z axis position to relative chunk index
+function posToChunkIndex(object, axis) {
+    let objectAxis;
+
+    if (axis === "z") {
+        objectAxis = object.position.z;
+    } else if (axis === "x") {
+        objectAxis = object.position.x;
+    } else {
+        throw new Error("Invalid axis. Supported axes are 'x' and 'z'.");
+    }
+
+    return Math.floor((objectAxis + planeParams.size / 2) / planeParams.size)
+}
 
 let plane;
 let planeParams = {
