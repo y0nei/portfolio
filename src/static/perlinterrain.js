@@ -1,4 +1,5 @@
 import {
+    SphereGeometry,
     AmbientLight,
     DirectionalLight,
     DirectionalLightHelper,
@@ -89,6 +90,13 @@ function posToChunkIndex(object, axis) {
 
     return Math.floor((objectAxis + planeParams.size / 2) / planeParams.size)
 }
+
+const generationGuider = new Mesh(
+    new SphereGeometry(1),
+    new MeshStandardMaterial({ color: "#ffffff" })
+);
+generationGuider.position.y = 8;
+scene.add(generationGuider)
 
 let plane;
 let planeParams = {
