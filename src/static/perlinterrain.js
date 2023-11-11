@@ -14,8 +14,8 @@ import {
     WebGLRenderer
 } from "three";
 
-import {OrbitControls} from "OrbitControls";
-import {ImprovedNoise} from "ImprovedNoise";
+import { OrbitControls } from "OrbitControls";
+import { ImprovedNoise } from "ImprovedNoise";
 import Stats from "stats.module";
 
 // * Renderer
@@ -65,11 +65,11 @@ document.body.appendChild(stats.dom)
 
 // Perlin noise shaping function
 const perlin = new ImprovedNoise();
-function applyPerlinNoise(g, uvShift, multiplier, amplitude){
+function applyPerlinNoise(g, uvShift, multiplier, amplitude) {
     let pos = g.attributes.position;
     let uv = g.attributes.uv;
     let vec2 = new Vector2();
-    for(let i = 0; i < pos.count; i++){
+    for (let i = 0; i < pos.count; i++) {
         vec2.fromBufferAttribute(uv, i).add(uvShift).multiplyScalar(multiplier);
         pos.setZ(i, perlin.noise(vec2.x, vec2.y, 0) * amplitude);
     }
@@ -125,9 +125,9 @@ function createChunk(pos) {
 
 // Add (a larger) demo plane
 for (let i = 0; i < 3; i++) {
-    createChunk(new Vector3(1, 0, i -1));
-    createChunk(new Vector3(0, 0, i -1));
-    createChunk(new Vector3(-1, 0, i -1));
+    createChunk(new Vector3(1, 0, i - 1));
+    createChunk(new Vector3(0, 0, i - 1));
+    createChunk(new Vector3(-1, 0, i - 1));
 }
 
 
