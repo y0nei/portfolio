@@ -135,11 +135,13 @@ function modelMovement(speed, element) {
 
 let plane;
 let planeParams = {
-    baseColor: "#2424e2",
+    // baseColor: "#2424e2",
+    baseColor: 0xa8df8e,
     size: 50,
     subdivs: 100,
     randomColor: false,
-    wireframe: false
+    wireframe: false,
+    randomColor: true
 }
 let perlinParams = {
     multiplier: 5,
@@ -165,7 +167,14 @@ function createPlane(step, color) {
 
 // Chunk creation
 function createChunk(pos) {
-    plane = createPlane(planeParams.size, planeParams.baseColor);
+    if (planeParams.randomColor != true) {
+        plane = createPlane(planeParams.size, planeParams.baseColor);
+    } else {
+        plane = createPlane(
+            planeParams.size,
+            Math.random() * planeParams.baseColor + planeParams.baseColor
+        );
+    }
     plane.receiveShadow = true;
     applyPerlinNoise(
         plane.geometry,
