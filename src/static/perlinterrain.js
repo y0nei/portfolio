@@ -78,17 +78,18 @@ function applyPerlinNoise(g, uvShift, multiplier, amplitude) {
 
 // Translate object X or Z axis position to relative chunk index
 function posToChunkIndex(object, axis) {
-    let objectAxis;
+    const validAxes = ["x", "z"];
 
-    if (axis === "z") {
-        objectAxis = object.position.z;
-    } else if (axis === "x") {
-        objectAxis = object.position.x;
-    } else {
-        throw new Error("Invalid axis. Supported axes are 'x' and 'z'.");
+    if (!validAxes.includes(axis)) {
+        throw new Error(
+            `Invalid axis '${axis}'. ` +
+            `Supported axes are ${validAxes.join(' and ')}.`
+        );
     }
 
-    return Math.floor((objectAxis + planeParams.size / 2) / planeParams.size)
+    return Math.floor(
+        (object.position[axis] + planeParams.size / 2) / planeParams.size
+    );
 }
 
 const generationGuider = new Mesh(
