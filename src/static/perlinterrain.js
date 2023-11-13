@@ -19,7 +19,9 @@ import { OrbitControls } from "OrbitControls";
 import { ImprovedNoise } from "ImprovedNoise";
 import Stats from "stats.module";
 
-// * Renderer
+/* Core ********************************************************************** */
+
+// Renderer
 const renderer = new WebGLRenderer({
     antialias: true,
     alpha: true // Transparent background
@@ -29,10 +31,10 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;
 document.body.appendChild(renderer.domElement);
 
-// * Scene
+// Scene
 const scene = new Scene();
 
-// * Camera
+// Camera
 const camera = new PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -41,8 +43,8 @@ const camera = new PerspectiveCamera(
 );
 camera.position.z = 50;
 
-// * Lighting
-// Ambient light used to not make shadows too dark
+// Lighting
+// NOTE: Used to not make shadows too dark
 const ambientLight = new AmbientLight("#505050")
 scene.add(ambientLight)
 const directionalLight = new DirectionalLight("#ffffff", Math.PI)
@@ -50,33 +52,92 @@ directionalLight.position.x = -15;
 directionalLight.position.y = 30;
 scene.add(directionalLight);
 
+// Temporary helper for directionalLight
 const helper = new DirectionalLightHelper(directionalLight)
 scene.add(helper)
 
-// * Orbit controls
+// Orbit controls
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 orbitControls.enabled = true;
 
-// * Grid helper
+// Grid helper
 scene.add(new GridHelper(100, 10));
 
-// Small FPS display
+// Temporary FPS display
 const stats = new Stats()
 document.body.appendChild(stats.dom)
 
-// Perlin noise shaping function
+// Resize handler
+window.addEventListener("resize", function() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+/* Global values ************************************************************* */
+
+/**
+ * Settings for the plane mesh used for chunk creation.
+ * @type {{
+ *   baseColor: number,    // Hexadecimal color used for mesh material
+ *   size: number,         // Size of the mesh geometry
+ *   subdivs: number,      // Subdivision count of the mesh geometry
+ *   wireframe: boolean,   // Render mesh geometry as wireframe
+ *   randomColor: boolean  // Controls if each plane has a random baseColor
+ * }}
+ */
+let planeParams = {
+    baseColor: 0xa8df8e,
+    size: 50,
+    subdivs: 100,
+    randomColor: false,
+    wireframe: false,
+    randomColor: true
+}
+let allowProceduralGeneration = true;
+// Array to track generated terrain chunks.
+let generatedChunks = [];
+// Chunks past this view range get removed.
+let viewRange = 5;
+// Values used for applying perlin noise.
+let perlinParams = {
+    multiplier: 5,
+    amplitude: 20
+}
+
+/* Helper functions ********************************************************** */
+
+/**
+ * Apply Perlin noise to vertices of a shape geometry.
+ * @param {THREE.BufferGeometry} geometry - Geometry to be shaped.
+ * @param {Vector2} uvShift - Shift vector for UV coordinates (pattern shift).
+ * @param {number} multiplier - Multiplier for UV coordinates (scale).
+ * @param {number} amplitude - Amplitude of the Perlin noise (spikiness).
+ */
 const perlin = new ImprovedNoise();
-function applyPerlinNoise(g, uvShift, multiplier, amplitude) {
-    let pos = g.attributes.position;
-    let uv = g.attributes.uv;
+function applyPerlinNoise(geometry, uvShift, multiplier, amplitude) {
+    let pos = geometry.attributes.position;
+    let uv = geometry.attributes.uv;
     let vec2 = new Vector2();
+
+    // Apply noise to the coordinates of a vertex based on UV coordinates.
+    function applyNoise(uv) {
+        return perlin.noise(uv.x, uv.y, 0) * amplitude;
+    }
+
     for (let i = 0; i < pos.count; i++) {
         vec2.fromBufferAttribute(uv, i).add(uvShift).multiplyScalar(multiplier);
-        pos.setZ(i, perlin.noise(vec2.x, vec2.y, 0) * amplitude);
+        pos.setZ(i, applyNoise(vec2));
     }
 }
 
-// Translate object X or Z axis position to relative chunk index
+/**
+ * Translates object's X or Z axis position to a relative chunk index.
+ * @param {Object3D} object - The object whose position is being translated.
+ * @param {string} axis - The axis to consider for translation.
+ * @returns {number} The relative chunk index.
+ * @throws {Error} Throws an error if the axis is invalid.
+ */
 function posToChunkIndex(object, axis) {
     const validAxes = ["x", "z"];
 
@@ -92,6 +153,9 @@ function posToChunkIndex(object, axis) {
     );
 }
 
+/* Generation guider ********************************************************* */
+
+// Guider/Controller used for chunk generation.
 const generationGuider = new Mesh(
     new SphereGeometry(1),
     new MeshStandardMaterial({ color: "#ffffff" })
@@ -122,54 +186,43 @@ function modelMovement(speed, element) {
             element.x -= speed;
             movingDirection.X = -1;
         }
-
-        console.log(
-            "Chunk X:", posToChunkIndex(generationGuider, "x"),
-            "\nChunk Z:", posToChunkIndex(generationGuider, "z"),
-            "\nMoving direction:", movingDirection
-        );
         orbitControls.target.copy(generationGuider.position);
     }
 }
 
+/* Plane creation, chunk generation/deletion, procedural generation ********** */
 
-let plane;
-let planeParams = {
-    // baseColor: "#2424e2",
-    baseColor: 0xa8df8e,
-    size: 50,
-    subdivs: 100,
-    randomColor: false,
-    wireframe: false,
-    randomColor: true
-}
-let generatedChunks = [];
-let viewRange = 3;
-let allowProceduralGeneration = true;
-let perlinParams = {
-    multiplier: 5,
-    amplitude: 20,
-}
-
-// Plane object template
-function createPlane(step, color) {
-    let geometry = new PlaneGeometry(
-        step,
-        step,
-        planeParams.subdivs,
-        planeParams.subdivs
+/**
+ * Plane mesh creation template.
+ * @param {number} size
+ * @param {THREE.Color} color
+ * @returns {THREE.Mesh}
+ */
+function createPlane(size, color) {
+    let mesh = new Mesh(
+        new PlaneGeometry(
+            size,
+            size,
+            planeParams.subdivs,
+            planeParams.subdivs
+        ),
+        new MeshStandardMaterial({
+            side: DoubleSide,
+            wireframe: planeParams.wireframe,
+            color: color
+        })
     );
-    let material = new MeshStandardMaterial({
-        side: DoubleSide,
-        wireframe: planeParams.wireframe,
-        color: color
-    });
-    let mesh = new Mesh(geometry, material);
-    return mesh;
+
+    return mesh
 }
 
-// Chunk creation
+/**
+ * Create a terrain chunk at the specified position.
+ * @param {THREE.Vector3} pos - Position of the chunk, also used to displace it.
+ */
 function createChunk(pos) {
+    let plane;
+
     if (planeParams.randomColor != true) {
         plane = createPlane(planeParams.size, planeParams.baseColor);
     } else {
@@ -178,13 +231,14 @@ function createChunk(pos) {
             Math.random() * planeParams.baseColor + planeParams.baseColor
         );
     }
-    plane.receiveShadow = true;
+
     applyPerlinNoise(
         plane.geometry,
         new Vector2(pos.x, pos.z), // Offset
         perlinParams.multiplier,
         perlinParams.amplitude
     );
+
     plane.geometry.rotateX(0.5 * Math.PI); // Lay it flat
     // Displace the chunk by it's own size
     plane.position.set(pos.x, 0, pos.z).multiplyScalar(planeParams.size);
@@ -193,28 +247,35 @@ function createChunk(pos) {
     generatedChunks.push(plane);
 }
 
-// Remove chunks out of view range to preserve memory
+/**
+ * Remove out of view chunks based on the current chunk position and axis.
+ * @param {{ x: number, z: number }} currentChunk
+ * @param {string} axis
+ */
 function removeOldChunks(currentChunk, axis) {
     const distanceThreshold = planeParams.size * viewRange;
 
-    // Filter out old chunks
+    // Filter out old chunks.
     const oldChunks = generatedChunks.filter(chunk => {
         return Math.abs(
             chunk.position[axis] - currentChunk[axis] * planeParams.size
         ) >= distanceThreshold;
     });
 
-    // Remove old chunks from the scene and the generatedChunks array
+    // Remove old chunks from the scene and the generatedChunks array.
     for (let i = 0; i < oldChunks.length; i++) {
         scene.remove(oldChunks[i]);
         generatedChunks.splice(generatedChunks.indexOf(oldChunks[i]), 1);
     }
 }
 
-
-// Terrain generation function
-/* NOTE: This generates a chunk whenever the value of chunkIndex is updated
- * or in other words; the guider exits a chunk border. */
+/**
+ * Generate terrain chunks based on the guider's position and optional offsets.
+ * NOTE: This generates a chunk whenever the value of chunkIndex is updated
+ * or in other words; the guider exits a chunk border.
+ * @param {number} [offsetX=0]
+ * @param {number} [offsetZ=0]
+ */
 function genTerrain({ offsetX = 0, offsetZ = 0 }) {
     const position = new Vector3(
         posToChunkIndex(generationGuider, "x") + offsetX * movingDirection.X,
@@ -225,46 +286,36 @@ function genTerrain({ offsetX = 0, offsetZ = 0 }) {
     createChunk(position);
 }
 
-genTerrain({});
-
-
-// Procedural generation
+// Perform procedural generation of terrain chunks based on guider movement.
 let lastChunk = { x: 0, z: 0 };
 function proceduralGeneration() {
     if (allowProceduralGeneration) {
-        // Get the current chunk position the guider is in
+        // Get the current chunk position the guider is in.
         let currentChunk = {
             x: posToChunkIndex(generationGuider, "x"),
             z: posToChunkIndex(generationGuider, "z")
         };
 
-        // Check if the guider has entered a new chunk on either axis
+        // Check if the guider has entered a new chunk on either axis.
         ["x", "z"].forEach(axis => {
             if (lastChunk[axis] !== currentChunk[axis]) {
                 genTerrain({ offsetX: 0, offsetZ: 0 });
                 removeOldChunks(currentChunk, axis);
 
-                // Update the last chunk on the current axis
+                // Update the last chunk on the current axis.
                 lastChunk[axis] = currentChunk[axis];
             }
         });
     }
 }
 
-
-// Resize handler
-window.addEventListener("resize", function() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
 // Animation loop
 function render() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
     orbitControls.update();
-    modelMovement(0.3, generationGuider.position);
+
+    modelMovement(1, generationGuider.position);
     proceduralGeneration();
     stats.update();
 };
