@@ -189,11 +189,21 @@ function createChunk(pos) {
     scene.add(plane);
 }
 
-// Add (a larger) demo plane
-for (let i = 0; i < 3; i++) {
-    createChunk(new Vector3(1, 0, i - 1));
-    createChunk(new Vector3(0, 0, i - 1));
-    createChunk(new Vector3(-1, 0, i - 1));
+
+// Terrain generation function
+/* NOTE: This generates a chunk whenever the value of chunkIndex is updated
+ * or in other words; the guider exits a chunk border. */
+function genTerrain({ offsetX = 0, offsetZ = 0 }) {
+    const position = new Vector3(
+        posToChunkIndex(generationGuider, "x") + offsetX * movingDirection.X,
+        0,
+        posToChunkIndex(generationGuider, "z") + offsetZ * movingDirection.Z
+    );
+
+    createChunk(position);
+}
+
+genTerrain({});
 }
 
 
