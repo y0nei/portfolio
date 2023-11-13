@@ -99,6 +99,40 @@ const generationGuider = new Mesh(
 generationGuider.position.y = 8;
 scene.add(generationGuider)
 
+// Temporary guider movement handler, FIXME: remove that later
+import * as keylogger from "./keylogger.js";
+keylogger.init();
+
+let movingDirection = { Z: 0, X: 0 };
+function modelMovement(speed, element) {
+    if (keylogger.moving) {
+        if (keylogger.keys.keyW) {
+            element.z += speed;
+            movingDirection.Z = 1;
+        }
+        if (keylogger.keys.keyS) {
+            element.z -= speed;
+            movingDirection.Z = -1;
+        }
+        if (keylogger.keys.keyA) {
+            element.x += speed;
+            movingDirection.X = 1;
+        }
+        if (keylogger.keys.keyD) {
+            element.x -= speed;
+            movingDirection.X = -1;
+        }
+
+        console.log(
+            "Chunk X:", posToChunkIndex(generationGuider, "x"),
+            "\nChunk Z:", posToChunkIndex(generationGuider, "z"),
+            "\nMoving direction:", movingDirection
+        );
+        orbitControls.target.copy(generationGuider.position);
+    }
+}
+
+
 let plane;
 let planeParams = {
     baseColor: "#2424e2",
