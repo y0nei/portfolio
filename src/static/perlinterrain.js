@@ -143,6 +143,9 @@ let planeParams = {
     wireframe: false,
     randomColor: true
 }
+let generatedChunks = [];
+let viewRange = 3;
+let allowProceduralGeneration = true;
 let perlinParams = {
     multiplier: 5,
     amplitude: 20,
@@ -187,6 +190,25 @@ function createChunk(pos) {
     plane.position.set(pos.x, 0, pos.z).multiplyScalar(planeParams.size);
     plane.geometry.computeVertexNormals();
     scene.add(plane);
+    generatedChunks.push(plane);
+}
+
+// Remove chunks out of view range to preserve memory
+function removeOldChunks(currentChunk, axis) {
+    const distanceThreshold = planeParams.size * viewRange;
+
+    // Filter out old chunks
+    const oldChunks = generatedChunks.filter(chunk => {
+        return Math.abs(
+            chunk.position[axis] - currentChunk[axis] * planeParams.size
+        ) >= distanceThreshold;
+    });
+
+    // Remove old chunks from the scene and the generatedChunks array
+    for (let i = 0; i < oldChunks.length; i++) {
+        scene.remove(oldChunks[i]);
+        generatedChunks.splice(generatedChunks.indexOf(oldChunks[i]), 1);
+    }
 }
 
 
@@ -208,7 +230,6 @@ genTerrain({});
 
 // Procedural generation
 let lastChunk = { x: 0, z: 0 };
-let allowProceduralGeneration = true;
 function proceduralGeneration() {
     if (allowProceduralGeneration) {
         // Get the current chunk position the guider is in
@@ -221,6 +242,7 @@ function proceduralGeneration() {
         ["x", "z"].forEach(axis => {
             if (lastChunk[axis] !== currentChunk[axis]) {
                 genTerrain({ offsetX: 0, offsetZ: 0 });
+                removeOldChunks(currentChunk, axis);
 
                 // Update the last chunk on the current axis
                 lastChunk[axis] = currentChunk[axis];
