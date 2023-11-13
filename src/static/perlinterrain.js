@@ -204,6 +204,29 @@ function genTerrain({ offsetX = 0, offsetZ = 0 }) {
 }
 
 genTerrain({});
+
+
+// Procedural generation
+let lastChunk = { x: 0, z: 0 };
+let allowProceduralGeneration = true;
+function proceduralGeneration() {
+    if (allowProceduralGeneration) {
+        // Get the current chunk position the guider is in
+        let currentChunk = {
+            x: posToChunkIndex(generationGuider, "x"),
+            z: posToChunkIndex(generationGuider, "z")
+        };
+
+        // Check if the guider has entered a new chunk on either axis
+        ["x", "z"].forEach(axis => {
+            if (lastChunk[axis] !== currentChunk[axis]) {
+                genTerrain({ offsetX: 0, offsetZ: 0 });
+
+                // Update the last chunk on the current axis
+                lastChunk[axis] = currentChunk[axis];
+            }
+        });
+    }
 }
 
 
@@ -219,6 +242,8 @@ function render() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
     orbitControls.update();
+    modelMovement(0.3, generationGuider.position);
+    proceduralGeneration();
     stats.update();
 };
 render();
