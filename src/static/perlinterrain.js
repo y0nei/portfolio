@@ -163,31 +163,14 @@ const generationGuider = new Mesh(
 generationGuider.position.y = 8;
 scene.add(generationGuider)
 
-// Temporary guider movement handler, FIXME: remove that later
-import * as keylogger from "./keylogger.js";
-keylogger.init();
-
-let movingDirection = { Z: 0, X: 0 };
-function modelMovement(speed, element) {
-    if (keylogger.moving) {
-        if (keylogger.keys.keyW) {
-            element.z += speed;
-            movingDirection.Z = 1;
-        }
-        if (keylogger.keys.keyS) {
-            element.z -= speed;
-            movingDirection.Z = -1;
-        }
-        if (keylogger.keys.keyA) {
-            element.x += speed;
-            movingDirection.X = 1;
-        }
-        if (keylogger.keys.keyD) {
-            element.x -= speed;
-            movingDirection.X = -1;
-        }
-        orbitControls.target.copy(generationGuider.position);
-    }
+// Guider movement & camera following
+let guiderMovingDirection = { Z: 0, X: 0 };
+guiderMovingDirection.Z = 1
+function guiderMovement(speed, object) {
+    object.position.z += speed;
+    camera.position.z += speed;
+    camera.lookAt(object.position);
+    orbitControls.target.copy(object.position);
 }
 
 /* Plane creation, chunk generation/deletion, procedural generation ********** */
@@ -278,9 +261,9 @@ function removeOldChunks(currentChunk, axis) {
  */
 function genTerrain({ offsetX = 0, offsetZ = 0 }) {
     const position = new Vector3(
-        posToChunkIndex(generationGuider, "x") + offsetX * (movingDirection.X || 1),
+        posToChunkIndex(generationGuider, "x") + offsetX * (guiderMovingDirection.X || 1),
         0,
-        posToChunkIndex(generationGuider, "z") + offsetZ * (movingDirection.Z || 1)
+        posToChunkIndex(generationGuider, "z") + offsetZ * (guiderMovingDirection.Z || 1)
     );
 
     createChunk(position);
@@ -322,7 +305,7 @@ function render() {
     renderer.render(scene, camera);
     orbitControls.update();
 
-    modelMovement(1, generationGuider.position);
+    guiderMovement(1, generationGuider);
     proceduralGeneration();
     stats.update();
 };
