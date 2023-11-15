@@ -278,9 +278,9 @@ function removeOldChunks(currentChunk, axis) {
  */
 function genTerrain({ offsetX = 0, offsetZ = 0 }) {
     const position = new Vector3(
-        posToChunkIndex(generationGuider, "x") + offsetX * movingDirection.X,
+        posToChunkIndex(generationGuider, "x") + offsetX * (movingDirection.X || 1),
         0,
-        posToChunkIndex(generationGuider, "z") + offsetZ * movingDirection.Z
+        posToChunkIndex(generationGuider, "z") + offsetZ * (movingDirection.Z || 1)
     );
 
     createChunk(position);
