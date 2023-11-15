@@ -4,7 +4,6 @@ import {
     DirectionalLight,
     DirectionalLightHelper,
     DoubleSide,
-    GridHelper,
     Mesh,
     MeshStandardMaterial,
     PerspectiveCamera,
@@ -59,9 +58,6 @@ scene.add(helper)
 // Orbit controls
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 orbitControls.enabled = true;
-
-// Grid helper
-scene.add(new GridHelper(100, 10));
 
 // Temporary FPS display
 const stats = new Stats()
