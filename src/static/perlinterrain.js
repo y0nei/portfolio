@@ -285,7 +285,9 @@ function proceduralGeneration() {
         // Check if the guider has entered a new chunk on either axis.
         ["x", "z"].forEach(axis => {
             if (lastChunk[axis] !== currentChunk[axis]) {
-                genTerrain({ offsetX: 0, offsetZ: 0 });
+                genTerrain({ offsetX: 1, offsetZ: 1 });
+                genTerrain({ offsetX: 0, offsetZ: 1 });
+                genTerrain({ offsetX: -1, offsetZ: 1 });
                 removeOldChunks(currentChunk, axis);
 
                 // Update the last chunk on the current axis.
