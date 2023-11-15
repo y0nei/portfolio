@@ -1,8 +1,6 @@
 import {
-    SphereGeometry,
     AmbientLight,
     DirectionalLight,
-    DirectionalLightHelper,
     DoubleSide,
     Mesh,
     MeshStandardMaterial,
@@ -12,12 +10,12 @@ import {
     Vector2,
     Vector3,
     WebGLRenderer,
-    FogExp2
+    FogExp2,
+    BoxGeometry
 } from "three";
 
 import { OrbitControls } from "OrbitControls";
 import { ImprovedNoise } from "ImprovedNoise";
-import Stats from "stats.module";
 
 /* Core ********************************************************************** */
 
@@ -45,28 +43,19 @@ const camera = new PerspectiveCamera(
     0.1,
     1000
 );
-camera.position.z = 50;
+camera.position.set(60, 90, 90);
 
 // Lighting
-// NOTE: Used to not make shadows too dark
-const ambientLight = new AmbientLight("#505050")
+const ambientLight = new AmbientLight("#ffffff", Math.PI / 2)
 scene.add(ambientLight)
 const directionalLight = new DirectionalLight("#ffffff", Math.PI)
 directionalLight.position.x = -15;
 directionalLight.position.y = 30;
 scene.add(directionalLight);
 
-// Temporary helper for directionalLight
-const helper = new DirectionalLightHelper(directionalLight)
-scene.add(helper)
-
 // Orbit controls
 const orbitControls = new OrbitControls(camera, renderer.domElement);
-orbitControls.enabled = true;
-
-// Temporary FPS display
-const stats = new Stats()
-document.body.appendChild(stats.dom)
+orbitControls.enabled = false;
 
 // Resize handler
 window.addEventListener("resize", function() {
@@ -88,12 +77,11 @@ window.addEventListener("resize", function() {
  * }}
  */
 let planeParams = {
-    baseColor: 0xa8df8e,
-    size: 50,
-    subdivs: 100,
+    baseColor: 0x7ace52,
+    size: 150,
+    subdivs: 60,
     randomColor: false,
-    wireframe: false,
-    randomColor: true
+    wireframe: true
 }
 let allowProceduralGeneration = true;
 /* Define grid size to be generated
@@ -105,11 +93,11 @@ let gridSize = 5;
 // Array to track generated terrain chunks.
 let generatedChunks = [];
 // Chunks past this view range get removed.
-let viewRange = 5;
+let viewRange = 4;
 // Values used for applying perlin noise.
 let perlinParams = {
-    multiplier: 5,
-    amplitude: 20
+    multiplier: 6,
+    amplitude: 25
 }
 
 /* Helper functions ********************************************************** */
@@ -164,10 +152,11 @@ function posToChunkIndex(object, axis) {
 
 // Guider/Controller used for chunk generation.
 const generationGuider = new Mesh(
-    new SphereGeometry(1),
+    new BoxGeometry(1,1,1),
     new MeshStandardMaterial({ color: "#ffffff" })
 );
-generationGuider.position.y = 8;
+generationGuider.visible = false;
+generationGuider.position.y = 30;
 scene.add(generationGuider)
 
 // Guider movement & camera following
@@ -323,7 +312,7 @@ function render() {
     renderer.render(scene, camera);
     orbitControls.update();
 
-    guiderMovement(1, generationGuider);
+    guiderMovement(0.5, generationGuider);
     proceduralGeneration();
     stats.update();
 };
