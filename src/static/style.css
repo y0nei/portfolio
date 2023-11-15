@@ -1,9 +1,105 @@
-body {
-    margin: 0;
-    background-color: #242424;
+@font-face {
+    font-family: "Rubik";
+    src: url("./Rubik-VariableFont_wght.ttf") format("truetype");
 }
 
-h1 {
-    color: blue;
-    position: absolute;
+:root {
+    --background-color: #242424;
+    --text-color: #FFF;
+    --accent-color: #A8DF8E;
+
+    --slideDown-end-position: 20%;
 }
+
+/* Reset annoying styles */
+p, h1, body { margin: 0 }
+
+body {
+    justify-content: center;
+    align-items: center;
+}
+body, canvas {
+    background-color: var(--background-color);
+}
+.flex, body {
+    display: flex;
+}
+
+/* Header */
+header {
+    color: var(--text-color);
+    font-family: "Rubik";
+
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    top: var(--slideDown-end-position);
+    animation: slideDown 3s;
+}
+header * {
+    font-size: 4rem;
+}
+
+#header-title h1 {
+    font-weight: 900;
+    background: linear-gradient(
+        -135deg,
+        #ffffff 0%,
+        #ffffff 45%,
+        #424242 49%,
+        #424242 50%,
+        var(--accent-color) 50%,
+        var(--accent-color) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGradient 5s;
+    background-size: 210% 100%;
+}
+#header-title p { font-weight: 400 }
+
+#header-desc {
+    font-style: italic;
+    font-size: 1.25rem;
+    animation: descSlideDown 6s;
+    opacity: 0.7;
+}
+
+/* Keyframes */
+@keyframes titleGradient {
+    0% { background-size: 100% 700%; }
+    50% { background-size: 100% 700%; }
+    100% { background-size: 210% 100%; }
+}
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        top: -100px;
+    }
+    100% { top: var(--slideDown-end-position) }
+}
+@keyframes descSlideDown {
+    0% {
+        margin-top: -20px;
+        opacity: 0;
+    }
+    70% {
+        margin-top: -20px;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 0;
+        opacity: 0.7;
+    }
+}
+
+/* /\* *Responsiveness *\/ */
+/* @media only screen and (max-width: 1500px) { */
+/*     button a { font-size: 1em; } */
+/*     header * { font-size: 3rem; } */
+/*     p#header-desc { font-size: 1rem; } */
+/* } */
+/* @media only screen and (max-width: 600px) { */
+/*     header * { font-size: 2rem; } */
+/* } */

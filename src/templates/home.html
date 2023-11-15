@@ -27,6 +27,14 @@
 {% endblock %}
 
 {% block home %}
-<h1>{{ helloworld }}</h1>
+<header class="flex">
+    <div id="header-title" class="flex">
+        <p>welcome to</p>
+        <h1>&nbsp;yonei.dev</h1>
+    </div>
+    {# Add a randomly generated daily message here #}
+    <p id="header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</header>
+
 <script type="module" src="{{ url_for('static', path='perlinterrain.js') }}"></script>
 {% endblock %}
