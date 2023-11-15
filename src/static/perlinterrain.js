@@ -286,6 +286,13 @@ function genTerrain({ offsetX = 0, offsetZ = 0 }) {
     createChunk(position);
 }
 
+// Create starting terrain
+for (let i = 0; i < 3; i++) {
+    createChunk(new Vector3(1, 0, i - 1));
+    createChunk(new Vector3(0, 0, i - 1));
+    createChunk(new Vector3(-1, 0, i - 1));
+}
+
 // Perform procedural generation of terrain chunks based on guider movement.
 let lastChunk = { x: 0, z: 0 };
 function proceduralGeneration() {
