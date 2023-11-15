@@ -11,7 +11,8 @@ import {
     Scene,
     Vector2,
     Vector3,
-    WebGLRenderer
+    WebGLRenderer,
+    FogExp2
 } from "three";
 
 import { OrbitControls } from "OrbitControls";
@@ -32,6 +33,10 @@ document.body.appendChild(renderer.domElement);
 
 // Scene
 const scene = new Scene();
+scene.fog = new FogExp2(
+    window.getComputedStyle(document.querySelector("body")).backgroundColor,
+    0.01
+);
 
 // Camera
 const camera = new PerspectiveCamera(
