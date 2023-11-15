@@ -91,6 +91,12 @@ let planeParams = {
     randomColor: true
 }
 let allowProceduralGeneration = true;
+/* Define grid size to be generated
+ * NOTE: Using even values will create an asymmetric grid due to the absence of
+ * of a central point, resulting in an uneven distribution. For consistent and
+ * symmetrical grid arrangements, consider using odd values.
+ */
+let gridSize = 5;
 // Array to track generated terrain chunks.
 let generatedChunks = [];
 // Chunks past this view range get removed.
@@ -265,11 +271,15 @@ function genTerrain({ offsetX = 0, offsetZ = 0 }) {
     createChunk(position);
 }
 
-// Create starting terrain
-for (let i = 0; i < 3; i++) {
-    createChunk(new Vector3(1, 0, i - 1));
-    createChunk(new Vector3(0, 0, i - 1));
-    createChunk(new Vector3(-1, 0, i - 1));
+// Create starting terrain grid
+for (let x = 0; x < gridSize; x++) {
+    for (let z = 0; z < gridSize; z++) {
+        createChunk(new Vector3(
+            x - Math.floor(gridSize / 2),
+            0,
+            z - Math.floor(gridSize / 2))
+        );
+    }
 }
 
 // Perform procedural generation of terrain chunks based on guider movement.
@@ -285,9 +295,14 @@ function proceduralGeneration() {
         // Check if the guider has entered a new chunk on either axis.
         ["x", "z"].forEach(axis => {
             if (lastChunk[axis] !== currentChunk[axis]) {
-                genTerrain({ offsetX: 1, offsetZ: 1 });
-                genTerrain({ offsetX: 0, offsetZ: 1 });
-                genTerrain({ offsetX: -1, offsetZ: 1 });
+                // Generate a line of terrain chunks
+                for (let x = 0; x < gridSize; x++) {
+                    genTerrain({
+                        offsetX: x - Math.floor(gridSize / 2), // Center chunks
+                        // Offset to grid edge to not override exsisting chunks
+                        offsetZ: Math.floor(gridSize / 2)
+                    });
+                }
                 removeOldChunks(currentChunk, axis);
 
                 // Update the last chunk on the current axis.
