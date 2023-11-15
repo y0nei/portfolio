@@ -314,6 +314,5 @@ function render() {
 
     guiderMovement(0.5, generationGuider);
     proceduralGeneration();
-    stats.update();
 };
 render();
