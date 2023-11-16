@@ -19,11 +19,32 @@ import { ImprovedNoise } from "ImprovedNoise";
 
 /* Core ********************************************************************** */
 
+// Snippet taken from "/examples/jsm/capabilities/WebGL.js"
+const supportsWebGL = (function () {
+    try {
+        return !!(
+            window.WebGLRenderingContext &&
+            (document.createElement("canvas").getContext("webgl") ||
+             document.createElement("canvas").getContext("experimental-webgl"))
+        );
+    } catch (e) {
+        return false;
+    }
+})();
+
 // Renderer
-const renderer = new WebGLRenderer({
-    antialias: true,
-    alpha: true // Transparent background
-});
+// FIXME: Don't load everything when webgl fails to load to save resources.
+
+let renderer
+if (supportsWebGL) {
+    renderer = new WebGLRenderer({
+        antialias: true,
+        alpha: true // Transparent background
+    });
+} else {
+    document.getElementById("webgl-disabled-notice").classList.remove("hidden")
+}
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;

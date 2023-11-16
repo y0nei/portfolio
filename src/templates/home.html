@@ -23,6 +23,15 @@
 {% endblock %}
 
 {% block home %}
+<div id="webgl-disabled-notice" class="flex modal hidden">
+    <p>Psst... This websites looks way better with&nbsp;</p>
+    <a href="https://get.webgl.org/get-a-webgl-implementation/"
+       target="_blank"
+       rel="noreferrer noopener" {# for privacy #}
+    >WebGL</a>
+    <p>&nbsp;enabled 🤫</p>
+</div>
+
 <header class="flex">
     <div id="header-title" class="flex">
         <p>welcome to</p>
