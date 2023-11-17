@@ -1,6 +1,7 @@
 {
   "main": "main.js",
   "dependencies": {
+    "@tabler/icons-webfont": "^2.40.0",
     "three": "^0.158.0"
   }
 }

@@ -5,11 +5,24 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@tabler/icons-webfont':
+    specifier: ^2.40.0
+    version: 2.40.0
   three:
     specifier: ^0.158.0
     version: 0.158.0
 
 packages:
+
+  /@tabler/icons-webfont@2.40.0:
+    resolution: {integrity: sha512-bZiZ593O969YkjKwJbjY5h4sRIlLN3b/2EsTBR9TWoNIXP2SIIHlm84k+s7tKibvKS3q15t9BrQDkLrZey2xIw==}
+    dependencies:
+      '@tabler/icons': 2.40.0
+    dev: false
+
+  /@tabler/icons@2.40.0:
+    resolution: {integrity: sha512-VqKsBSX159cLFTnCzkCmGhZtSPJHNN0lM2sC4xe0HPOfPUnjiex7rDHDdut4oe4iKRecDDpwXwM9BcU6xCPlCg==}
+    dev: false
 
   /three@0.158.0:
     resolution: {integrity: sha512-TALj4EOpdDPF1henk2Q+s17K61uEAAWQ7TJB68nr7FKxqwyDr3msOt5IWdbGm4TaWKjrtWS8DJJWe9JnvsWOhQ==}
