@@ -4,9 +4,12 @@
 }
 
 :root {
+    --offwhite-color: #F4F1F8; /* Lavender */
     --background-color: #242424;
-    --text-color: #FFF;
+    --text-color: var(--offwhite-color);
     --accent-color: #A8DF8E;
+    --warning-bg: #ffe69c; /* Bootstrap yellow 200 */
+    --warning-fg: #332701; /* Bootstrap yellow 900 */
 
     --slideDown-end-position: 20%;
 }
@@ -67,6 +70,80 @@ header * {
     font-size: 1.25rem;
     animation: descSlideDown 6s;
     opacity: 0.7;
+}
+
+
+.modal {
+    /* border: 1px solid blue; */
+    flex-direction: row;
+    position: absolute;
+    align-items: center;
+    top: 5%;
+    left: 50%;
+    justify-content: center;
+    transform: translate(-50%);
+    animation: notification-reveal 1.5s;
+}
+
+#notification-content {
+    overflow: hidden; /* Without this effect wont work */
+    animation: text-slide 2.5s;
+}
+#overflow-container {
+    display: block;
+    position: relative;
+    animation: container-slide 2.5s;
+    word-break: break-all;
+
+    padding: 0.5rem;
+    background-color: var(--warning-bg);
+    color: var(--warning-fg);
+    font-family: 'Rubik';
+    font-size: 1.15rem;
+    border-radius: .5rem;
+    margin-left: 0.5rem;
+}
+
+.modal .ti {
+    display: flex;
+    align-self: center;
+    font-size: 1.75rem;
+    position: relative;
+    left: 0%;
+    animation: icon-slide 2.5s;
+
+    border-radius: .5rem;
+    background-color: var(--warning-bg);
+    color: var(--warning-fg);
+    z-index: 1;
+}
+.ti::before {
+    padding: 0.25rem;
+}
+
+
+@keyframes notification-reveal {
+    0% { top: -3rem }
+    75%, 100% { top: 5% }
+}
+/* Slide from left edge */
+@keyframes container-slide {
+    0%, 50% { left: 100% }
+    100% { left: 0 }
+}
+@keyframes text-slide {
+    0%, 50% {
+        left: -50%;
+        transform: translate(-50%);
+    }
+    100% { left: 0% }
+}
+@keyframes icon-slide {
+    0%, 50% {
+        left: 50%;
+        transform: translate(-50%);
+    }
+    100% { left: 0 }
 }
 
 /* Keyframes */

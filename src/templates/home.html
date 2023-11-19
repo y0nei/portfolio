@@ -24,12 +24,18 @@
 
 {% block home %}
 <div id="webgl-disabled-notice" class="flex modal hidden">
-    <p>Psst... This websites looks way better with&nbsp;</p>
-    <a href="https://get.webgl.org/get-a-webgl-implementation/"
-       target="_blank"
-       rel="noreferrer noopener" {# for privacy #}
-    >WebGL</a>
-    <p>&nbsp;enabled 🤫</p>
+    <i class="ti ti-alert-triangle"></i>
+    <div id="notification-content">
+        <span id="overflow-container">
+            {# Do not put normal text in <p> tags alongside links. #}
+            Psst... This websites looks way better with
+            <a href="https://get.webgl.org/get-a-webgl-implementation/"
+                target="_blank"
+                rel="noreferrer noopener" {# for privacy #}
+            >WebGL</a>
+            enabled 🤫
+        </div>
+    </div>
 </div>
 
 <header class="flex">
