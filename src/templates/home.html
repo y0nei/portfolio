@@ -23,7 +23,19 @@
 {% endblock %}
 
 {% block home %}
-<div id="webgl-disabled-notice" class="flex modal hidden">
+<noscript>
+    <div class="flex modal info-modal">
+        <i class="ti ti-info-circle"></i>
+        <div id="notification-content">
+            <span id="overflow-container">
+                {# Do not put normal text in <p> tags alongside links. #}
+                This page functions better with JavaScript enabled!
+            </div>
+        </div>
+    </div>
+</noscript>
+
+<div id="webgl-disabled-notice" class="flex modal warning-modal hidden">
     <i class="ti ti-alert-triangle"></i>
     <div id="notification-content">
         <span id="overflow-container">
