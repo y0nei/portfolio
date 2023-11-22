@@ -16,8 +16,12 @@
     --slideDown-end-position: 20%;
 }
 
-/* Reset annoying styles */
-p, h1, body { margin: 0 }
+/* Basic CSS reset*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     justify-content: center;
@@ -85,6 +89,7 @@ header * {
     justify-content: center;
     transform: translate(-50%);
     animation: notification-reveal 1.5s;
+    z-index: 10;
 }
 
 /* Notification colors */
