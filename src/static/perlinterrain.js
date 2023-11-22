@@ -48,7 +48,7 @@ if (supportsWebGL) {
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;
-document.body.appendChild(renderer.domElement);
+document.querySelector("section#home").append(renderer.domElement);
 
 // Scene
 const scene = new Scene();

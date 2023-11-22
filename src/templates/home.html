@@ -50,18 +50,26 @@
     </div>
 </div>
 
-<header class="flex">
-    <div id="header-title" class="flex">
-        <p>welcome to</p>
-        <h1>&nbsp;yonei.dev</h1>
-    </div>
-    {# Add a randomly generated daily message here #}
-    <p id="header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-</header>
-
-<div id="scroll-wrapper">
-    <div id="scroll-title">Scroll</div>
-    <div id="scroll-bar"></div>
+<div class="section-wrapper">
+    <section id="home">
+        <header class="flex">
+            <div id="header-title" class="flex">
+                <p>welcome to</p>
+                <h1>&nbsp;yonei.dev</h1>
+            </div>
+            {# TODO: Add a randomly generated daily message here #}
+            <p id="header-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+        </header>
+        <div id="scroll-wrapper">
+            <a id="scroll-title" href="#about">Scroll</a>
+            <div id="scroll-bar"></div>
+        </div>
+    </section>
+    <section id="about">
+        {# TODO #}
+    </section>
 </div>
 
 <script type="module" src="{{ url_for('static', path='perlinterrain.js') }}"></script>

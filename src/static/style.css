@@ -116,6 +116,23 @@ header * {
     margin-left: 0.5rem;
 }
 
+.section-wrapper {
+    height: 100vh;
+    width: 100vw;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+}
+
 .modal .ti {
     display: flex;
     align-self: center;
@@ -147,6 +164,7 @@ header * {
     font-weight: bold;
     letter-spacing: 0.4rem;
     text-orientation: mixed;
+    text-decoration: none;
 }
 #scroll-bar {
     align-self: center;
