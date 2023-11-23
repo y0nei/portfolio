@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "components/modal.jinja2" import modal %}
 
 {% block home_head %}
 {# TODO: Use a bundler later instead of an importmap #}
@@ -24,29 +25,19 @@
 
 {% block home %}
 <noscript>
-    <div class="modal info-modal">
-        <i class="ti ti-info-circle-filled"></i>
-        <div id="overflow-container">
-            <span>
-                This page functions better with JavaScript enabled!
-            </span>
-        </div>
-    </div>
+{% call modal('info') %}
+This page functions better with JavaScript enabled!
+{% endcall %}
 </noscript>
 
-<div id="webgl-disabled-notice" class="modal warning-modal hidden">
-    <i class="ti ti-alert-triangle-filled"></i>
-    <div id="overflow-container">
-        <span>
-            Psst... This websites looks way better with
-            <a href="https://get.webgl.org/get-a-webgl-implementation/"
-                target="_blank"
-                rel="noreferrer noopener" {# for privacy #}
-            >WebGL</a>
-            enabled 🤫
-        </span>
-    </div>
-</div>
+{% call modal('warning', true, 'webgl-disabled-notice') %}
+Psst... This websites looks much better with
+<a href="https://get.webgl.org/get-a-webgl-implementation/"
+   target="_blank"
+   rel="noreferrer noopener" {# for privacy #}
+>WebGL</a>
+enabled 🤫
+{% endcall %}
 
 <div class="section-wrapper">
     <section id="home">
