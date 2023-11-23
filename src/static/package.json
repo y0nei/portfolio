@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@tabler/icons-webfont": "^2.40.0",
+    "minireset.css": "^0.0.7",
     "three": "^0.158.0"
   },
   "devDependencies": {
