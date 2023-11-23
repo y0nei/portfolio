@@ -1,7 +1,8 @@
 {% macro modal(type='info', is_hidden=false, additional_context="") -%}
     {% set icon_mapping = {
         'info': 'ti-info-circle-filled',
-        'warning': 'ti-alert-triangle-filled'
+        'warning': 'ti-alert-triangle-filled',
+        'danger': 'ti-alert-octagon-filled'
     } %}
 
     <div id="{{ additional_context }}"
