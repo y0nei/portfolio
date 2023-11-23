@@ -24,47 +24,45 @@
 
 {% block home %}
 <noscript>
-    <div class="flex modal info-modal">
+    <div class="modal info-modal">
         <i class="ti ti-info-circle-filled"></i>
-        <div id="notification-content">
-            <span id="overflow-container">
-                {# Do not put normal text in <p> tags alongside links. #}
+        <div id="overflow-container">
+            <span>
                 This page functions better with JavaScript enabled!
-            </div>
+            </span>
         </div>
     </div>
 </noscript>
 
-<div id="webgl-disabled-notice" class="flex modal warning-modal hidden">
+<div id="webgl-disabled-notice" class="modal warning-modal hidden">
     <i class="ti ti-alert-triangle-filled"></i>
-    <div id="notification-content">
-        <span id="overflow-container">
-            {# Do not put normal text in <p> tags alongside links. #}
+    <div id="overflow-container">
+        <span>
             Psst... This websites looks way better with
             <a href="https://get.webgl.org/get-a-webgl-implementation/"
                 target="_blank"
                 rel="noreferrer noopener" {# for privacy #}
             >WebGL</a>
             enabled 🤫
-        </div>
+        </span>
     </div>
 </div>
 
 <div class="section-wrapper">
     <section id="home">
-        <header class="flex">
-            <div id="header-title" class="flex">
+        <header>
+            <span id="header-title">
                 <p>welcome to</p>
                 <h1>&nbsp;yonei.dev</h1>
-            </div>
+            </span>
             {# TODO: Add a randomly generated daily message here #}
             <p id="header-desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
         </header>
-        <div id="scroll-wrapper">
-            <a id="scroll-title" href="#about">Scroll</a>
-            <div id="scroll-bar"></div>
+        <div id="scroll-hint">
+            <a href="#about">Scroll</a>
+            <div id="scroll-hint-bar"></div>
         </div>
     </section>
     <section id="about">
