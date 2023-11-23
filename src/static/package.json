@@ -1,7 +1,14 @@
 {
   "main": "main.js",
+  "scripts": {
+    "sass:watch": "sass -w sass:build --style compressed --no-source-map",
+    "sass:build": "sass sass:build --style compressed --no-source-map"
+  },
   "dependencies": {
     "@tabler/icons-webfont": "^2.40.0",
     "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5"
   }
 }
