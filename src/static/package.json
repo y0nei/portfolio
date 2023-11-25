@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "build": "tsc && vite build",
-    "sass:watch": "sass -w sass:build --style compressed --no-source-map",
-    "sass:build": "sass sass:build --style compressed --no-source-map"
+    "build": "tsc && vite build && pnpm sass:build",
+    "sass:watch": "sass -w sass:dist --style compressed --no-source-map",
+    "sass:build": "sass sass:dist --style compressed --no-source-map"
   },
   "dependencies": {
     "@tabler/icons-webfont": "^2.40.0",

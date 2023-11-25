@@ -10,12 +10,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    // "noEmit": true,
+    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "outDir": "build",
     "types": ["vite/client", "three"]
   },
   "files": ["./main.ts"]
