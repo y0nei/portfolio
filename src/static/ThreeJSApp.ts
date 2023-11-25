@@ -11,44 +11,52 @@ import {
     Vector3,
     WebGLRenderer,
     FogExp2,
-    BoxGeometry
+    BoxGeometry,
+    Object3D,
+    BufferGeometry,
+    BufferAttribute
 } from "three";
 
 // fix imports
-import { OrbitControls } from "OrbitControls";
-import { ImprovedNoise } from "ImprovedNoise";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { ImprovedNoise } from "three/examples/jsm/math/ImprovedNoise";
 
-let camera, scene, renderer;
-let generationGuider, guiderMovement, guiderMovingDirection = { Z: 0, X: 0 };
-let allowProceduralGeneration = true, proceduralGeneration;
+let camera: PerspectiveCamera,
+    scene: Scene,
+    renderer: WebGLRenderer;
+let generationGuider: Mesh,
+    guiderMovement: Function,
+    guiderMovingDirection: { Z: number; X: number } = { Z: 0, X: 0 };
+let allowProceduralGeneration: boolean = true,
+    proceduralGeneration: () => void;
 
-/**
- * Settings for the plane mesh used for chunk creation.
- * @type {{
- *   baseColor: number,    // Hexadecimal color used for mesh material
- *   size: number,         // Size of the mesh geometry
- *   subdivs: number,      // Subdivision count of the mesh geometry
- *   wireframe: boolean,   // Render mesh geometry as wireframe
- *   randomColor: boolean  // Controls if each plane has a random baseColor
- * }}
- */
-let planeParams = {
+interface PlaneParameters {
+    baseColor: number;    // Hexadecimal color used for mesh material
+    size: number;         // Size of the mesh geometry
+    subdivs: number;      // Subdivision count of the mesh geometry
+    wireframe: boolean;   // Render mesh geometry as wireframe
+    randomColor: boolean; // Controls if each plane has a random baseColor
+}
+
+let planeParams: PlaneParameters = {
     baseColor: 0x7ace52,
     size: 150,
     subdivs: 60,
     randomColor: false,
     wireframe: true
-}
-/**
- * Define grid size to be generated
+};
+
+/* Define grid size to be generated
  * NOTE: Using even values will create an asymmetric grid due to the absence of
  * of a central point, resulting in an uneven distribution. For consistent and
- * symmetrical grid arrangements, consider using odd values.
- */
-let gridSize = 5;
-let perlinParams = { multiplier: 6, amplitude: 25 };
-let generatedChunks = [];
-let viewRange = 4; // Chunks past this range get removed.
+ * symmetrical grid arrangements, consider using odd values. */
+let gridSize: number = 5;
+let perlinParams: { multiplier: number; amplitude: number } = {
+    multiplier: 6,
+    amplitude: 25
+};
+let generatedChunks: Mesh[] = [];
+let viewRange: number = 4; // Chunks past this range get removed.
 
 class App {
     init() {
@@ -67,7 +75,7 @@ class App {
         // Scene
         scene = new Scene();
         scene.fog = new FogExp2(
-            window.getComputedStyle(document.querySelector("body")).backgroundColor,
+            window.getComputedStyle(document.querySelector("body")!).backgroundColor,
             0.01
         );
 
@@ -78,7 +86,7 @@ class App {
         });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.querySelector("section#home").append(renderer.domElement);
+        document.querySelector("section#home")!.append(renderer.domElement);
 
         window.addEventListener("resize", onWindowResize, false);
 
@@ -105,7 +113,7 @@ class App {
 
         // Guider movement & camera following
         guiderMovingDirection.Z = 1;
-        guiderMovement = function(speed, object) {
+        guiderMovement = function(speed: number, object: Mesh): void {
             object.position.z += speed;
             camera.position.z += speed;
             camera.lookAt(object.position);
@@ -124,8 +132,8 @@ class App {
         }
 
         // Procedural generation of terrain chunks based on guider movement.
-        let lastChunk = { x: 0, z: 0 };
-        proceduralGeneration = function() {
+        let lastChunk: { x: number, z: number } = { x: 0, z: 0 };
+        proceduralGeneration = function(): void {
             if (allowProceduralGeneration) {
                 // Get the current chunk position the guider is in.
                 let currentChunk = {
@@ -134,16 +142,15 @@ class App {
                 };
 
                 // Check if the guider has entered a new chunk on either axis.
-                ["x", "z"].forEach(axis => {
+                (["x", "z"] as const).forEach(axis => {
                     if (lastChunk[axis] !== currentChunk[axis]) {
                         // Generate a line of terrain chunks
                         for (let x = 0; x < gridSize; x++) {
-                            self.genTerrain({
-                                // Center chunks
-                                offsetX: x - Math.floor(gridSize / 2),
+                            self.genTerrain(
+                                x - Math.floor(gridSize / 2), // Center chunks
                                 // Offset to grid edge to not override chunks
-                                offsetZ: Math.floor(gridSize / 2)
-                            });
+                                Math.floor(gridSize / 2)
+                            );
                         }
                         self.removeOldChunks(currentChunk, axis);
 
@@ -157,21 +164,10 @@ class App {
         animate();
     }
 
-    /**
-    * Translates object's X or Z axis position to a relative chunk index.
-    * @param {Object3D} object - The object whose position is being translated.
-    * @param {string} axis - The axis to consider for translation.
-    * @returns {number} The relative chunk index.
-    * @throws {Error} Throws an error if the axis is invalid.
-    */
-    posToChunkIndex(object, axis) {
-        const validAxes = ["x", "z"];
-
-        if (!validAxes.includes(axis)) {
-            throw new Error(
-                `Invalid axis '${axis}'. ` +
-                `Supported axes are ${validAxes.join(' and ')}.`
-            );
+    // Translate object's X or Z axis position to a relative chunk index.
+    private posToChunkIndex(object: Object3D, axis: "x" | "z"): number {
+        if (!(axis in object.position)) {
+            throw new Error(`Invalid object axis '${axis}'.`);
         }
 
         return Math.floor(
@@ -179,13 +175,7 @@ class App {
         );
     }
 
-    /**
-    * Plane mesh creation template.
-    * @param {number} size
-    * @param {THREE.Color} color
-    * @returns {THREE.Mesh}
-    */
-    createPlane(size, color) {
+    private createPlane(size: number, color: number): Mesh {
         let mesh = new Mesh(
             new PlaneGeometry(
                 size,
@@ -203,12 +193,9 @@ class App {
         return mesh;
     }
 
-    /**
-    * Create a terrain chunk at the specified position.
-    * @param {THREE.Vector3} pos - Position of the chunk, also used to displace it.
-    */
-    createChunk(pos) {
-        let plane;
+    // Create a terrain chunk at the specified position.
+    private createChunk(pos: Vector3): void {
+        let plane: Mesh;
 
         if (planeParams.randomColor != true) {
             plane = this.createPlane(planeParams.size, planeParams.baseColor);
@@ -234,13 +221,11 @@ class App {
         generatedChunks.push(plane);
     }
 
-    /**
-    * Remove out of view chunks based on the current chunk position and axis.
-    * @param {{ x: number, z: number }} currentChunk
-    * @param {string} axis
-    */
-    removeOldChunks(currentChunk, axis) {
-        const distanceThreshold = planeParams.size * viewRange;
+    private removeOldChunks(
+        currentChunk: { x: number, z: number },
+        axis: "x" | "z"
+    ): void {
+        const distanceThreshold: number = planeParams.size * viewRange;
 
         // Filter out old chunks.
         const oldChunks = generatedChunks.filter(chunk => {
@@ -256,39 +241,38 @@ class App {
         }
     }
 
-    /**
-    * Generate terrain chunks based on the guider's position and optional offsets.
-    * NOTE: This generates a chunk whenever the value of chunkIndex is updated
-    * or in other words; the guider exits a chunk border.
-    * @param {number} [offsetX=0]
-    * @param {number} [offsetZ=0]
-    */
-    genTerrain({ offsetX = 0, offsetZ = 0 }) {
+    /* Generate chunks based on the guider's position and optional offsets.
+     * NOTE: This generates a chunk whenever the value of chunkIndex is updated
+     * or in other words; the guider exits a chunk border. */
+    private genTerrain(offsetX: number = 0, offsetZ: number = 0): void {
+        const currentChunk = {
+            x: this.posToChunkIndex(generationGuider, "x"),
+            z: this.posToChunkIndex(generationGuider, "z")
+        };
+
         const position = new Vector3(
-            this.posToChunkIndex(generationGuider, "x") + offsetX * (guiderMovingDirection.X || 1),
+            currentChunk.x + offsetX * (guiderMovingDirection.X || 1),
             0,
-            this.posToChunkIndex(generationGuider, "z") + offsetZ * (guiderMovingDirection.Z || 1)
+            currentChunk.z + offsetZ * (guiderMovingDirection.Z || 1)
         );
 
         this.createChunk(position);
     }
 }
 
-/**
- * Apply Perlin noise to vertices of a shape geometry.
- * @param {THREE.BufferGeometry} geometry - Geometry to be shaped.
- * @param {Vector2} uvShift - Shift vector for UV coordinates (pattern shift).
- * @param {number} multiplier - Multiplier for UV coordinates (scale).
- * @param {number} amplitude - Amplitude of the Perlin noise (spikiness).
- */
 const perlin = new ImprovedNoise();
-function applyPerlinNoise(geometry, uvShift, multiplier, amplitude) {
-    let pos = geometry.attributes.position;
-    let uv = geometry.attributes.uv;
-    let vec2 = new Vector2();
+function applyPerlinNoise(
+    geometry: BufferGeometry, // Geometry to be shaped
+    uvShift: Vector2,         // Shift vector for UV coordinates (pattern shift)
+    multiplier: number,       // Multiplier for UV coordinates (scale)
+    amplitude: number         // Amplitude of the Perlin noise (spikiness)
+): void {
+    const pos = geometry.getAttribute("position") as BufferAttribute;
+    const uv = geometry.getAttribute("uv") as BufferAttribute;
+    const vec2 = new Vector2();
 
-    // Apply noise to the coordinates of a vertex based on UV coordinates.
-    function applyNoise(uv) {
+    // Apply noise to the coordinates of a vertex based on UV coordinates
+    function applyNoise(uv: Vector2): number {
         return perlin.noise(uv.x, uv.y, 0) * amplitude;
     }
 
@@ -298,13 +282,13 @@ function applyPerlinNoise(geometry, uvShift, multiplier, amplitude) {
     }
 }
 
-function onWindowResize() {
+function onWindowResize(): void {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function animate() {
+function animate(): void {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     guiderMovement(0.5, generationGuider);

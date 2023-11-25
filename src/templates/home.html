@@ -2,28 +2,6 @@
 {% extends "base.html" %}
 {% from "components/modal.jinja2" import modal %}
 
-{% block home_head %}
-{# TODO: Use a bundler later instead of an importmap #}
-<script type="importmap">
-    {
-        "imports": {
-            "three": "{{ url_for(
-                'static',
-                path='node_modules/three/build/three.module.min.js')
-            }}",
-            "OrbitControls": "{{ url_for(
-                'static',
-                path='node_modules/three/examples/jsm/controls/OrbitControls.js')
-            }}",
-            "ImprovedNoise": "{{ url_for(
-                'static',
-                path='node_modules/three/examples/jsm/math/ImprovedNoise.js')
-            }}"
-        }
-    }
-</script>
-{% endblock %}
-
 {% block home %}
 <noscript>
 {% call modal('info') %}
