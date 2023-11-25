@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.gzip import GZipMiddleware
 
 from src.core.settings import settings
 from src.core.logging import logger
@@ -19,5 +20,6 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.mount("/static", StaticFiles(directory="src/static"), name="static")
 app.include_router(home_router)
