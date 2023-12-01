@@ -12,9 +12,18 @@ async def home(request: Request):
     Display the home page html template
     """
 
+    skills = [
+        "html & css",
+        "javascript",
+        "python",
+        "system administration",
+        "Rest API's",
+        "DevOps",
+        "CI/CD"
+    ]
     context = {
         "app_name": settings.APP_NAME,
-        "helloworld": "Hello, world!"
+        "skills": skills
     }
 
     return templates.TemplateResponse(

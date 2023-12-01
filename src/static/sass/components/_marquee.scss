@@ -1,0 +1,45 @@
+.marquee {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transform: skewY(-5deg);
+    position: absolute;
+    top: 10%;
+
+    & > div {
+        display: flex;
+        animation: marquee 50s linear infinite running;
+    }
+}
+
+.marquee-tag {
+    color: transparent;
+    -webkit-text-stroke: 3px var(--text-color);
+    pointer-events: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0.075;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 10rem;
+    font-weight: 900;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline;
+    text-align: right;
+    margin: 0 0.5em;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translate(-50%);
+    }
+}
