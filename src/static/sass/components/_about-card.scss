@@ -1,0 +1,40 @@
+.about-card {
+    --margin: 5rem;
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: calc(100vh - var(--margin) * 2);
+    border: 0.15rem solid rgb(255 255 255 / 5%);
+    background-color: rgb(16 16 16);
+    border-radius: 1.5rem;
+    margin: var(--margin);
+    padding: 1.5rem;
+
+    .card-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 4rem;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        );
+        background-position: 50% 50%;
+        background-size: 1.5rem 1.5rem;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 33%;
+        opacity: 0.05;
+        background: radial-gradient(
+            50% 50% at 50% 0,
+            rgba(#fff, 0.5) 0,
+            rgba(#fff, 0) 100%
+        );
+    }
+}

@@ -5,11 +5,12 @@
     overflow: hidden;
     transform: skewY(-5deg);
     position: absolute;
-    top: 10%;
+    top: 5%;
+    left: 0;
 
     & > div {
         display: flex;
-        animation: marquee 50s linear infinite running;
+        animation: marquee 75s linear infinite running;
     }
 }
 
