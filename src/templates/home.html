@@ -36,20 +36,7 @@ enabled 🤫
         </div>
     </section>
     <section id="about">
-        <div class="about-card">
-            <div class="marquee">
-                <div>
-                {% for _ in range(2) %}
-                    {% for skill in skills %}
-                    <h1 class="marquee-tag">{{ skill }}</h1>
-                    {% endfor %}
-                {% endfor %}
-                </div>
-            </div>
-            <div class="card-content">
-                {# TODO #}
-            </div>
-        </div>
+        {% include "components/about-card.html" %}
     </section>
 </div>
 {% endblock %}
