@@ -16,4 +16,28 @@
 
 section#about {
     overflow: hidden;
+    height: 125vh;
+
+    .fadeout-overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 25%;
+        background: linear-gradient(
+            0deg,
+            var(--background-color) 0%,
+            var(--background-color) 50%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+
+    svg.section-separator {
+        position: absolute;
+        bottom: 0;
+        fill: var(--projects-section-bg);
+    }
+}
+
+section#footer {
+    background-color: var(--projects-section-bg);
 }
