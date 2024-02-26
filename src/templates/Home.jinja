@@ -1,0 +1,44 @@
+{#def request, app_name, skills #}
+
+<BaseLayout request={request} app_name={app_name}>
+    <noscript>
+        <Modal type="info">
+            This page functions better with JavaScript enabled!
+        </Modal>
+    </noscript>
+
+    <Modal type="warning" context="webgl-disabled-notice" hidden>
+        Psst... This websites looks much better with
+        <Link href="https://get.webgl.org/get-a-webgl-implementation/">WebGL</Link>
+        enabled 🤫
+    </Modal>
+
+    <div class="section-wrapper">
+        <section id="home">
+            <header>
+                <span id="header-title">
+                    <p>welcome to</p>
+                    <h1>&nbsp;yonei.dev</h1>
+                </span>
+                {# TODO: Add a randomly generated daily message here #}
+                <p id="header-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+            </header>
+            <div id="scroll-hint">
+                <a href="#about">Scroll</a>
+                <div id="scroll-hint-bar"></div>
+            </div>
+        </section>
+        <section id="about">
+            <AboutCard skills={skills} />
+            <div class="fadeout-overlay"></div>
+            <svg class="section-separator" viewBox="0 0 1600 68" xmlns="http://www.w3.org/2000/svg">
+                <path d="m0 0c529.862 85.7446 1070.14 85.7446 1600 0v68h-1600z"/>
+            </svg>
+        </section>
+        <section id="footer">
+            {# TODO #}
+        </section>
+    </div>
+</BaseLayout>

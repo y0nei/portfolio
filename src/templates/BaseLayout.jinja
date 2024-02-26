@@ -1,0 +1,21 @@
+{#def request, app_name #}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ app_name }}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', path='dist/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',
+            path='node_modules/minireset.css/minireset.min.css'
+        )}}">
+        <link rel="stylesheet" href="{{ url_for('static',
+            path='node_modules/@tabler/icons-webfont/tabler-icons.min.css'
+        )}}">
+    </head>
+    <body>
+        {{ content }}
+        <script src="{{ url_for('static', path='dist/main.min.js') }}"></script>
+    </body>
+</html>

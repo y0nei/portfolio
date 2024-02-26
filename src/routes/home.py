@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 
 from src.core.settings import settings
-from src.core.templates import templates
+from src.core.templates import render
 
 home_router = APIRouter()
 
@@ -26,7 +26,4 @@ async def home(request: Request):
         "skills": skills
     }
 
-    return templates.TemplateResponse(
-        "home.html",
-        {"request": request, **context}
-    )
+    return render("Home", request=request, **context)

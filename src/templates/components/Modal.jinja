@@ -1,0 +1,18 @@
+{#def type="info", context="", hidden=false #}
+
+{% set icon_mapping = {
+    'info': 'ti-info-circle-filled',
+    'warning': 'ti-alert-triangle-filled',
+    'danger': 'ti-alert-octagon-filled'
+} %}
+
+<div {% if context %} id="{{ context }}" {% endif %}
+     class="modal {{ type ~ '-modal' }} {{ 'hidden' if hidden }}"
+>
+    {% if icon_mapping.get(type) -%}
+    <i class="ti {{ icon_mapping[type] }}"></i>
+    {% endif -%}
+    <div id="overflow-container">
+        <span>{{ content }}</span>
+    </div>
+</div>
