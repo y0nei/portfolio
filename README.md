@@ -7,7 +7,8 @@
 
 > A personal website of mine serving as a portfolio and a link collection for all of my social media accounts (*just like carrd.co/linktr.ee*).
 
-We all know that there are many benefits to having your own portfolio/personal website. For a long time, I have procrastinated on creating one for myself, and instead used social media to post my work and establish an online presence. I think it's necessary for anybody looking into web development to have a personal website.
+We all know that there are many benefits to having your own portfolio/personal website. For a long time, I have procrastinated on creating one for myself, and instead used social media to establish an online presence and post my work. I believe it's necessary for anybody looking into web development to have a personal website, creating your own portfolio site — rather than working within the limitations of other platforms — showcases your dedication to your craft. With your own site, you can integrate design features tailored exclusively to your style and capabilities.
+Speaking of design, I decided to take time and learn Figma in order to create a prototype of this website, not only to train myself as a web developer, but also as a designer.
 
 [![Figma design board][figma badge]][figma board]
 
@@ -23,17 +24,17 @@ TODO
 ## Not written by AI
 Love it or hate it, AI tooling is nowadays incredibly widespread.  
 While I'm not a fan of AI code completion tools, I found myself using chatbots to generate ideas (*commit names, summaries, function names, etc.*), which resulted in me developing a bad habit of picking the easy way out whenever I'm stuck with an issue instead of actually trying to find the answer manually, which is a bad practice. While AI can speed up work, It kills creativity.  
-I have challenged myself to refrain from <u>any</u> AI usage in writing this project.
+I have challenged myself to refrain from <u>any</u> AI usage during the development of this project.
 
 [![NotbyAI badge][notbyai badge]](https://notbyai.fyi/)
 
 ## Contributing
 Contributions are welcome! If you encounter any issues or have a suggestion that would make this better, please open an issue or submit a pull request.
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork this project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
 ## Contact
 Yonei - <y0nei@proton.me>  
@@ -44,7 +45,7 @@ Matrix (`@y0nei:matrix.org`), Discord (`y0nei`), [Telegram](https://t.me/y0nei)
 - [Tamagui landing page design](https://www.lapa.ninja/post/tamagui/)
 
 ## License
-Distributed under the AGPL-3.0-or-later License. See `LICENSE` for more information.
+Distributed under the `AGPL-3.0-or-later` license. See the `LICENSE` file for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
