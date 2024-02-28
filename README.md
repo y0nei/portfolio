@@ -19,7 +19,15 @@ This is my first project utilizing a JavaScript framework. I'm a fan of simplici
 The [`origin/python-based` branch][python branch] is an older abandoned attempt of creating this website using the [FastAPI][fastapi] framework, SCSS and [JinjaX][jinjax] for templating.
 
 ## Quickstart
-TODO
+First make sure that bun is installed locally on your machine. See the installation instructions in [Bun's official documentation][bun install docs].
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Install dependencies                             |
+| `bunx --bun astro dev`    | Starts local dev server using Bun's own runtime  |
+| `bunx --bun astro build`  | Build your production site to `./dist/`          |
+| `bunx --bun astro preview`| Preview your build locally                       |
+| `bunx astro --help`       | Get help using the Astro CLI                     |
 
 ## Not written by AI
 Love it or hate it, AI tooling is nowadays incredibly widespread.  
@@ -61,5 +69,6 @@ Distributed under the `AGPL-3.0-or-later` license. See the `LICENSE` file for mo
 [python branch]: https://codeberg.org/y0nei/portfolio/src/branch/python-based
 [figma board]: https://www.figma.com/file/9nHRCQxvyppGR1tTV1Oxje/Personal-portfolio?type=design&node-id=0%3A1&mode=design&t=ZYjOHM0oWB0JF30c-1
 [astro components]: https://docs.astro.build/en/basics/astro-components/
+[bun install docs]: https://bun.sh/docs/installation
 [fastapi]: https://fastapi.tiangolo.com/
 [jinjax]: https://jinjax.scaletti.dev/
