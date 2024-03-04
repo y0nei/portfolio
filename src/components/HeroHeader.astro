@@ -9,6 +9,8 @@ const motd = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
 <style lang="scss">
 @import "../styles/mixins.scss";
+$slideDown-end-position: 20%;
+$description-margin: -15px;
 
 header {
     color: var(--text-color);
@@ -29,16 +31,34 @@ header {
     flex-direction: column;
     align-items: center;
     position: absolute;
+    top: $slideDown-end-position;
+    animation: headerSlideDown 3s;
 
     h1 b {
         color: var(--accent-color);
         font-weight: 900;
+
+        background: linear-gradient(
+            -135deg,
+            var(--text-color) 0%,
+            var(--text-color) 45%,
+            #424242 49%,
+            #424242 50%,
+            var(--accent-color) 50%,
+            var(--accent-color) 100%
+        );
+        background-size: 250% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleGradient 5s;
     }
     .description {
-        margin-top: -10px;
+        margin-top: $description-margin;
         opacity: 0.75;
         font-style: italic;
         font-size: 1.5rem;
+        animation: descSlideDown 6s;
 
         @include breakpoint("medium") {
             font-size: 1.25rem;
@@ -49,6 +69,34 @@ header {
         @include breakpoint("tiny") {
             font-size: 0.75rem;
         }
+    }
+}
+
+/* TODO: Fine tune this later */
+@keyframes titleGradient {
+    0% { background-size: 100% 700%; }
+    50% { background-size: 100% 700%; }
+    100% { background-size: 250% 100%; }
+}
+@keyframes headerSlideDown {
+    0% {
+        opacity: 0;
+        top: -100px;
+    }
+    100% { top: $slideDown-end-position; }
+}
+@keyframes descSlideDown {
+    0% {
+        margin-top: -30px;
+        opacity: 0;
+    }
+    70% {
+        margin-top: -30px;
+        opacity: 0;
+    }
+    100% {
+        margin-top: $description-margin;
+        opacity: 0.7;
     }
 }
 </style>
