@@ -1,0 +1,27 @@
+---
+---
+
+<div class="section-wrapper">
+    <slot />
+</div>
+
+<style lang="scss" is:global>
+    .section-wrapper {
+        scroll-behavior: smooth;
+        overflow-y: scroll;
+
+        section {
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+    }
+
+    // Placeholders
+    section#home { background-color: teal; }
+    section#about { background-color: orchid; }
+</style>

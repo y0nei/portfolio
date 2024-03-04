@@ -1,8 +1,11 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Counter from "../components/Counter.svelte";
+import SectionLayout from "../layouts/SectionLayout.astro";
 ---
 
 <MainLayout title="Home">
-	<Counter client:load/>
+	<SectionLayout>
+		<section id="home"></section>
+		<section id="about"></section>
+	</SectionLayout>
 </MainLayout>
