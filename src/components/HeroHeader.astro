@@ -1,0 +1,54 @@
+---
+const motd = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+---
+
+<header>
+    <h1>Hi there, I'm <b>Yonei</b>!</h1>
+    <p class="description">{motd}</p>
+</header>
+
+<style lang="scss">
+@import "../styles/mixins.scss";
+
+header {
+    color: var(--text-color);
+    font-family: "Rubik", sans-serif;
+    font-size: 5rem;
+
+    @include breakpoint("medium") {
+        font-size: 4rem;
+    }
+    @include breakpoint("small") {
+        font-size: 3.5rem;
+    }
+    @include breakpoint("tiny") {
+        font-size: 2.4rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+
+    h1 b {
+        color: var(--accent-color);
+        font-weight: 900;
+    }
+    .description {
+        margin-top: -10px;
+        opacity: 0.75;
+        font-style: italic;
+        font-size: 1.5rem;
+
+        @include breakpoint("medium") {
+            font-size: 1.25rem;
+        }
+        @include breakpoint("small") {
+            font-size: 1.1rem;
+        }
+        @include breakpoint("tiny") {
+            font-size: 0.75rem;
+        }
+    }
+}
+</style>

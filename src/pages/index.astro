@@ -1,12 +1,15 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
+import HeroHeader from "../components/HeroHeader.astro";
 import "minireset.css/minireset.min.css";
 ---
 
 <MainLayout title="Home">
 	<SectionLayout>
-		<section id="home"></section>
+		<section id="home">
+			<HeroHeader />
+		</section>
 		<section id="about"></section>
 	</SectionLayout>
 </MainLayout>
