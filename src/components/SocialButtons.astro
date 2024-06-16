@@ -2,15 +2,23 @@
 import Icon from "./SocialIcon.astro";
 
 const socials = [
+    {platform: "bluesky", link: "#"},
+    {platform: "twitter", link: "#"},
+    {platform: "fediverse", link: "#"},
+    {platform: "telegram", link: "#"},
+    {platform: "matrix", link: "#"},
+    {platform: "liberapay", link: "#"},
+    {platform: "instagram", link: "#"},
     {platform: "codeberg", link: "#"},
-    {platform: "bluesky", link: "#"}
+    {platform: "github", link: "#"},
+    {platform: "gitlab", link: "#"}
 ]
 ---
 
 <div class="socialsContainer">
 {socials.map((item) => (
     <form target="_blank">
-        <button formaction={item.link}>
+        <button formaction={item.link} class={"icon-" + item.platform}>
             <Icon icon={item.platform} />
         </button>
     </form>
@@ -20,6 +28,7 @@ const socials = [
 <style lang="scss">
     .socialsContainer {
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
 
         button {
@@ -31,6 +40,20 @@ const socials = [
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        // Overrides for optimal optical fit
+        .icon-twitter {
+            padding: 12px;
+            padding-top: 13px;
+        }
+        .icon-fediverse {
+            padding: 8px;
+            padding-left: 10px;
+            padding-top: 9px;
+        }
+        .icon-bluesky {
+            padding-top: 11px;
         }
     }
 </style>
