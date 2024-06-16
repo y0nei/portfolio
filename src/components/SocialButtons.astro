@@ -1,0 +1,36 @@
+---
+import Icon from "./SocialIcon.astro";
+
+const socials = [
+    {platform: "codeberg", link: "#"},
+    {platform: "bluesky", link: "#"}
+]
+---
+
+<div class="socialsContainer">
+{socials.map((item) => (
+    <form target="_blank">
+        <button formaction={item.link}>
+            <Icon icon={item.platform} />
+        </button>
+    </form>
+))}
+</div>
+
+<style lang="scss">
+    .socialsContainer {
+        display: flex;
+        gap: 1rem;
+
+        button {
+            border-style: none;
+            padding: 10px;
+            width: 50px;
+            aspect-ratio: 1;
+            border-radius: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+</style>
