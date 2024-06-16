@@ -2,23 +2,26 @@
 import Icon from "./SocialIcon.astro";
 
 const socials = [
-    {platform: "bluesky", link: "#"},
-    {platform: "twitter", link: "#"},
-    {platform: "fediverse", link: "#"},
-    {platform: "telegram", link: "#"},
-    {platform: "matrix", link: "#"},
-    {platform: "liberapay", link: "#"},
-    {platform: "instagram", link: "#"},
-    {platform: "codeberg", link: "#"},
-    {platform: "github", link: "#"},
-    {platform: "gitlab", link: "#"}
+    {platform: "bluesky", link: "#", color: "#0285FF"},
+    {platform: "twitter", link: "#", color: "#000000"},
+    {platform: "iceshrimp", link: "#", color: "#9A92FF"},
+    {platform: "telegram", link: "#", color: "#26A5E4"},
+    {platform: "matrix", link: "#", color: "#000000"},
+    {platform: "liberapay", link: "#", color: "#F6C915"},
+    {platform: "instagram", link: "#", color: "#E4405F"},
+    {platform: "codeberg", link: "#", color: "#2185D0"},
+    {platform: "github", link: "#", color: "#181717"},
+    {platform: "gitlab", link: "#", color: "#FC6D26"}
 ]
 ---
 
 <div class="socialsContainer">
 {socials.map((item) => (
     <form target="_blank">
-        <button formaction={item.link} class={"icon-" + item.platform}>
+        <button formaction={item.link}
+                class={"icon-" + item.platform}
+                style={"--hover-color:" + item.color}
+        >
             <Icon icon={item.platform} />
         </button>
     </form>
@@ -40,6 +43,13 @@ const socials = [
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: 150ms;
+
+            // TODO: Fix black background colors
+            // TODO: Invert SVG fill when hovered with black bg color
+            &:hover {
+                background-color: var(--hover-color);
+            }
         }
 
         // Overrides for optimal optical fit
