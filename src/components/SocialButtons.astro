@@ -1,5 +1,5 @@
 ---
-import Icon from "./SocialIcon.astro";
+import { Icon } from "astro-icon/components";
 
 const socials = [
     {platform: "bluesky", link: "#", color: "#0285FF"},
@@ -22,7 +22,7 @@ const socials = [
                 class={"icon-" + item.platform}
                 style={"--hover-color:" + item.color}
         >
-            <Icon icon={item.platform} />
+            <Icon name={item.platform} size={30} />
         </button>
     </form>
 ))}
