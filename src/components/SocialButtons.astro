@@ -29,6 +29,8 @@ const socials = [
 </div>
 
 <style lang="scss">
+    svg { color: black }
+
     .socialsContainer {
         display: flex;
         flex-wrap: wrap;
@@ -46,21 +48,20 @@ const socials = [
             transition: 150ms;
 
             // TODO: Fix black background colors
-            // TODO: Invert SVG fill when hovered with black bg color
             &:hover {
                 background-color: var(--hover-color);
             }
+
+        }
+
+        .icon-twitter, .icon-matrix, .icon-github {
+            &:hover svg { color: white }
         }
 
         // Overrides for optimal optical fit
         .icon-twitter {
             padding: 12px;
             padding-top: 13px;
-        }
-        .icon-fediverse {
-            padding: 8px;
-            padding-left: 10px;
-            padding-top: 9px;
         }
         .icon-bluesky {
             padding-top: 11px;
