@@ -53,7 +53,6 @@ const socials = [
             align-items: center;
             transition: 150ms;
 
-            // TODO: Fix black background colors
             &:hover {
                 background-color: var(--hover-color);
 
@@ -124,13 +123,13 @@ const socials = [
             }
         }
 
-        // Overrides for optimal optical fit
-        .icon-twitter {
-            padding: 12px;
-            padding-top: 13px;
+        // For better contrast between hover-color and text color
+        .icon-iceshrimp, .icon-liberapay, .icon-gitlab, .icon-telegram {
+            .tooltip { color: #000 }
         }
-        .icon-bluesky {
-            padding-top: 11px;
+
+        .icon-twitter, .icon-matrix, .icon-github {
+            &:hover svg { color: white }
         }
     }
 </style>
