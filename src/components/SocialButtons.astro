@@ -23,6 +23,11 @@ const socials = [
                 style={"--hover-color:" + item.color}
         >
             <Icon name={item.platform} size={30} />
+            <span class="tooltip">{item.platform}</span>
+            {item.platform == "iceshrimp" && <span class="info-icon">
+                <b>i</b>
+                <span class="info-tooltip">Fediverse instance</span>
+            </span>}
         </button>
     </form>
 ))}
@@ -37,6 +42,7 @@ const socials = [
         gap: 1rem;
 
         button {
+            position: relative;
             border-style: none;
             padding: 10px;
             width: 50px;
@@ -50,12 +56,72 @@ const socials = [
             // TODO: Fix black background colors
             &:hover {
                 background-color: var(--hover-color);
-            }
 
+                .tooltip {
+                    opacity: 1;
+                    visibility: visible;
+                    // Delay for opacity just on hover for a suttle effect
+                    transition-delay: 400ms;
+                    transition-property: opacity;
+                }
+            }
         }
 
-        .icon-twitter, .icon-matrix, .icon-github {
-            &:hover svg { color: white }
+        .tooltip, .info-tooltip {
+            transition-duration: 150ms;
+            opacity: 0;
+            visibility: hidden;
+            background-color: var(--hover-color);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            padding: 5px 12px;
+
+            position: absolute;
+            bottom: 130%;
+            z-index: 1;
+
+            // Arrow
+            &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: var(--hover-color) transparent transparent transparent;
+            }
+        }
+
+        .info-icon {
+            position: absolute;
+            right: -10%;
+            top: -10%;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 100%;
+            background-color: #e9e9ed;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            font-size: 0.75rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: lightgreen;  // temporary
+
+                .info-tooltip {
+                    opacity: 1;
+                    visibility: visible;
+                    // Delay for opacity just on hover for a suttle effect
+                    transition-delay: 400ms;
+                    transition-property: opacity;
+                }
+            }
         }
 
         // Overrides for optimal optical fit
