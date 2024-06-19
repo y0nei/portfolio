@@ -17,55 +17,69 @@ const socials = [
 
 <div class="socialsContainer">
 {socials.map((item) => (
-    <form target="_blank">
-        <button formaction={item.link}
-                class={"icon-" + item.platform}
-                style={"--hover-color:" + item.color}
-        >
+    <a href={item.link} target="_blank"
+       style={"--hover-color:" + item.color}
+       class={"icon-" + item.platform}
+    >
+        <div>
             <Icon name={item.platform} size={30} />
             <span class="tooltip">{item.platform}</span>
-            {item.platform == "iceshrimp" && <span class="info-icon">
-                <b>i</b>
-                <span class="info-tooltip">Fediverse instance</span>
-            </span>}
-        </button>
-    </form>
+        </div>
+        {item.platform == "iceshrimp" && <span class="info-icon">
+            <b>i</b>
+            <span class="info-tooltip">Fediverse instance</span>
+        </span>}
+    </a>
 ))}
 </div>
 
 <style lang="scss">
-    svg { color: black }
-
     .socialsContainer {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+        font-family: sans-serif;
 
-        button {
+        svg { color: black }
+
+        & > a {
             position: relative;
-            border-style: none;
-            padding: 10px;
+            display: flex;
             width: 50px;
             aspect-ratio: 1;
-            border-radius: 0.75rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 150ms;
 
-            &:hover {
-                background-color: var(--hover-color);
+            & > div {
+                display: flex;
+                justify-content: center;  // For tooltips
+                padding: 10px;
+                transition: 150ms;
+                background: white;
+                border-radius: 0.75rem;
 
-                .tooltip {
-                    opacity: 1;
-                    visibility: visible;
-                    // Delay for opacity just on hover for a suttle effect
-                    transition-delay: 400ms;
-                    transition-property: opacity;
+                &:hover {
+                    background-color: var(--hover-color);
+
+                    .tooltip {
+                        opacity: 1;
+                        visibility: visible;
+                        // Delay for opacity just on hover for a suttle effect
+                        transition-delay: 400ms;
+                        transition-property: opacity;
+                    }
                 }
             }
         }
 
+        // For better contrast between hover-color and text color
+        .icon-iceshrimp, .icon-liberapay, .icon-gitlab, .icon-telegram {
+            .tooltip, .info-tooltip { color: #000 }
+        }
+
+        .icon-twitter, .icon-matrix, .icon-github {
+            &:hover svg { color: white }
+        }
+
+        // Two classes bcuz we toggle opacity+visibility separately
         .tooltip, .info-tooltip {
             transition-duration: 150ms;
             opacity: 0;
@@ -94,8 +108,12 @@ const socials = [
                 border-color: var(--hover-color) transparent transparent transparent;
             }
         }
+        .info-tooltip { bottom: 160% }
 
         .info-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: absolute;
             right: -10%;
             top: -10%;
@@ -104,11 +122,8 @@ const socials = [
             border-radius: 100%;
             background-color: #e9e9ed;
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-            font-size: 0.75rem;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            b { font-size: 0.75rem }
 
             &:hover {
                 background-color: lightgreen;  // temporary
@@ -121,15 +136,6 @@ const socials = [
                     transition-property: opacity;
                 }
             }
-        }
-
-        // For better contrast between hover-color and text color
-        .icon-iceshrimp, .icon-liberapay, .icon-gitlab, .icon-telegram {
-            .tooltip { color: #000 }
-        }
-
-        .icon-twitter, .icon-matrix, .icon-github {
-            &:hover svg { color: white }
         }
     }
 </style>
