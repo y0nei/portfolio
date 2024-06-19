@@ -2,16 +2,16 @@
 import { Icon } from "astro-icon/components";
 
 const socials = [
-    {platform: "bluesky", link: "#", color: "#0285FF"},
-    {platform: "twitter", link: "#", color: "#000000"},
-    {platform: "iceshrimp", link: "#", color: "#9A92FF"},
-    {platform: "telegram", link: "#", color: "#26A5E4"},
-    {platform: "matrix", link: "#", color: "#000000"},
-    {platform: "liberapay", link: "#", color: "#F6C915"},
-    {platform: "instagram", link: "#", color: "#E4405F"},
-    {platform: "codeberg", link: "#", color: "#2185D0"},
-    {platform: "github", link: "#", color: "#181717"},
-    {platform: "gitlab", link: "#", color: "#FC6D26"}
+    {platform: "Bluesky", link: "#", color: "#0285FF"},
+    {platform: "Twitter", link: "#", color: "#000000"},
+    {platform: "Iceshrimp", link: "#", color: "#9A92FF"},
+    {platform: "Telegram", link: "#", color: "#26A5E4"},
+    {platform: "Matrix", link: "#", color: "#000000"},
+    {platform: "Liberapay", link: "#", color: "#F6C915"},
+    {platform: "Instagram", link: "#", color: "#E4405F"},
+    {platform: "Codeberg", link: "#", color: "#2185D0"},
+    {platform: "GitHub", link: "#", color: "#181717"},
+    {platform: "GitLab", link: "#", color: "#FC6D26"}
 ]
 ---
 
@@ -22,10 +22,10 @@ const socials = [
        class={"icon-" + item.platform}
     >
         <div>
-            <Icon name={item.platform} size={30} />
+            <Icon name={item.platform.toLowerCase()} size={30} />
             <span class="tooltip">{item.platform}</span>
         </div>
-        {item.platform == "iceshrimp" && <span class="info-icon">
+        {item.platform == "Iceshrimp" && <span class="info-icon">
             <b>i</b>
             <span class="info-tooltip">Fediverse instance</span>
         </span>}
