@@ -1,0 +1,37 @@
+---
+
+---
+
+<div class="bento-grid">
+    <div class="handles"></div>
+    <div class="vertical-bento">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<style lang="scss">
+    .bento-grid {
+        display: flex;
+        height: 40vh;
+        gap: 1rem;
+
+        div {
+            background-color: gray;
+            border-radius: 0.75rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        .handles {
+            flex-basis: 120%;
+        }
+
+        .vertical-bento {
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: inherit;
+        }
+    }
+</style>
