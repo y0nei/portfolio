@@ -22,6 +22,16 @@
     }
 
     // Placeholders
-    section#home { background-color: var(--background-color); }
+    section#home {
+        background-color: var(--background-color);
+        display: flex;
+        flex-direction: column;
+
+        .home-flex-wrapper {
+            display: inherit;
+            flex-direction: inherit;
+            gap: 1.5rem;
+        }
+    }
     section#about { background-color: orchid; }
 </style>
