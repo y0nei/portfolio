@@ -1,0 +1,65 @@
+---
+import "@fontsource/mononoki";
+import { Icon } from "astro-icon/components";
+
+const platforms = [
+    {service: "GPG", value: "0000000000000000", icon_size: 25},
+    {service: "Email", value: "john.pork@example.com", icon_size: 24},
+    {service: "Discord", value: "john.porn#9999", icon_size: 27},
+]
+---
+
+{platforms.map((item) => (
+<div class:list={["handle-pill", "pill-" + item.service.toLowerCase()]}>
+    <Icon name={item.service.toLowerCase()} size={item.icon_size} />
+    <p>{item.value}</p>
+    <!-- TODO: Add onclick event to copy item.value -->
+    <button>
+        <Icon name="copy" size={18} />
+    </button>
+</div>
+))}
+
+<style lang="scss">
+    .handle-pill {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-color);
+        background-color: #222222;
+        border: 1px solid #555555;
+        width: fit-content;
+        padding: 6px;
+        margin: 10px;
+        border-radius: 0.6rem;
+        font-family: "Mononoki", monospace;
+        font-size: 1.1rem;
+
+        & > svg, button {
+            margin-left: 3px;
+        }
+
+        p {
+            padding: 0 7px;
+        }
+
+        &.pill-gpg, &.pill-discord {
+            p {
+                padding-top: 1px;
+            }
+        }
+
+        button {
+            border: none;
+            display: inherit;
+            justify-content: inherit;
+            align-items: inherit;
+            height: 28px;
+            border-radius: 0.4rem;
+            aspect-ratio: 1;
+            background-color: #454545;
+
+            svg { color: var(--offwhite-color) }
+        }
+    }
+</style>
