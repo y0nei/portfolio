@@ -14,6 +14,9 @@ importers:
       '@astrojs/svelte':
         specifier: ^5.5.0
         version: 5.5.0(astro@4.10.2(@types/node@20.14.2)(sass@1.77.5)(typescript@5.4.5))(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.1(@types/node@20.14.2)(sass@1.77.5))
+      '@fontsource/mononoki':
+        specifier: ^5.0.11
+        version: 5.0.11
       astro:
         specifier: ^4.10.2
         version: 4.10.2(@types/node@20.14.2)(sass@1.77.5)(typescript@5.4.5)
@@ -360,6 +363,9 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/mononoki@5.0.11':
+    resolution: {integrity: sha512-IA+N15f5VOk9DtBzG4xLSOtAvctUzzioaEezMVyXiIkECNY89C8K3CB24bLVNcS8FwoD9b3qdHAINWb4mUeICw==}
 
   '@iconify/tools@3.0.7':
     resolution: {integrity: sha512-DxfhFLMnooS34dHelpGUnnYrxLZHs0czC1CgrBhAbuL8ddVzBb2VEQm8kh9qGh7A34qeXAB5iSHH3A72rAaFrg==}
@@ -2592,6 +2598,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource/mononoki@5.0.11': {}
 
   '@iconify/tools@3.0.7':
     dependencies:
