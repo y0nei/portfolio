@@ -3,8 +3,8 @@ import "@fontsource/mononoki";
 import { Icon } from "astro-icon/components";
 
 const platforms = [
-    {service: "GPG", value: "0000000000000000", icon_size: 25},
-    {service: "Email", value: "john.pork@example.com", icon_size: 24},
+    {service: "GPG", value: "0000000000000000", icon_size: 27},
+    {service: "Email", value: "john.pork@example.com", icon_size: 27},
     {service: "Discord", value: "john.porn#9999", icon_size: 27},
 ]
 ---
@@ -12,8 +12,10 @@ const platforms = [
 {platforms.map((item) => (
 <div class:list={["handle-pill", "pill-" + item.service.toLowerCase()]}>
     <Icon name={item.service.toLowerCase()} size={item.icon_size} />
-    <p>{item.value}</p>
-    <button><Icon name="copy" size={18} /></button>
+    <div class="handle-pill-content">
+        <p>{item.value}</p>
+        <button><Icon name="copy" size={18} /></button>
+    </div>
 </div>
 ))}
 
@@ -28,24 +30,23 @@ const platforms = [
 <style lang="scss">
     .handle-pill {
         display: flex;
-        justify-content: center;
         align-items: center;
         color: var(--text-color);
-        background-color: #222222;
-        border: 1px solid #555555;
-        width: fit-content;
-        padding: 6px;
         margin: 10px;
-        border-radius: 0.6rem;
         font-family: "Mononoki", monospace;
         font-size: 1.1rem;
 
-        & > svg, button {
-            margin-left: 3px;
-        }
+        .handle-pill-content {
+            display: inherit;
+            align-items: inherit;
+            justify-content: center;
+            background-color: #222222;
+            border: 1px dashed #555555;
+            border-radius: 0.6rem;
+            padding: 5px;
+            margin-left: 10px;
 
-        p {
-            padding: 0 7px;
+            p { padding: 0 5px }
         }
 
         &.pill-gpg, &.pill-discord {
@@ -60,11 +61,21 @@ const platforms = [
             justify-content: inherit;
             align-items: inherit;
             height: 28px;
-            border-radius: 0.4rem;
             aspect-ratio: 1;
+            border-radius: 0.4rem;
             background-color: #454545;
+            margin-left: 3px;
 
             svg { color: var(--offwhite-color) }
+
+            &:hover {
+                background-color: #595959;
+                cursor: pointer;
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
         }
     }
 </style>
