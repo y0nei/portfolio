@@ -1,0 +1,78 @@
+---
+const badges = [
+    {name: "some user1", badge: "#", src: "#"},
+    {name: "some user2", badge: "#", src: "#"},
+    {name: "some user3", badge: "#", src: "#"}
+];
+---
+
+<div class="people-badges">
+    <header>Cool people</header>
+    <div class="badge-marquee">
+        <ul>
+            {badges.map(item => <li>
+                <a href={item.src}>{item.name}</a>
+            </li>)}
+        </ul>
+        <!-- Mirror of the above content -->
+        <ul aria-hidden="true">
+            {badges.map(item => <li>
+                <a href={item.src}>{item.name}</a>
+            </li>)}
+        </ul>
+    </div>
+</div>
+
+<style lang="scss">
+    .people-badges {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        padding: 10px 0;
+        background-color: #323235;
+        border: 1px solid #454549;
+        border-radius: 0.75rem;
+
+        header {
+            margin-left: 10px;
+            margin-bottom: 5px;
+            font-size: 1.25rem;
+        }
+
+        .badge-marquee {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            padding: 10px;
+
+            ul {
+                display: flex;
+                justify-content: space-around;
+                width: 0;
+                min-width: 100%;
+                animation: scroll 20s linear infinite;
+
+                li {
+                    display: flex;
+
+                    a {
+                        background-color: orange;
+                        width: 88px;
+                        height: 31px;
+
+                        &:hover {
+                            cursor: pointer;
+                            filter: brightness(1.15);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes scroll {
+        from { transform: translateX(0) }
+        to { transform: translateX(-100%) }
+    }
+</style>

@@ -1,6 +1,7 @@
 ---
-import HandlePill from "./HandlePill.astro";
 import { Icon } from "astro-icon/components";
+import HandlePill from "./HandlePill.astro";
+import BadgeMarquee from "./BadgeMarquee.astro";
 ---
 
 <div class="bento-grid">
@@ -8,23 +9,7 @@ import { Icon } from "astro-icon/components";
         <HandlePill />
     </div>
     <div class="vertical-bento">
-        <!-- TODO: Move this out to a component and hold badges in a variable -->
-        <div class="people-badges">
-            <header>Cool people</header>
-            <div class="badge-marquee">
-                <ul class="badge-marquee-content">
-                    <li><a class="badge">123456</a></li>
-                    <li><a class="badge">123456</a></li>
-                    <li><a class="badge">123456</a></li>
-                </ul>
-                <!-- Mirror of the above content -->
-                <ul class="badge-marquee-content" aria-hidden="true">
-                    <li><a class="badge">123456</a></li>
-                    <li><a class="badge">123456</a></li>
-                    <li><a class="badge">123456</a></li>
-                </ul>
-            </div>
-        </div>
+        <BadgeMarquee />
         <div class="bento-button-container">
             <a class="bento-button">About me</a>
             <a class="bento-button">My work</a>
@@ -38,54 +23,10 @@ import { Icon } from "astro-icon/components";
         display: flex;
         gap: 1rem;
 
-        .handles, .people-badges, .bento-button-container > a {
+        .handles, .bento-button-container > a {
             background-color: #323235;
             border: 1px solid #454549;
             border-radius: 0.75rem;
-        }
-
-        .people-badges {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            flex: 1;
-            padding: 10px 0;
-
-            header {
-                margin-left: 10px;
-                margin-bottom: 5px;
-                font-size: 1.25rem;
-            }
-
-            .badge-marquee {
-                display: flex;
-                overflow: hidden;
-                user-select: none;
-                padding: 10px;
-
-                &-content {
-                    display: flex;
-                    justify-content: space-around;
-                    width: 0;
-                    min-width: 100%;
-                    animation: scroll 20s linear infinite;
-
-                    li {
-                        display: flex;
-
-                        a {
-                            background-color: orange;
-                            width: 88px;
-                            height: 31px;
-
-                            &:hover {
-                                cursor: pointer;
-                                filter: brightness(1.15);
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         .vertical-bento {
@@ -123,10 +64,5 @@ import { Icon } from "astro-icon/components";
                 }
             }
         }
-    }
-
-    @keyframes scroll {
-        from { transform: translateX(0) }
-        to { transform: translateX(-100%) }
     }
 </style>
