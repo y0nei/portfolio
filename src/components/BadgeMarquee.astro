@@ -1,5 +1,8 @@
 ---
 import socials from "../socials.json";
+
+// TODO: Maybe try out importing files directly with astro glob
+const badges_path = "public/web_badges/";
 ---
 
 <div class="people-badges">
@@ -7,13 +10,17 @@ import socials from "../socials.json";
     <div class="badge-marquee">
         <ul>
             {socials.web_badges.map(item => <li>
-                <a href={item.src}>{item.name}</a>
+                <a href={item.src}>
+                    <img src={badges_path + item.badge} alt={item.name} />
+                </a>
             </li>)}
         </ul>
         <!-- Mirror of the above content -->
         <ul aria-hidden="true">
             {socials.web_badges.map(item => <li>
-                <a href={item.src}>{item.name}</a>
+                <a href={item.src}>
+                    <img src={badges_path + item.badge} alt={item.name} />
+                </a>
             </li>)}
         </ul>
     </div>

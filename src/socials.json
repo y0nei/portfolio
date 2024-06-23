@@ -17,8 +17,8 @@
         {"service": "Discord", "value": "john.porn#9999"}
     ],
     "web_badges": [
-        {"name": "mathew", "badge": "#", "src": "#"},
-        {"name": "samson", "badge": "#", "src": "#"},
-        {"name": "salomon", "badge": "#", "src": "#"}
+        {"name": "mathew", "badge": "paws.png", "src": "#"},
+        {"name": "samson", "badge": "linuxnow.gif", "src": "#"},
+        {"name": "salomon", "badge": "void.gif", "src": "#"}
     ]
 }
