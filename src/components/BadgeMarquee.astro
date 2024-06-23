@@ -1,22 +1,18 @@
 ---
-const badges = [
-    {name: "some user1", badge: "#", src: "#"},
-    {name: "some user2", badge: "#", src: "#"},
-    {name: "some user3", badge: "#", src: "#"}
-];
+import socials from "../socials.json";
 ---
 
 <div class="people-badges">
     <header>Cool people</header>
     <div class="badge-marquee">
         <ul>
-            {badges.map(item => <li>
+            {socials.web_badges.map(item => <li>
                 <a href={item.src}>{item.name}</a>
             </li>)}
         </ul>
         <!-- Mirror of the above content -->
         <ul aria-hidden="true">
-            {badges.map(item => <li>
+            {socials.web_badges.map(item => <li>
                 <a href={item.src}>{item.name}</a>
             </li>)}
         </ul>

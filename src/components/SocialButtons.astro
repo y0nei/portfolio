@@ -1,28 +1,31 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const socials = [
-    {platform: "Bluesky", link: "#", color: "#0285FF"},
-    {platform: "Twitter", link: "#", color: "#000000"},
-    {platform: "Iceshrimp", link: "#", color: "#9A92FF"},
-    {platform: "Telegram", link: "#", color: "#26A5E4"},
-    {platform: "Matrix", link: "#", color: "#000000"},
-    {platform: "Liberapay", link: "#", color: "#F6C915"},
-    {platform: "Instagram", link: "#", color: "#E4405F"},
-    {platform: "Codeberg", link: "#", color: "#2185D0"},
-    {platform: "GitHub", link: "#", color: "#181717"},
-    {platform: "GitLab", link: "#", color: "#FC6D26"}
-]
+import socials from "../socials.json";
+
+const platform_colors = {
+    bluesky: "#0285FF",
+    twitter: "#000000",
+    iceshrimp: "#9A92FF",
+    telegram: "#26A5E4",
+    matrix: "#000000",
+    liberapay: "#F6C915",
+    instagram: "#E4405F",
+    codeberg: "#2185D0",
+    github: "#181717",
+    gitlab: "#FC6D26"
+}
 ---
 
 <div class="socialsContainer">
-{socials.map((item) => (
-    <div style={"--hover-color:" + item.color} class={"icon-" + item.platform.toLowerCase()}>
+{socials.buttons.map((item) => (
+<div style={"--hover-color:" + platform_colors[item.service.toLowerCase()]}
+     class={"icon-" + item.service.toLowerCase()}>
         <a href={item.link} target="_blank">
-            <Icon name={item.platform.toLowerCase()} size={30} />
-            <span class="tooltip">{item.platform}</span>
+            <Icon name={item.service.toLowerCase()} size={30} />
+            <span class="tooltip">{item.service}</span>
         </a>
-        {item.platform == "Iceshrimp" && <span class="info-icon">
+        {item.service == "Iceshrimp" && <span class="info-icon">
             <b>i</b>
             <span class="info-tooltip">
                 <p>

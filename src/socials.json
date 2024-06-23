@@ -1,0 +1,24 @@
+{
+    "buttons": [
+        {"service": "Bluesky", "link": "#"},
+        {"service": "Twitter", "link": "#"},
+        {"service": "Iceshrimp", "link": "#"},
+        {"service": "Telegram", "link": "#"},
+        {"service": "Matrix", "link": "#"},
+        {"service": "Liberapay", "link": "#"},
+        {"service": "Instagram", "link": "#"},
+        {"service": "Codeberg", "link": "#"},
+        {"service": "GitHub", "link": "#"},
+        {"service": "GitLab", "link": "#"}
+    ],
+    "handles": [
+        {"service": "GPG", "value": "0000000000000000"},
+        {"service": "Email", "value": "john.pork@example.com"},
+        {"service": "Discord", "value": "john.porn#9999"}
+    ],
+    "web_badges": [
+        {"name": "mathew", "badge": "#", "src": "#"},
+        {"name": "samson", "badge": "#", "src": "#"},
+        {"name": "salomon", "badge": "#", "src": "#"}
+    ]
+}
