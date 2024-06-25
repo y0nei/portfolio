@@ -11,8 +11,7 @@ import BadgeMarquee from "./BadgeMarquee.astro";
     <div class="vertical-bento">
         <BadgeMarquee />
         <div class="bento-button-container">
-            <a class="bento-button">About me</a>
-            <a class="bento-button">My work</a>
+            <a class="bento-button">Service status</a>
             <a class="bento-button">Blog <Icon name="blog" size={18} /></a>
         </div>
     </div>
@@ -51,9 +50,9 @@ import BadgeMarquee from "./BadgeMarquee.astro";
                 align-items: center;
                 border: none;
                 padding: 10px;
+                width: 100%;
 
                 &:last-child {
-                    flex: 1;
                     color: var(--background-color);
                     background-color: var(--accent-color);
 
