@@ -14,11 +14,17 @@
     "handles": [
         {"service": "GPG", "value": "0000000000000000"},
         {"service": "Email", "value": "john.pork@example.com"},
-        {"service": "Discord", "value": "john.porn#9999"}
+        {"service": "Discord", "value": "john.pork#9999"}
     ],
     "web_badges": [
-        {"name": "mathew", "badge": "paws.png", "src": "#"},
-        {"name": "samson", "badge": "linuxnow.gif", "src": "#"},
-        {"name": "salomon", "badge": "void.gif", "src": "#"}
+        {"name": "Snewberry",
+         "path": "https://snewberry.neocities.org/snewbutton.gif",
+         "src": "https://snewberry.neocities.org"},
+        {"name": "Toastyfen",
+         "path": "https://toastyfen.neocities.org/resources/toastyfen.gif",
+         "src": "https://toastyfen.neocities.org"},
+        {"name": "\"Made with my own two paws\" badge", "path": "paws.png"},
+        {"name": "\"Get Linux now! badge\" badge", "path": "linuxnow.gif"},
+        {"name": "\"Powered by the void\" badge", "path": "void.gif"}
     ]
 }
