@@ -5,14 +5,17 @@ import BadgeMarquee from "./BadgeMarquee.astro";
 ---
 
 <div class="bento-grid">
-    <div class="handles">
+    <div class="bento-section">
         <HandlePill />
     </div>
-    <div class="vertical-bento">
+    <div class="bento-section vertical-bento flex-vertical">
         <BadgeMarquee />
-        <div class="bento-button-container">
-            <a class="bento-button">Service status</a>
-            <a class="bento-button">Blog <Icon name="blog" size={18} /></a>
+        <div class="horizontal-bento bento-section">
+            <div class="bento-section">idk what to add here???</div>
+            <div class="bento-buttons flex-vertical">
+                <a>Service status</a>
+                <a>Blog <Icon name="blog" size={18} /></a>
+            </div>
         </div>
     </div>
 </div>
@@ -22,34 +25,51 @@ import BadgeMarquee from "./BadgeMarquee.astro";
         display: flex;
         gap: 1rem;
 
-        .handles, .bento-button-container > a {
+        .bento-section {
+            font-family: "Rubik";
+            color: var(--text-color);
             background-color: #323235;
             border: 1px solid #454549;
             border-radius: 0.75rem;
         }
 
-        .vertical-bento {
-            display: flex;
-            flex-direction: column;
+        .vertical-bento, .horizontal-bento {
             flex: 1;
             gap: inherit;
             border: none;
             background-color: transparent;
-            font-family: "Rubik";
-            color: var(--text-color);
         }
 
-        .bento-button-container {
+        .horizontal-bento {
+            display: flex;
+            flex-direction: row;
+
+            & > .bento-section {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .flex-vertical {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-buttons {
             display: flex;
             gap: 1rem;
-            background-color: transparent;
 
-            .bento-button {
+            & > a {
+                flex: 1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border: none;
-                padding: 10px;
+                padding: 7px 12px;
+                border-radius: 0.7rem;
+                background-color: var(--background-color-alt);
                 width: 100%;
 
                 &:last-child {
