@@ -1,20 +1,21 @@
 {
     "buttons": [
-        {"service": "Bluesky", "link": "#"},
-        {"service": "Twitter", "link": "#"},
-        {"service": "Iceshrimp", "link": "#"},
-        {"service": "Telegram", "link": "#"},
-        {"service": "Matrix", "link": "#"},
-        {"service": "Liberapay", "link": "#"},
-        {"service": "Instagram", "link": "#"},
-        {"service": "Codeberg", "link": "#"},
-        {"service": "GitHub", "link": "#"},
-        {"service": "GitLab", "link": "#"}
+        {"service": "Bluesky", "link": "https://bsky.app/profile/y0nei.bsky.social"},
+        {"service": "Twitter", "link": "https://x.com/y0nei"},
+        {"service": "Iceshrimp", "link": "https://mossycab.in/@y0nei"},
+        {"service": "Telegram", "link": "https://t.me/y0nei"},
+        {"service": "Ko-fi", "link": "https://ko-fi.com/y0nei"},
+        {"service": "Liberapay", "link": "https://liberapay.com/Yonei"},
+        {"service": "Instagram", "link": "https://www.instagram.com/y0nei_"},
+        {"service": "Codeberg", "link": "https://codeberg.org/y0nei"},
+        {"service": "GitHub", "link": "https://github.com/y0nei"},
+        {"service": "GitLab", "link": "https://gitlab.com/y0nei"}
     ],
     "handles": [
-        {"service": "GPG", "value": "0000000000000000"},
-        {"service": "Email", "value": "john.pork@example.com"},
-        {"service": "Discord", "value": "john.pork#9999"}
+        {"service": "GPG", "value": "89A8EAB009DF28DC"},
+        {"service": "Matrix", "value": "@y0nei:matrix.org"},
+        {"service": "Email", "value": "y0nei@proton.me"},
+        {"service": "Discord", "value": "y0nei"}
     ],
     "web_badges": [
         {"name": "Snewberry",
