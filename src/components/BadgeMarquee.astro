@@ -11,7 +11,7 @@ const badges_path = "public/web_badges/";
         <div class="badge-marquee">
             <ul>
                 {socials.web_badges.map(item => <li>
-                    <a href={item.src}>
+                    <a href={item.src} target="_blank">
                         <img src={item.path.startsWith("http") ? item.path : badges_path + item.path}
                              alt={item.name} />
                     </a>
@@ -20,7 +20,7 @@ const badges_path = "public/web_badges/";
             <!-- Mirror of the above content -->
             <ul aria-hidden="true">
                 {socials.web_badges.map(item => <li>
-                    <a href={item.src}>
+                    <a href={item.src} target="_blank">
                         <img src={item.path.startsWith("http") ? item.path : badges_path + item.path}
                              alt={item.name} />
                     </a>
