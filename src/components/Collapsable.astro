@@ -1,0 +1,75 @@
+---
+const { title } = Astro.props;
+---
+
+<div class="wrap-collabsible">
+    <input id="collapsible" class="toggle" type="checkbox">
+    <label for="collapsible" class="lbl-toggle">{title}</label>
+    <div class="collapsible-content">
+        <div class="content-inner">
+            <slot />
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .lbl-toggle {
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 0.35rem;
+        padding: 5px 7px;
+        transition: all 0.25s ease-out;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+
+        // The triangle
+        &::before {
+            content: " ";
+            display: inline-block;
+
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid currentColor;
+
+            vertical-align: middle;
+            margin-right: .5rem;
+            transform: translateY(-2px);
+            transition: transform .2s ease-out;
+        }
+    }
+
+    .collapsible-content {
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height .25s ease-in-out;
+
+        .content-inner {
+            background-color: rgba(0, 0, 0, 0.33);
+            border-bottom-left-radius: 0.35rem;
+            border-bottom-right-radius: 0.35rem;
+            padding: 5px;
+        }
+    }
+
+    .toggle:checked + .lbl-toggle {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+
+        & + .collapsible-content {
+            max-height: 100vh;
+        }
+
+        // Rotate the triangle
+        &::before {
+            transform: rotate(90deg) translateX(-3px);
+        }
+    }
+</style>

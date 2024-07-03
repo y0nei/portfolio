@@ -1,12 +1,28 @@
 ---
 import socials from "../socials.json";
+import InfoIcon from "./InfoIcon.astro";
+import PopoverTooltip from "./PopoverTooltip.astro";
+import Collapsable from "./Collapsable.astro";
 
 // TODO: Maybe try out importing files directly with astro glob
 const badges_path = "public/web_badges/";
 ---
 
 <div class="people-badges">
-    <header>Web badges</header>
+    <header>
+        <p>Web badges</p>
+        <InfoIcon>
+            <PopoverTooltip>
+                Fun retro web badges found around the internet, along with badges
+                of cool people and friends of mine. <br>
+                <Collapsable title="Submissions & Content">
+                    Please contact me if you'd like
+                    your badge added, if any of those people are secretly awful
+                    or the websites contain hateful content.
+                </Collapsable>
+            </PopoverTooltip>
+        </InfoIcon>
+    </header>
     <div class="marquee-wrapper">
         <div class="badge-marquee">
             <ul>
@@ -38,15 +54,66 @@ const badges_path = "public/web_badges/";
 
         display: flex;
         flex-direction: column;
-        padding: 10px 0;
+        padding: 5px 0;
         background-color: #323235;
         border: 1px solid #454549;
         border-radius: 0.75rem;
 
         header {
-            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.33rem;
+            margin: 0 5px;
             margin-bottom: 15px;
-            font-size: 1.15rem;
+            width: fit-content;
+            font-size: 0.9rem;
+            padding: 5px 8px;
+            border-radius: 0.5rem;
+            background-color: #454549;
+            box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
+
+            p {
+                margin-top: 1px;
+            }
+
+            .info-icon {
+                --hover-color: var(--secondary-color);
+                width: 0.85rem;
+                height: 0.85rem;
+                margin-right: 2px;
+                padding: 3px;
+
+                :global(b) { font-weight: 500 }
+
+                .popover-tooltip {
+                    width: 200px;
+                    font-size: 0.85rem;
+                    bottom: 160%;
+                    color: var(--background-color);
+                    padding: 5px;
+                    display: flex;
+
+                    :global(.lbl-toggle) {
+                        margin-top: 5px;
+                        color: var(--offwhite-color);
+                    }
+                    :global(.collapsible-content) {
+                        color: var(--offwhite-color);
+                    }
+                }
+
+                &:hover {
+                    background-color: lightgreen;  // temporary
+
+                    .popover-tooltip {
+                        opacity: 1;
+                        visibility: visible;
+                        // Delay for opacity just on hover for a suttle effect
+                        transition-delay: 400ms;
+                        transition-property: opacity;
+                    }
+                }
+            }
         }
 
         /* NOTE: Used to properly flex with position absolute of it's child */
