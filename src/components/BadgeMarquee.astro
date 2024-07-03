@@ -57,7 +57,7 @@ const badges_path = "public/web_badges/";
         padding: 5px 0;
         background-color: #323235;
         border: 1px solid #454549;
-        border-radius: 0.75rem;
+        border-radius: var(--border-radius);
 
         header {
             display: flex;
@@ -68,7 +68,7 @@ const badges_path = "public/web_badges/";
             width: fit-content;
             font-size: 0.9rem;
             padding: 5px 8px;
-            border-radius: 0.5rem;
+            border-radius: calc(var(--border-radius) - 5px);
             background-color: #454549;
             box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
 

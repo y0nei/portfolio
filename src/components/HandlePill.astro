@@ -31,6 +31,7 @@ type IconSizeKey = keyof typeof icon_sizes;
 
 <style lang="scss">
     .handle-pill {
+        --pill-border-radius: 0.6rem;
         display: flex;
         align-items: center;
         color: var(--text-color);
@@ -45,7 +46,7 @@ type IconSizeKey = keyof typeof icon_sizes;
             justify-content: center;
             background-color: #242424;
             border: 1px dashed #555555;
-            border-radius: 0.6rem;
+            border-radius: var(--pill-border-radius);
             padding: 5px;
             margin-left: 10px;
 
@@ -65,7 +66,7 @@ type IconSizeKey = keyof typeof icon_sizes;
             align-items: inherit;
             height: 28px;
             aspect-ratio: 1;
-            border-radius: 0.4rem;
+            border-radius: calc(var(--pill-border-radius) - 4px);
             background-color: #454545;
             margin-left: 3px;
 
