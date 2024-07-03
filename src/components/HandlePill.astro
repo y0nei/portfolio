@@ -6,11 +6,14 @@ import socials from "../socials.json";
 
 // Custom sizes for better optical fit
 const icon_sizes = { gpg: 27, email: 28, discord: 30, matrix: 28 }
+type IconSizeKey = keyof typeof icon_sizes;
 ---
 
 {socials.handles.map((item) => (
 <div class:list={["handle-pill", "pill-" + item.service.toLowerCase()]}>
-    <Icon name={item.service.toLowerCase()} size={icon_sizes[item.service.toLowerCase()]} />
+    <Icon name={item.service.toLowerCase()}
+          size={icon_sizes[item.service.toLowerCase() as IconSizeKey]}
+    />
     <div class="handle-pill-content">
         <p>{item.value}</p>
         <button><Icon name="copy" size={18} /></button>
