@@ -1,0 +1,43 @@
+---
+const { class: className, ...rest } = Astro.props;
+
+import PopoverTooltip from "./PopoverTooltip.astro";
+---
+
+<span class="info-icon">
+    <b>i</b>
+    <PopoverTooltip class={className} {...rest}>
+        <slot />
+    </PopoverTooltip>
+</span>
+
+<style lang="scss">
+    .info-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: -10%;
+        top: -10%;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 100%;
+        background-color: var(--offwhite-color);
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        user-select: none;
+
+        b { font-size: 0.75rem }
+
+        &:hover {
+            background-color: lightgreen;  // temporary
+
+            .popover-tooltip {
+                opacity: 1;
+                visibility: visible;
+                // Delay for opacity just on hover for a suttle effect
+                transition-delay: 400ms;
+                transition-property: opacity;
+            }
+        }
+    }
+</style>

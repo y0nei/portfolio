@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 
 import socials from "../socials.json";
+import InfoIcon from "./InfoIcon.astro";
+import PopoverTooltip from "./PopoverTooltip.astro";
 
 const platform_colors = {
     bluesky: "#0285FF",
@@ -23,24 +25,21 @@ const platform_colors = {
      class={"icon-" + item.service.toLowerCase()}>
         <a href={item.link} target="_blank">
             <Icon name={item.service.toLowerCase()} size={30} />
-            <span class="tooltip">{item.service}</span>
+            <PopoverTooltip class="show-tooltip">{item.service}</PopoverTooltip>
         </a>
-        {item.service == "Iceshrimp" && <span class="info-icon">
-            <b>i</b>
-            <span class="info-tooltip">
-                <p>
-                    A
-                    <a href="https://en.wikipedia.org/wiki/Fediverse" target="_blank">
-                        Fediverse
-                    </a>
-                    instance hosted using the Iceshrimp software
-                </p>
-                <a class="link-button" target="_blank"
-                   href="https://fedidb.org/software/iceshrimp">
-                    Find out more&nbsp; <Icon name="external-link" size={15}/>
+        {item.service == "Iceshrimp" && <InfoIcon class="iceshrimp-info">
+            <p>
+                A
+                <a href="https://en.wikipedia.org/wiki/Fediverse" target="_blank">
+                    Fediverse
                 </a>
-            </span>
-        </span>}
+                instance hosted using the Iceshrimp software
+            </p>
+            <a class="info-tooltip-button" target="_blank"
+               href="https://fedidb.org/software/iceshrimp">
+                Find out more&nbsp; <Icon name="external-link" size={15}/>
+            </a>
+        </InfoIcon>}
     </div>
 ))}
 </div>
@@ -74,7 +73,7 @@ const platform_colors = {
                 &:hover {
                     background-color: var(--hover-color);
 
-                    .tooltip {
+                    .show-tooltip {
                         opacity: 1;
                         visibility: visible;
                         // Delay for opacity just on hover for a suttle effect
@@ -94,43 +93,15 @@ const platform_colors = {
             &:hover svg { color: white }
         }
 
-        // Two classes bcuz we toggle opacity+visibility separately
-        .tooltip, .info-tooltip {
-            transition-duration: 150ms;
-            opacity: 0;
-            visibility: hidden;
-            background-color: var(--hover-color);
-            color: var(--text-color);
-            text-align: center;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            padding: 5px 12px;
-
-            position: absolute;
-            bottom: 130%;
-            z-index: 1;
-
-            // Arrow
-            &::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: var(--hover-color) transparent transparent transparent;
-            }
-        }
-        .info-tooltip {
+        // Overrides for PopoverTooltip content
+        .iceshrimp-info {
             --link-color: #A8D3F9;
             --link-hover-color: #85C7E8;
             bottom: 160%;
-            display: flex;
             padding: 5px;
-            font-size: 0.85rem;
             min-width: 150px;
+            font-size: 0.85rem;
+            color: var(--background-color);
 
             & > p a {
                 color: #064e79;
@@ -138,7 +109,7 @@ const platform_colors = {
                 cursor: pointer;
             }
 
-            .link-button {
+            .info-tooltip-button {
                 display: flex;
                 justify-content: center;
                 text-decoration: none;
@@ -161,35 +132,6 @@ const platform_colors = {
                 svg {
                     color: var(--link-color);
                     margin-top: 2px;
-                }
-            }
-        }
-
-        .info-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            right: -10%;
-            top: -10%;
-            width: 1.2rem;
-            height: 1.2rem;
-            border-radius: 100%;
-            background-color: var(--offwhite-color);
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-            user-select: none;
-
-            b { font-size: 0.75rem }
-
-            &:hover {
-                background-color: lightgreen;  // temporary
-
-                .info-tooltip {
-                    opacity: 1;
-                    visibility: visible;
-                    // Delay for opacity just on hover for a suttle effect
-                    transition-delay: 400ms;
-                    transition-property: opacity;
                 }
             }
         }
