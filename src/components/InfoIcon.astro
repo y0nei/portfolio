@@ -1,9 +1,11 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { class: className, ...rest } = Astro.props;
 ---
 
 <span class:list={["info-icon", className ]} {...rest}>
-    <b>i</b>
+    <Icon name="question-mark" />
     <slot />
 </span>
 
@@ -15,6 +17,7 @@ const { class: className, ...rest } = Astro.props;
         position: relative;
         width: 1.2rem;
         height: 1.2rem;
+        padding: 5px;
         border-radius: 100%;
         color: var(--background-color);
         background-color: var(--offwhite-color);
