@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import HandlePill from "./HandlePill.astro";
 import BadgeMarquee from "./BadgeMarquee.astro";
+import WebringSelector from "./WebringSelector.astro";
 ---
 
 <div class="bento-grid">
@@ -11,7 +12,13 @@ import BadgeMarquee from "./BadgeMarquee.astro";
     <div class="bento-section vertical-bento flex-vertical">
         <BadgeMarquee />
         <div class="horizontal-bento bento-section">
-            <div class="bento-section">idk what to add here???</div>
+            <div class="bento-section webring-section">
+                <header><p>Webrings</p></header>
+                <div class="webring-wrapper">
+                    <WebringSelector name="webring one" />
+                    <WebringSelector name="webring two" />
+                </div>
+            </div>
             <div class="bento-buttons flex-vertical">
                 <a>Service status</a>
                 <a>Blog <Icon name="blog" size={18} /></a>
@@ -43,13 +50,6 @@ import BadgeMarquee from "./BadgeMarquee.astro";
         .horizontal-bento {
             display: flex;
             flex-direction: row;
-
-            & > .bento-section {
-                display: flex;
-                flex: 1;
-                justify-content: center;
-                align-items: center;
-            }
         }
 
         .flex-vertical {
@@ -80,6 +80,38 @@ import BadgeMarquee from "./BadgeMarquee.astro";
                         margin-bottom: 1px;
                         margin-left: 5px;
                     }
+                }
+            }
+        }
+
+        .webring-section {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 5px;
+
+            .webring-wrapper {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+                gap: 0.33rem;
+                justify-content: space-evenly;
+            }
+
+            header {
+                display: flex;
+                align-items: center;
+                font-size: 0.9rem;
+                padding: 5px 8px;
+                margin-bottom: 5px;
+                width: fit-content;
+                border-radius: calc(var(--border-radius) - 5px);
+                background-color: #454549;
+                box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
+
+                p {
+                    margin-top: 1px;
                 }
             }
         }
