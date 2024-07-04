@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 import socials from "../socials.json";
 
 // Custom sizes for better optical fit
-const icon_sizes = { gpg: 27, email: 28, discord: 30, matrix: 28 }
+const icon_sizes = { gpg: 25, email: 26, discord: 28, matrix: 26 }
 type IconSizeKey = keyof typeof icon_sizes;
 ---
 
@@ -16,7 +16,7 @@ type IconSizeKey = keyof typeof icon_sizes;
     />
     <div class="handle-pill-content">
         <p>{item.value}</p>
-        <button><Icon name="copy" size={18} /></button>
+        <button><Icon name="copy" size={16} /></button>
     </div>
 </div>
 ))}
@@ -35,10 +35,8 @@ type IconSizeKey = keyof typeof icon_sizes;
         display: flex;
         align-items: center;
         color: var(--text-color);
-        margin: 10px;
-        margin-left: 13px;
         font-family: "Mononoki", monospace;
-        font-size: 1.1rem;
+        font-size: 1rem;
 
         .handle-pill-content {
             display: inherit;
@@ -50,12 +48,9 @@ type IconSizeKey = keyof typeof icon_sizes;
             padding: 5px;
             margin-left: 10px;
 
-            p { padding: 0 5px }
-        }
-
-        &.pill-gpg, &.pill-discord {
             p {
-                padding-top: 1px;
+                padding: 0 5px;
+                margin-bottom: 1px;
             }
         }
 
@@ -64,7 +59,7 @@ type IconSizeKey = keyof typeof icon_sizes;
             display: inherit;
             justify-content: inherit;
             align-items: inherit;
-            height: 28px;
+            height: 26px;
             aspect-ratio: 1;
             border-radius: calc(var(--pill-border-radius) - 4px);
             background-color: #454545;

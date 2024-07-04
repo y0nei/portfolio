@@ -6,7 +6,7 @@ import WebringSelector from "./WebringSelector.astro";
 ---
 
 <div class="bento-grid">
-    <div class="bento-section">
+    <div class="bento-section flex-vertical bento-handles">
         <HandlePill />
     </div>
     <div class="bento-section vertical-bento flex-vertical">
@@ -38,6 +38,12 @@ import WebringSelector from "./WebringSelector.astro";
             background-color: #323235;
             border: 1px solid #454549;
             border-radius: var(--border-radius);
+
+            &.bento-handles {
+                padding: 5px;
+                padding-left: 12px;
+                justify-content: space-around;
+            }
         }
 
         .vertical-bento, .horizontal-bento {
@@ -93,6 +99,7 @@ import WebringSelector from "./WebringSelector.astro";
             .webring-wrapper {
                 display: flex;
                 flex: 1;
+                margin-bottom: 3px;
                 justify-content: center;
                 align-items: center;
                 gap: 0.33rem;
@@ -104,7 +111,7 @@ import WebringSelector from "./WebringSelector.astro";
                 align-items: center;
                 font-size: 0.9rem;
                 padding: 5px 8px;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
                 width: fit-content;
                 border-radius: calc(var(--border-radius) - 5px);
                 background-color: #454549;
