@@ -20,8 +20,10 @@ import WebringSelector from "./WebringSelector.astro";
                 </div>
             </div>
             <div class="bento-buttons flex-vertical">
-                <a>Service status</a>
-                <a>Blog <Icon name="blog" size={18} /></a>
+                <a href="https://status.mossycab.in/status/all" target="_blank">
+                    Service status
+                </a>
+                <a href="#">Blog <Icon name="blog" size={18} /></a>
             </div>
         </div>
     </div>
@@ -77,6 +79,13 @@ import WebringSelector from "./WebringSelector.astro";
                 border-radius: var(--border-radius);
                 background-color: var(--background-color-alt);
                 width: 100%;
+                text-decoration: none;
+                color: var(--text-color);
+                cursor: pointer;
+
+                &:hover {
+                    filter: brightness(1.15);
+                }
 
                 &:last-child {
                     color: var(--background-color);
