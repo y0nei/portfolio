@@ -20,6 +20,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.2",
     "@types/bun": "^1.1.4",
     "sass": "^1.77.5"
   }
