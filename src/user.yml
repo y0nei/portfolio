@@ -1,14 +1,17 @@
-links:
+socials:
   Bluesky: "https://bsky.app/profile/y0nei.bsky.social"
   Twitter: "https://x.com/y0nei"
   Iceshrimp: "https://mossycab.in/@y0nei"
   Telegram: "https://t.me/y0nei"
-  Ko-fi: "https://ko-fi.com/y0nei"
-  Liberapay: "https://liberapay.com/Yonei"
   Instagram: "https://www.instagram.com/y0nei_"
-  Codeberg: "https://codeberg.org/y0nei"
-  GitHub: "https://github.com/y0nei"
-  GitLab: "https://gitlab.com/y0nei"
+
+git:
+  - service: Codeberg
+    link: "https://codeberg.org/y0nei"
+  - service: GitHub
+    link: "https://github.com/y0nei"
+  - service: GitLab
+    link: "https://gitlab.com/y0nei"
 
 handles:
 - service: GPG
@@ -19,6 +22,12 @@ handles:
   value: "y0nei@proton.me"
 - service: Discord
   value: "y0nei"
+
+donations:
+  - service: Ko-fi
+    link: "https://ko-fi.com/y0nei"
+  - service: Liberapay
+    link: "https://liberapay.com/Yonei"
 
 web_badges:
 - name: Snewberry
