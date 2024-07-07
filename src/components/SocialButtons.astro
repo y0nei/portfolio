@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 
-import socials from "../user.yml";
+import userdata from "../user.yml";
 import InfoIcon from "./InfoIcon.astro";
 import PopoverTooltip from "./PopoverTooltip.astro";
 
@@ -21,14 +21,15 @@ type PlatformColorKey = keyof typeof platform_colors;
 ---
 
 <div class="socialsContainer">
-{socials.buttons.map((item) => (
-<div style={"--hover-color:" + platform_colors[item.service.toLowerCase() as PlatformColorKey]}
-     class={"icon-" + item.service.toLowerCase()}>
-        <a href={item.link} target="_blank">
-            <Icon name={item.service.toLowerCase()} size={30} />
-            <PopoverTooltip class="show-tooltip">{item.service}</PopoverTooltip>
+    {Object.entries(userdata.socials).map(([name, link]) => (
+    <div style={"--hover-color:" + platform_colors[name.toLowerCase() as PlatformColorKey]}
+         class={"icon-" + name.toLowerCase()}
+    >
+        <a href={link} target="_blank">
+            <Icon name={name.toLowerCase()} size={30} />
+            <PopoverTooltip class="show-tooltip">{name}</PopoverTooltip>
         </a>
-        {item.service == "Iceshrimp" && <InfoIcon>
+        {name == "Iceshrimp" && <InfoIcon>
             <PopoverTooltip class="iceshrimp-tooltip">
                 <p>
                     A
@@ -44,7 +45,7 @@ type PlatformColorKey = keyof typeof platform_colors;
             </PopoverTooltip>
         </InfoIcon>}
     </div>
-))}
+    ))}
 </div>
 
 <style lang="scss">
