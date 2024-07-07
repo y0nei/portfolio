@@ -1,0 +1,23 @@
+---
+import HeroHeader from "../components/HeroHeader.astro";
+import SocialButtons from "../components/SocialButtons.astro";
+---
+
+<div class="hero-header-wrapper">
+    <HeroHeader />
+    <SocialButtons />
+</div>
+
+<style lang="scss">
+    .hero-header-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    @media only screen and (max-width: 1337px) {
+        .hero-header-wrapper {
+            width: 100%;
+        }
+    }
+</style>

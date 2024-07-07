@@ -24,14 +24,21 @@
     // Placeholders
     section#home {
         background-color: var(--background-color);
-        display: flex;
-        flex-direction: column;
 
-        .home-flex-wrapper {
-            display: inherit;
-            flex-direction: inherit;
-            gap: 1.5rem;
+        .home-wrapper {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
         }
     }
     section#about { background-color: orchid; }
+
+    @media only screen and (max-width: 1337px) {
+        section#home .home-wrapper {
+            flex-direction: column;
+            justify-content: center;
+            gap: 4rem;
+            width: fit-content;
+        }
+    }
 </style>

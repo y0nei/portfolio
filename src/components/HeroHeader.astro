@@ -1,27 +1,27 @@
 ---
-const motd = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+
 ---
 
 <header>
     <h1>Hi there, I'm <b>Yonei</b>!</h1>
-    <p class="description">{motd}</p>
+    <p class="description">
+        I like coding things, art, tinkering with systems, learning random stuff
+        & being silly on the internet.<br>
+        Working in B2B Sales and breaking websites in my free time.
+    </p>
 </header>
 
 <style lang="scss">
-$description-margin: -15px;
-
 header {
     color: var(--text-color);
     font-family: "Rubik", sans-serif;
     // font-size: clamp(2.4rem, 6vw + 1rem, 5rem);
-    font-size: clamp(2.2rem, 8vw, 4.75rem);
-
-    display: flex;
+    font-size: clamp(2.8rem, 7.5vw, 4rem);
     flex-direction: column;
-    align-items: center;
-    animation: headerSlideDown 3s;
-    margin-bottom: 1.5rem;
 
+    h1 {
+        width: fit-content;
+    }
     h1 b {
         color: var(--accent-color);
         font-weight: 900;
@@ -39,15 +39,27 @@ header {
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: titleGradient 5s;
+        /* animation: titleGradient 5s; */
     }
     .description {
-        margin-top: $description-margin;
         opacity: 0.75;
+        max-width: 47ch;
+        line-height: 1.6rem;
         font-style: italic;
         /* TODO: Fix margin-top scale on small displays */
-        font-size: clamp(0.65rem, 2.4vw, 1.5rem);
-        animation: descSlideDown 6s;
+        font-size: clamp(0.9rem, 2.4vw, 1.2rem);
+    }
+}
+
+@media only screen and (max-width: 1337px) {
+     header .description {
+        line-height: 1.5rem;
+    }
+}
+@media only screen and (max-width: 800px) {
+     header .description {
+        max-width: 45ch;
+        line-height: 1.15rem;
     }
 }
 
@@ -56,25 +68,5 @@ header {
     0% { background-size: 100% 700%; }
     50% { background-size: 100% 700%; }
     100% { background-size: 250% 100%; }
-}
-@keyframes headerSlideDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-250px);
-    }
-    100% { transform: translateY(0) }
-}
-@keyframes descSlideDown {
-    0% {
-        transform: translateY(-15px);
-        opacity: 0;
-    }
-    70% {
-        transform: translateY(-15px);
-        opacity: 0;
-    }
-    100% {
-        opacity: 0.7;
-    }
 }
 </style>

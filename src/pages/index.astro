@@ -1,8 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
-import HeroHeader from "../components/HeroHeader.astro";
-import SocialButtons from "../components/SocialButtons.astro";
+import HeroLayout from "../layouts/HeroLayout.astro";
 import BentoGrid from "../components/BentoGrid.astro";
 import UnderConstruction from "../components/UnderConstruction.astro";
 import "minireset.css/minireset.min.css";
@@ -12,9 +11,8 @@ import "minireset.css/minireset.min.css";
 	<SectionLayout>
 		<section id="home">
             <UnderConstruction />
-            <div class="home-flex-wrapper">
-                <HeroHeader />
-                <SocialButtons />
+            <div class="home-wrapper">
+                <HeroLayout />
                 <BentoGrid />
             </div>
 		</section>
