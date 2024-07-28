@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 
+// @ts-ignore
 import userdata from "../user.yml";
 import InfoIcon from "./InfoIcon.astro";
 import PopoverTooltip from "./PopoverTooltip.astro";
@@ -25,7 +26,7 @@ type PlatformColorKey = keyof typeof platform_colors;
     <div style={"--hover-color:" + platform_colors[name.toLowerCase() as PlatformColorKey]}
          class={"icon-" + name.toLowerCase()}
     >
-        <a href={link} target="_blank">
+        <a href={link as string} target="_blank">
             <Icon name={name.toLowerCase()} size={30} />
             <PopoverTooltip class="show-tooltip">{name}</PopoverTooltip>
         </a>
