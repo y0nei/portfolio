@@ -16,11 +16,13 @@ header {
     color: var(--text-color);
     font-family: "Rubik", sans-serif;
     // font-size: clamp(2.4rem, 6vw + 1rem, 5rem);
-    font-size: clamp(2.8rem, 7.5vw, 4rem);
+    font-size: clamp(2.2rem, 8.6vw, 4.5rem);
     flex-direction: column;
 
     h1 {
         width: fit-content;
+
+            white-space: nowrap;
     }
     h1 b {
         color: var(--accent-color);
@@ -44,22 +46,10 @@ header {
     .description {
         opacity: 0.75;
         max-width: 47ch;
-        line-height: 1.6rem;
+        line-height: 1.2;
         font-style: italic;
         /* TODO: Fix margin-top scale on small displays */
-        font-size: clamp(0.9rem, 2.4vw, 1.2rem);
-    }
-}
-
-@media only screen and (max-width: 1337px) {
-     header .description {
-        line-height: 1.5rem;
-    }
-}
-@media only screen and (max-width: 800px) {
-     header .description {
-        max-width: 45ch;
-        line-height: 1.15rem;
+        font-size: clamp(0.78rem, 2.55vw, 1.33rem);
     }
 }
 
@@ -68,5 +58,15 @@ header {
     0% { background-size: 100% 700%; }
     50% { background-size: 100% 700%; }
     100% { background-size: 250% 100%; }
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        font-size: clamp(2.2rem, 9.8vw, 4rem);
+
+        .description {
+            font-size: clamp(0.84rem, 3vw, 1.2rem);
+        }
+    }
 }
 </style>

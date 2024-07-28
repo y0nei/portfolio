@@ -9,30 +9,31 @@ import WebringSelector from "./WebringSelector.astro";
     <div class="bento-section flex-vertical bento-handles">
         <HandlePill />
     </div>
-    <div class="bento-section vertical-bento flex-vertical">
+    <div class="badge-section bento-section">
         <BadgeMarquee />
-        <div class="horizontal-bento bento-section">
-            <div class="bento-section webring-section">
-                <header><p>Webrings</p></header>
-                <div class="webring-wrapper">
-                    <WebringSelector name="webring one" />
-                    <WebringSelector name="webring two" />
-                </div>
-            </div>
-            <div class="bento-buttons flex-vertical">
-                <a href="https://status.mossycab.in/status/all" target="_blank">
-                    Service status
-                </a>
-                <a href="#">Blog <Icon name="blog" size={18} /></a>
-            </div>
+    </div>
+    <div class="bento-section webring-section">
+        <header><p>Webrings</p></header>
+        <div class="webring-wrapper">
+            <WebringSelector name="webring one" />
+            <WebringSelector name="webring two" />
         </div>
+    </div>
+    <div class="bento-buttons flex-vertical">
+        <a href="https://status.mossycab.in/status/all" target="_blank">
+            Service status
+        </a>
+        <a href="#">Blog <Icon name="blog" size={18} /></a>
     </div>
 </div>
 
 <style lang="scss">
     .bento-grid {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         gap: 1rem;
+        /* width: 35vw; */
 
         .bento-section {
             font-family: "Rubik";
@@ -45,7 +46,25 @@ import WebringSelector from "./WebringSelector.astro";
                 padding: 5px;
                 padding-left: 12px;
                 justify-content: space-around;
+                gap: 0.33rem;
             }
+        }
+
+        .bento-handles {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+        .webring-section {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .badge-section {
+            grid-column: 2 / span 2;
+            grid-row: 1;
+        }
+        .bento-buttons {
+            grid-column: 3;
+            grid-row: 2;
         }
 
         .vertical-bento, .horizontal-bento {
@@ -67,9 +86,13 @@ import WebringSelector from "./WebringSelector.astro";
 
         .bento-buttons {
             display: flex;
-            gap: 1rem;
+            gap: inherit;
+            white-space: nowrap;
 
             & > a {
+                font-family: "Rubik";
+                color: var(--text-color);
+
                 flex: 1;
                 display: flex;
                 justify-content: center;
@@ -129,6 +152,104 @@ import WebringSelector from "./WebringSelector.astro";
                 p {
                     margin-top: 1px;
                 }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1450px) {
+        .bento-grid {
+            width: 45vw;
+        }
+    }
+    @media only screen and (max-width: 850px) {
+        .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: initial;
+
+            .bento-handles {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+            }
+            .bento-buttons {
+                order: 1;
+                grid-column: 2;
+                grid-row: 1;
+            }
+            .webring-section {
+                order: 2;
+                grid-column: 2;
+                grid-row: 2;
+            }
+            .badge-section {
+                grid-column: 1 / span 2;
+                grid-row: 3;
+            }
+        }
+        .bento-handles {
+            gap: 0.33rem;
+            padding-left: 10px !important;
+        }
+    }
+
+    @media only screen and (max-width: 650px) {
+        .bento-grid {
+            .webring-section {
+                order: 2;
+                grid-column: 1 / span 2;
+                grid-row: 3;
+            }
+            .badge-section {
+                grid-column: 2;
+                grid-row: 2;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .bento-buttons {
+            font-size: 0.9rem;
+
+            svg {
+                transform: scale(0.9);
+            }
+        }
+    }
+    @media only screen and (max-width: 460px) {
+        .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            height: 40vh;
+
+            .bento-handles {
+                grid-column: 1 / span 2;
+                grid-row: 1;
+
+                :global(.handle-pill-content) {
+                    width: 100%;
+
+                    :global(p) {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+            .webring-section {
+                grid-column: 1 / span 2;
+                grid-row: 2;
+            }
+            .badge-section {
+                grid-column: 1;
+                grid-row: 3;
+            }
+            .bento-buttons {
+                flex-direction: column;
+                flex: 1;
+                grid-column: 2;
+                grid-row: 3;
+            }
+            .webring-wrapper {
+                flex-wrap: wrap;
             }
         }
     }

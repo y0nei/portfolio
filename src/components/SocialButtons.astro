@@ -50,6 +50,7 @@ type PlatformColorKey = keyof typeof platform_colors;
 
 <style lang="scss">
     .socialsContainer {
+        --icon-size: 50px;
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
@@ -79,7 +80,8 @@ type PlatformColorKey = keyof typeof platform_colors;
         & > div {
             position: relative;
             display: flex;
-            width: 50px;
+            width: var(--icon-size);
+            align-items: center;
             aspect-ratio: 1;
 
             & > a {
@@ -155,6 +157,21 @@ type PlatformColorKey = keyof typeof platform_colors;
                     color: var(--link-color);
                     margin-top: 2px;
                 }
+            }
+        }
+
+
+        @media screen and (max-width: 700px) {
+            --icon-size: 40px;
+
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            & > div > a {
+                padding: 8px;
+                border-radius: calc(var(--border-radius) / 1.25);
             }
         }
     }

@@ -29,16 +29,31 @@
             display: flex;
             justify-content: space-evenly;
             width: 100%;
+            margin: 0 2rem;
+            gap: 5rem;
         }
     }
     section#about { background-color: orchid; }
 
-    @media only screen and (max-width: 1337px) {
+    @media only screen and (max-width: 1450px) {
         section#home .home-wrapper {
             flex-direction: column;
             justify-content: center;
             gap: 4rem;
             width: fit-content;
+        }
+    }
+
+
+    @media only screen and (max-width: 700px) {
+        section#home .home-wrapper {
+            width: 100%;
+            max-width: 78vw;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        section#home .home-wrapper {
+            max-width: 90vw;
         }
     }
 </style>
