@@ -4,6 +4,7 @@ import SectionLayout from "../layouts/SectionLayout.astro";
 import HeroLayout from "../layouts/HeroLayout.astro";
 import BentoGrid from "../components/BentoGrid.astro";
 import UnderConstruction from "../components/UnderConstruction.astro";
+import VersionTag from "../components/VersionTag.astro";
 import "minireset.css/minireset.min.css";
 ---
 
@@ -11,12 +12,13 @@ import "minireset.css/minireset.min.css";
 	<SectionLayout>
 		<section id="home">
             <UnderConstruction />
+            <VersionTag />
             <div class="home-wrapper">
                 <HeroLayout />
                 <BentoGrid />
             </div>
 		</section>
-		<section id="about"></section>
+		<!-- <section id="about"></section> -->
 	</SectionLayout>
 </MainLayout>
 
