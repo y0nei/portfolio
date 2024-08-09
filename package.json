@@ -23,5 +23,10 @@
     "@rollup/plugin-yaml": "^4.1.2",
     "@types/bun": "^1.1.4",
     "sass": "^1.77.5"
-  }
+  },
+  "overrides": {
+    "@iconify/tools": {
+      "@types/cheerio": "https://registry.npmjs.org/cheerio/-/cheerio-1.0.0-rc.12.tgz"
+      }
+   }
 }
