@@ -39,6 +39,9 @@ web_badges:
 - name: Freeplay
   path: "https://freeplay.floof.company/assets/buttons/free.gif"
   src: "https://freeplay.floof.company"
+- name: Yonei
+  path: yonei.png
+  src: "https://yonei.dev"
 - name: '"Made with my own two paws" badge'
   path: paws.png
 - name: '"Get Linux now! badge" badge'
