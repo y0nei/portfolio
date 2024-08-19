@@ -1,0 +1,39 @@
+<script lang="ts">
+</script>
+
+<span class="popover-tooltip {$$props.class || ''}">
+    <slot />
+</span>
+
+<style lang="scss">
+    .popover-tooltip {
+        // Don't forget to set the hover-color variable
+
+        transition-duration: 150ms;
+        opacity: 0;
+        visibility: hidden;
+        background-color: var(--hover-color);
+        color: var(--text-color);
+        text-align: center;
+        border-radius: calc(var(--border-radius) / 2);
+        display: flex;
+        flex-direction: column;
+        padding: 5px 12px;
+
+        position: absolute;
+        bottom: 130%;
+        z-index: 1;
+
+        // Arrow
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--hover-color) transparent transparent transparent;
+        }
+    }
+</style>
