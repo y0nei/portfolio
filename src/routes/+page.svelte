@@ -1,5 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+    import Sections from "$lib/layouts/Sections.svelte";
+    import Hero from "$lib/layouts/Hero.svelte";
+    import "minireset.css";
+</script>
+
+<Sections>
+	<section id="home">
+		<Hero />
+	</section>
+</Sections>
 
 <style lang="scss">
     @font-face {
@@ -21,5 +30,5 @@
 
 		--text-color: var(--offwhite-color);
         --border-radius: 0.75rem;
-    }
+	}
 </style>
