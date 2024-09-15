@@ -13,6 +13,6 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-            width: 100%;
-        }
+        width: 100%;
+    }
 </style>

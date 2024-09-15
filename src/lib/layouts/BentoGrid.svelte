@@ -1,9 +1,12 @@
 <script lang="ts">
     import BentoItem from "$lib/components/BentoItem.svelte";
+    import Handles from "$lib/layouts/Handles.svelte";
 </script>
 
 <div class="bento-grid">
-    <BentoItem name="handles"/>
+    <BentoItem name="handles">
+        <Handles />
+    </BentoItem>
     <BentoItem name="badges"/>
     <BentoItem name="webrings"/>
     <BentoItem name="buttons" hollow/>

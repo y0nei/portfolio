@@ -22,5 +22,9 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@fontsource/mononoki": "^5.1.0",
+    "svelte-copy": "^1.4.2"
+  }
 }

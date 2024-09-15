@@ -13,13 +13,21 @@
         gap: inherit;
 
         &.section {
+            display: flex;
+            flex-direction: column;
             font-family: "Rubik";
             color: var(--text-color);
             background-color: #323235;
             border: 1px solid #454549;
             border-radius: var(--border-radius);
 
-            // Layouts per section type
+            &-handles {
+                padding: 5px;
+                padding-left: 12px;
+                justify-content: space-around;
+            }
+
+            // Grid layouts
             &-handles {
                 grid-column: 1;
                 grid-row: 1 / span 2;
