@@ -9,7 +9,7 @@
 </div>
 
 <style lang="scss" global>
-    .bento-item{
+    .bento-item {
         gap: inherit;
 
         &.section {

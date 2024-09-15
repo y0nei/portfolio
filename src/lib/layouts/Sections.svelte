@@ -24,9 +24,9 @@
         .home-wrapper {
             display: flex;
             justify-content: space-evenly;
-            width: 100%;
-            margin: 0 2rem;
-            gap: 5rem;
+            width: 80%;
+            margin: 0 5rem;
+            gap: 10rem;
         }
     }
 </style>

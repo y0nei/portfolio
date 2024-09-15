@@ -15,7 +15,6 @@
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 1rem;
-        // Limit width until breakpoint hits for vertical layout
-        width: 675px;
+        width: 100%;
     }
 </style>

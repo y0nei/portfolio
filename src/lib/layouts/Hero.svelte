@@ -13,11 +13,6 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-    }
-
-    @media only screen and (max-width: 1337px) {
-        .hero-header-wrapper {
             width: 100%;
         }
-    }
 </style>

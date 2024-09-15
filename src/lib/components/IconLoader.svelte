@@ -18,9 +18,3 @@
 <div style:width={size+"px"} style:height={size+"px"}>
     {@html iconMap.get(name)}
 </div>
-
-<style lang="scss">
-    div :global(svg) {
-        fill: inherit;
-    }
-</style>
