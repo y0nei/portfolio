@@ -1,12 +1,16 @@
 <script lang="ts">
     import Sections from "$lib/layouts/Sections.svelte";
     import Hero from "$lib/layouts/Hero.svelte";
+	import BentoGrid from "$lib/layouts/BentoGrid.svelte";
     import "minireset.css";
 </script>
 
 <Sections>
 	<section id="home">
-		<Hero />
+		<div class="home-wrapper">
+			<Hero />
+			<BentoGrid />
+		</div>
 	</section>
 </Sections>
 
