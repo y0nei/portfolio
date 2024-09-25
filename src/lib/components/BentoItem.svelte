@@ -52,6 +52,12 @@
                 padding-left: 12px;
                 justify-content: space-around;
             }
+            &-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: inherit;
+                white-space: nowrap;
+            }
 
             // Grid layouts
             &-handles {
