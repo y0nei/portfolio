@@ -44,21 +44,53 @@
         grid-template-rows: repeat(2, 1fr);
         gap: 1rem;
         width: 100%;
+    }
 
-        .webring-wrapper {
+    .webring-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        margin-top: 0;
+        flex: 1;
+        gap: 0.5rem;
+    }
+
+    .bento-item.section {
+        &-handles {
+            padding: 5px;
+            padding-left: 12px;
+            justify-content: space-around;
+        }
+        &-buttons {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px;
-            margin-top: 0;
-            flex: 1;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: inherit;
+            white-space: nowrap;
+
+            a:last-child {
+                gap: 0.33rem;
+                color: var(--background-color);
+                background-color: var(--accent-color);
+            }
         }
 
-        .section-buttons a:last-child {
-            gap: 0.33rem;
-            color: var(--background-color);
-            background-color: var(--accent-color);
+        // Grid layouts
+        &-handles {
+            grid-column: 1;
+            grid-row: 1 / span 2;
         }
+        &-webrings {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        &-badges {
+            grid-column: 2 / span 2;
+            grid-row: 1;
+        }
+        &-buttons {
+            grid-column: 3;
+            grid-row: 2;
+        } 
     }
 </style>
