@@ -18,8 +18,6 @@
 
 <style lang="scss" global>
     .bento-item {
-        gap: inherit;
-
         header {
             font-family: "Rubik";
             display: flex;

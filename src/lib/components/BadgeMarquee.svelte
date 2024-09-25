@@ -43,6 +43,9 @@
         position: relative;
         overflow: hidden;
         height: $badge-height;
+        flex: 1;
+        align-items: center;
+        margin-bottom: 5px;
 
         /* Edge fade-out's */
         --mask: linear-gradient(to right,
