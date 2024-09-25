@@ -1,7 +1,7 @@
 <script lang="ts">
     import BentoItem from "$lib/components/BentoItem.svelte";
     import Handles from "$lib/layouts/Handles.svelte";
-    import WebBadges from "$lib/layouts/WebBadges.svelte";
+    import BadgeMarquee from "$lib/components/BadgeMarquee.svelte";
 </script>
 
 <div class="bento-grid">
@@ -9,9 +9,12 @@
         <Handles />
     </BentoItem>
     <BentoItem name="badges">
-        <WebBadges />
+        <p slot="header">Web Badges</p>
+        <BadgeMarquee />
     </BentoItem>
-    <BentoItem name="webrings"/>
+    <BentoItem name="webrings">
+        <p slot="header">Webrings</p>
+    </BentoItem>
     <BentoItem name="buttons" hollow/>
 </div>
 
