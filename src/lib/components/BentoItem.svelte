@@ -11,6 +11,7 @@
             <div class="badge-header">
                 <slot name="header" />
             </div>
+            <slot name="additional" />
         </header>
     {/if}
     <slot />
@@ -22,6 +23,7 @@
             font-family: "Rubik";
             display: flex;
             justify-content: space-between;
+            margin: 5px;
 
             .badge-header {
                 color: var(--text-color);
@@ -31,7 +33,6 @@
                 width: fit-content;
                 font-size: 0.9rem;
                 padding: 5px 8px;
-                margin: 5px;
                 border-radius: calc(var(--border-radius) - 5px);
                 background-color: #454549;
                 box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);

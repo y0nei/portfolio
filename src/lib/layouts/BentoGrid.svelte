@@ -6,6 +6,7 @@
     import BentoItem from "$lib/components/BentoItem.svelte";
     import Handles from "$lib/layouts/Handles.svelte";
     import BadgeMarquee from "$lib/components/BadgeMarquee.svelte";
+    import GetMyBadge from "$lib/components/GetMyBadge.svelte"
     import WebringSelector from "$lib/components/WebringSelector.svelte";
     import BentoButton from "$lib/components/BentoButton.svelte";
 </script>
@@ -29,6 +30,7 @@
                 </Popover>
             </InfoIcon>
         </svelte:fragment>
+        <GetMyBadge slot="additional"/>
         <BadgeMarquee />
     </BentoItem>
     <BentoItem name="webrings">
