@@ -1,5 +1,7 @@
 <script lang="ts">
     import Icon from "$lib/components/IconLoader.svelte";
+    import InfoIcon from "$lib/components/InfoIcon.svelte";
+    import Popover from "$lib/components/Popover.svelte";
 
     import BentoItem from "$lib/components/BentoItem.svelte";
     import Handles from "$lib/layouts/Handles.svelte";
@@ -13,7 +15,20 @@
         <Handles />
     </BentoItem>
     <BentoItem name="badges">
-        <p slot="header">Web Badges</p>
+        <svelte:fragment slot="header">
+            <p>Web Badges</p>
+            <InfoIcon>
+                <Popover collapsible={{title: "Submissions & Content"}}>
+                    Fun retro web badges found around the internet, along with badges
+                    of cool people and friends of mine. <br>
+                    <svelte:fragment slot="collapsible">
+                        Please contact me if you'd like
+                        your badge added, if any of those people are secretly awful
+                        or the websites contain hateful content.
+                    </svelte:fragment>
+                </Popover>
+            </InfoIcon>
+        </svelte:fragment>
         <BadgeMarquee />
     </BentoItem>
     <BentoItem name="webrings">
@@ -61,6 +76,37 @@
             padding: 5px;
             padding-left: 12px;
             justify-content: space-around;
+        }
+        &-badges .info-icon {
+            --hover-color: var(--secondary-color);
+            width: .85rem;
+            height: .85rem;
+            padding: 3px;
+
+            .popover-tooltip {
+                width: 200px;
+                font-size: 0.85rem;
+                bottom: 160%;
+                padding: 5px;
+                color: var(--background-color);
+            }
+
+            div[style="width: 28px; height: 28px;"] {
+                width: 1em !important;
+                height: auto !important;
+            }
+
+            &:hover {
+                background-color: lightgreen;  // temporary
+
+                .popover-tooltip {
+                    opacity: 1;
+                    visibility: visible;
+                    // Delay for opacity just on hover for a suttle effect
+                    transition-delay: 400ms;
+                    transition-property: opacity;
+                }
+            }
         }
         &-buttons {
             display: flex;
