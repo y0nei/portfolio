@@ -19,16 +19,16 @@
     <BentoItem name="webrings">
         <p slot="header">Webrings</p>
         <div class="webring-wrapper">
-            <WebringSelector name="CSS Joy"
-                href.previous="https://webri.ng/webring/cssjoy/previous?via=https://yonei.dev/"
-                href.random="https://webri.ng/webring/cssjoy/random?via=https://yonei.dev/"
-                href.next="https://webri.ng/webring/cssjoy/next?via=https://yonei.dev/"
-            />
-            <WebringSelector name="Fediring"
-                href.previous="https://fediring.net/previous?yonei.dev"
-                href.random="https://fediring.net/random"
-                href.next="https://fediring.net/next?host=yonei.dev"
-            />
+            <WebringSelector name="CSS Joy" href={{
+                previous: "https://webri.ng/webring/cssjoy/previous?via=https://yonei.dev/",
+                random: "https://webri.ng/webring/cssjoy/random?via=https://yonei.dev/",
+                next: "https://webri.ng/webring/cssjoy/next?via=https://yonei.dev/"
+            }}/>
+            <WebringSelector name="Fediring" href={{
+                previous: "https://fediring.net/previous?yonei.dev",
+                random: "https://fediring.net/random",
+                next: "https://fediring.net/next?host=yonei.dev"
+            }}/>
         </div>
     </BentoItem>
     <BentoItem name="buttons" hollow>

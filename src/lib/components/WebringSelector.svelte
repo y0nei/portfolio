@@ -1,13 +1,6 @@
 <script lang="ts">
     export let name: string;
-    export let href: Href = {
-        next: '',
-        previous: '',
-        random: ''
-    };
-
-    interface Href {
-        next: string;
+    export let href: {
         previous: string;
         random: string;
     }
