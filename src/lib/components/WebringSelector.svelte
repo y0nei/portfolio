@@ -3,7 +3,8 @@
     export let href: {
         previous: string;
         random: string;
-    }
+        next: string;
+    };
 </script>
 
 <div>
