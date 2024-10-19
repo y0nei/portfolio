@@ -9,11 +9,11 @@
 
 <Sections>
 	<section id="home">
+		<UnderConstruction />
+		<VersionTag />
 		<div class="home-wrapper">
 			<Hero />
 			<BentoGrid />
-			<UnderConstruction />
-			<VersionTag />
 		</div>
 	</section>
 </Sections>
