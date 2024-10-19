@@ -3,6 +3,8 @@
     import Hero from "$lib/layouts/Hero.svelte";
 	import BentoGrid from "$lib/layouts/BentoGrid.svelte";
     import "minireset.css";
+    import VersionTag from "$lib/components/VersionTag.svelte";
+    import UnderConstruction from "$lib/components/UnderConstruction.svelte";
 </script>
 
 <Sections>
@@ -10,6 +12,8 @@
 		<div class="home-wrapper">
 			<Hero />
 			<BentoGrid />
+			<UnderConstruction />
+			<VersionTag />
 		</div>
 	</section>
 </Sections>
