@@ -93,7 +93,7 @@
                 color: var(--background-color);
             }
 
-            div[style="width: 28px; height: 28px;"] {
+            div.svg-container {
                 width: 1em !important;
                 height: auto !important;
             }

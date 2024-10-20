@@ -15,6 +15,6 @@
     }
 </script>
 
-<div style:width={size+"px"} style:height={size+"px"}>
+<div style:width={size+"px"} style:height={size+"px"} class="svg-container">
     {@html iconMap.get(name)}
 </div>
