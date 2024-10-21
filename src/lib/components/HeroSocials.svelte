@@ -163,9 +163,15 @@ const iconColors: {[key: string]: string} = {
             }
         }
 
-
-        @media screen and (max-width: 750px) {
+        @media screen and (max-width: 600px) {
             --icon-size: 40px;
+
+            .info-icon {
+                width: 1.15rem;
+                height: 1.15rem;
+                right: -12%;
+                top: -12%;
+            }
 
             a div.svg-container {
                 width: 25px !important;
