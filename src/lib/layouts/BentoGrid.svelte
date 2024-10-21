@@ -144,6 +144,13 @@
         } 
     }
 
+    // For bigger buttons
+    @media screen and (max-width: 1450px) {
+        .bento-grid {
+            grid-template-rows: unset;
+            grid-auto-rows: minmax(6.5rem, auto);
+        }
+    }
 
     @media only screen and (max-width: 750px) {
         .bento-grid {
@@ -205,9 +212,10 @@
     }
     @media only screen and (max-width: 500px) {
         .bento-grid {
-            display: grid;
             grid-template-columns: repeat(1, minmax(0, 1fr));
             // grid-template-columns: repeat(2, 1fr);
+            
+            // For bigger buttons
             grid-template-rows: unset;
             grid-auto-rows: minmax(6.5rem, auto);
 
