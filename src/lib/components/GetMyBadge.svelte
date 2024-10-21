@@ -1,6 +1,13 @@
+<script lang="ts">
+    import Icon from "./IconLoader.svelte";
+</script>
+
 <div class="get-mine-modal">
     <input id="modal-toggle" type="checkbox">
-    <label class="modal-btn" for="modal-toggle">Get mine</label>
+    <label class="modal-btn" for="modal-toggle">
+        <Icon name="eye-code" size={18} />
+        <p>Get mine</p>
+    </label>
     <label class="modal-backdrop" for="modal-toggle"></label>
     <div class="modal-content">
         <label class="modal-close" for="modal-toggle">&#x2715;</label>
@@ -9,7 +16,7 @@
     </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
     .get-mine-modal {
         .modal-btn {
             border: 1px solid rgba(187, 211, 139, 0.2);
@@ -29,6 +36,10 @@
             &:hover {
                 background-color: rgba(187, 211, 139, 0.4);
                 cursor: pointer;
+            }
+
+            div.svg-container {
+                margin-top: -1px;
             }
         }
 
