@@ -12,7 +12,7 @@
         color: var(--text-color);
         font-family: "Rubik", sans-serif;
         // font-size: clamp(2.4rem, 6vw + 1rem, 5rem);
-        font-size: clamp(2.2rem, 8.6vw, 4.5rem);
+        font-size: clamp(2.2rem, 10vw, 4.5rem);
         flex-direction: column;
 
         h1 {
@@ -43,13 +43,13 @@
             line-height: 1.15;
             font-style: italic;
             /* TODO: Fix margin-top scale on small displays */
-            font-size: clamp(0.78rem, 2.55vw, 1.33rem);
+            font-size: clamp(0.78rem, 3vw, 1.33rem);
         }
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 500px) {
         header {
-            font-size: clamp(2.2rem, 9.8vw, 4rem);
+            // font-size: clamp(2.2rem, 9.8vw, 4rem);
 
             .description {
                 font-size: clamp(0.9rem, 3vw, 1.2rem);

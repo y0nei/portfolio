@@ -164,12 +164,12 @@ const iconColors: {[key: string]: string} = {
         }
 
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 750px) {
             --icon-size: 40px;
 
-            svg {
-                width: 25px;
-                height: 25px;
+            a div.svg-container {
+                width: 25px !important;
+                height: 25px !important;
             }
 
             & > div > a {
