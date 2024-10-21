@@ -37,7 +37,7 @@
                 flex: 0;
             }
         }
-        @media only screen and (max-width: 1450px) {
+        @media only screen and (max-width: 600px) {
             .home-wrapper {
                 gap: 2.5rem;
             }
