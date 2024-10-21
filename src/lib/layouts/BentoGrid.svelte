@@ -66,7 +66,7 @@
 
     .webring-wrapper {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         margin: 5px;
         margin-top: 0;
