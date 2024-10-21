@@ -61,6 +61,7 @@
         grid-template-rows: repeat(2, 1fr);
         gap: 1rem;
         width: 100%;
+        flex: 0;
     }
 
     .webring-wrapper {
@@ -78,6 +79,7 @@
             padding: 5px;
             padding-left: 12px;
             justify-content: space-around;
+            gap: 0.33rem;
         }
         &-badges .info-icon {
             --hover-color: var(--secondary-color);
@@ -140,5 +142,102 @@
             grid-column: 3;
             grid-row: 2;
         } 
+    }
+
+    // For bigger buttons
+    @media screen and (max-width: 1450px) {
+        .bento-grid {
+            grid-template-rows: unset;
+            grid-auto-rows: minmax(6.5rem, auto);
+        }
+    }
+
+    @media only screen and (max-width: 750px) {
+        .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: initial;
+
+            .bento-item.section {
+                &-handles {
+                    grid-column: 1;
+                    grid-row: 1 / span 2;
+
+                    .social-handle span {
+                        width: 100%;
+
+                        p {
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+                }
+                &-buttons {
+                    order: 1;
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+                &-webrings {
+                    order: 2;
+                    grid-column: 2;
+                    grid-row: 2;
+                }
+                &-badges {
+                    grid-column: 1 / span 2;
+                    grid-row: 3;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 580px) {
+        .bento-grid .bento-item.section {
+            &-webrings {
+                order: 2;
+                grid-column: 1 / span 2;
+                grid-row: 3;
+            }
+            &-badges {
+                grid-column: 2;
+                grid-row: 2;
+            }
+        }
+
+        .get-mine-modal .modal-btn{
+            padding: 5px;
+
+            p {
+                display: none;
+            }
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        .bento-grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            // grid-template-columns: repeat(2, 1fr);
+            
+            // For bigger buttons
+            grid-template-rows: unset;
+            grid-auto-rows: minmax(6.5rem, auto);
+
+            .bento-item.section {
+                &-handles {
+                    grid-column: 1 / span 2;
+                    grid-row: 1;
+                }
+                &-webrings {
+                    grid-column: 1 / span 2;
+                    grid-row: 2;
+                }
+                &-badges {
+                    grid-column: 1;
+                    grid-row: 3;
+                }
+                &-buttons {
+                    flex-direction: column;
+                    grid-column: 2;
+                    grid-row: 3;
+                }
+            }
+        }
     }
 </style>

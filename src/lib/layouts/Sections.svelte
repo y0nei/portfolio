@@ -23,10 +23,24 @@
 
         .home-wrapper {
             display: flex;
-            justify-content: space-evenly;
-            width: 80%;
+            justify-content: space-between;
             margin: 0 5rem;
-            gap: 10rem;
+            gap: 5rem;
+        }
+
+        @media only screen and (max-width: 1450px) {
+            .home-wrapper {
+                flex-direction: column;
+                justify-content: center;
+                margin: 0 4rem;
+                gap: 4rem;
+                flex: 0;
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            .home-wrapper {
+                gap: 2.5rem;
+            }
         }
     }
 </style>
