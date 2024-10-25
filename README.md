@@ -51,16 +51,15 @@ Distributed under the `AGPL-3.0-or-later` license. See the `LICENSE` file for mo
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LINKS & IMAGES -->
-[issues badge]: https://badgers.space/codeberg/issues/y0nei/portfolio?corner_radius=s
+[issues badge]: https://badgers.space/github/issues/y0nei/portfolio?corner_radius=s
 [frontend badge]: https://badgers.space/badge/frontend/svelte?color=FF3E00&corner_radius=s
 [license badge]: https://badgers.space/badge/license/AGPL-3.0?color=pink&corner_radius=s
 [figma badge]: https://badgers.space/badge/icon/figma%20design%20board?icon=feather-figma&color=F24E1E&scale=1.33&corner_radius=m&label=
-[notbyai badge]: https://notbyai.fyi/img/produced-by-human-not-by-ai-white.svg
 
-[license]: https://codeberg.org/y0nei/portfolio/src/branch/main/LICENSE
-[issues]: https://codeberg.org/y0nei/portfolio/issues
-[python branch]: https://codeberg.org/y0nei/portfolio/src/branch/python-based
-[astro branch]: #
+[license]: https://github.com/y0nei/portfolio/blob/main/LICENSE
+[issues]: https://github.com/y0nei/portfolio/issues
+[python branch]: https://github.com/y0nei/portfolio/tree/python-based
+[astro branch]: https://github.com/y0nei/portfolio/tree/astro-based
 [figma board]: https://www.figma.com/file/9nHRCQxvyppGR1tTV1Oxje/Personal-portfolio?type=design&node-id=0%3A1&mode=design&t=ZYjOHM0oWB0JF30c-1
 [bun install docs]: https://bun.sh/docs/installation
 [fastapi]: https://fastapi.tiangolo.com/
