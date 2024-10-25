@@ -15,7 +15,7 @@ Speaking of design, I decided to take time and learn Figma in order to create a 
 ## Built with
 **Tech used**: Svelte, SCSS, Bun
 
-This is my first project utilizing a JavaScript frameworks. I'm a fan of simplicity and I have always just stuck to using a Python backend serving Jinja2 templates. After completing this project in Astro I chose to learn Svelte and rewrite it using that framework.  
+This is my first project utilizing JavaScript frameworks. I'm a fan of simplicity and I have always just stuck to using a Python backend serving Jinja2 templates. After completing this project in Astro I chose to learn Svelte and rewrite it using that framework.  
 The [`origin/python-based`][python branch] branch is an older abandoned attempt of creating this website using the [FastAPI][fastapi] framework, SCSS and [JinjaX][jinjax] for templating.  
 The Astro based version is available under the [`origin/astro-based`][astro branch] branch.
 
