@@ -1,0 +1,9 @@
+node_modules
+Dockerfile*
+docker-compose*
+.dockerignore
+.gitignore
+README.md
+LICENSE
+.vscode
+.env
