@@ -7,7 +7,7 @@
         <span>
             <p>website currently under construction.</p>
             &nbsp;
-            <a href="https://codeberg.org/y0nei/portfolio" target="_blank">
+            <a href="https://github.com/y0nei/portfolio" target="_blank">
                 contribute&nbsp;
                 <Icon name="external-link" size={13}/>
             </a>
