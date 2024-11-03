@@ -5,12 +5,16 @@
     import "minireset.css";
     import VersionTag from "$lib/components/VersionTag.svelte";
     import UnderConstruction from "$lib/components/UnderConstruction.svelte";
+
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <Sections>
 	<section id="home">
 		<UnderConstruction />
-		<VersionTag />
+		<VersionTag hash={data.gitCommitHash}/>
 		<div class="home-wrapper">
 			<Hero />
 			<BentoGrid />

@@ -1,8 +1,5 @@
 <script lang="ts">
-import childProcess from "child_process";
-const hash = childProcess.execSync("git rev-parse --short HEAD")
-                         .toString()
-                         .trim();
+export let hash: string;
 </script> 
 
 <span>
