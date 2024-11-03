@@ -15,6 +15,14 @@
     }
 </script>
 
-<div style:width={size+"px"} style:height={size+"px"} class="svg-container">
+<div style:width={size+"px"} class="svg-container">
     {@html iconMap.get(name)}
 </div>
+
+<style lang="scss">
+    .svg-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
