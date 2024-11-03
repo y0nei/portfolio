@@ -4,7 +4,7 @@ export let hash: string;
 
 <span>
     version:
-    <a href={"https://codeberg.org/y0nei/portfolio/commit/" + hash} target="_blank">
+    <a href={"https://github.com/y0nei/portfolio/commit/" + hash} target="_blank">
         {hash}
     </a>
 </span>
