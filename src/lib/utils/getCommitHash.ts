@@ -1,8 +1,8 @@
-import childProcess from "child_process";
-
 export function getGitCommitHash() {
-    const hash = childProcess.execSync("git rev-parse --short HEAD")
+    const { stdout } = Bun.spawnSync({
+        cmd: ["git", "rev-parse", "--short", "HEAD"],
+        stdout: "pipe",
+    });
 
-    return hash.toString().trim();
+    return stdout.toString();
 }
-
