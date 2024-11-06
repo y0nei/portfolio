@@ -1,0 +1,31 @@
+# NOTE: Commented lines are for Traefik reverse proxy usecase
+
+services:
+  svelte-portfolio:
+    build:
+      context: .
+    container_name: portfolio
+    restart: unless-stopped
+    # networks:
+    #   - proxy
+    # expose:
+    #   - 3000
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: wget -nv --tries=1 --spider http://0.0.0.0:3000 || exit 1
+      interval: 1m
+      timeout: 5s
+      retries: 2
+    # labels:
+    #   traefik.enable: true
+    #   traefik.http.routers.svelte-portfolio.service: svelte-portfolio
+    #   traefik.http.routers.svelte-portfolio.entrypoints: web,websecure
+    #   traefik.http.routers.svelte-portfolio.rule: Host(`your.domain`)
+    #   traefik.http.routers.svelte-portfolio.tls: true
+    #   traefik.http.routers.svelte-portfolio.tls.certresolver: production
+    #   traefik.http.services.svelte-portfolio.loadbalancer.server.port: 3000
+
+# networks:
+#   proxy:
+#     external: true
