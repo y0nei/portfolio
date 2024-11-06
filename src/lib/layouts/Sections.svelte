@@ -5,10 +5,12 @@
 <style lang="scss" global>
     .section-wrapper {
         scroll-behavior: smooth;
-        overflow-y: scroll;
+        // NOTE: Causes additional scrollbars on chromium for no reason
+        // overflow-y: scroll;
 
         section {
             height: 100vh;
+            height: 100dvh;  // Use dynamic viewport height if supported
             width: 100vw;
 
             display: flex;
