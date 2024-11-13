@@ -11,7 +11,7 @@ let iconmap = new Map<string, string>(Object.entries(userdata.socials))
 const iconColors: {[key: string]: string} = {
     bluesky: "#0285FF",
     twitter: "#000000",
-    iceshrimp: "#9A92FF",
+    mastodon: "#6364FF",
     telegram: "#26A5E4",
     "ko-fi": "#FF5E5B",
     liberapay: "#F6C915",
@@ -31,23 +31,6 @@ const iconColors: {[key: string]: string} = {
             <Icon name={name.toLocaleLowerCase()} size={30} />
             <Popover class="show-tooltip">{name}</Popover>
         </a>
-        {#if name == "Iceshrimp"}
-        <InfoIcon>
-            <Popover class="iceshrimp-tooltip">
-                <p>
-                    A
-                    <a href="https://en.wikipedia.org/wiki/Fediverse" target="_blank">
-                        Fediverse
-                    </a>
-                    instance hosted using the Iceshrimp software
-                </p>
-                <a class="info-tooltip-button" target="_blank"
-                   href="https://fedidb.org/software/iceshrimp">
-                    Find out more&nbsp; <Icon name="external-link" size={15}/>
-                </a>
-            </Popover>
-        </InfoIcon>
-        {/if}
     </div>
     {/each}
 </div>
@@ -113,7 +96,7 @@ const iconColors: {[key: string]: string} = {
         }
 
         // For better contrast between hover-color and text color
-        .icon-bluesky, .icon-iceshrimp, .icon-telegram, .icon-instagram {
+        .icon-bluesky, .icon-mastodon, .icon-telegram, .icon-instagram {
             .popover-tooltip { color: #000 }
         }
         .icon-twitter {
