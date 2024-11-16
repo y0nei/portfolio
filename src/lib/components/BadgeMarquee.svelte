@@ -1,6 +1,5 @@
 <script lang="ts">
-    // @ts-ignore
-    import socials from "../user.yml";
+    import socials from "$lib/user.yml";
 
     const badge_path = "badges/";
 </script>

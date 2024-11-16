@@ -1,9 +1,7 @@
 <script lang="ts">
 import Icon from "$lib/components/IconLoader.svelte";
-import InfoIcon from "$lib/components/InfoIcon.svelte";
 import Popover from "$lib/components/Popover.svelte";
 
-// @ts-ignore
 import userdata from "$lib/user.yml";
 
 let iconmap = new Map<string, string>(Object.entries(userdata.socials))
