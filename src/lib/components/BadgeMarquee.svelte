@@ -2,7 +2,6 @@
     // @ts-ignore
     import socials from "../user.yml";
 
-    // TODO: Add redirect from "web_badges" since that was previously used
     const badge_path = "badges/";
 </script>
 
