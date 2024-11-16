@@ -12,7 +12,7 @@
     <div class="modal-content">
         <label class="modal-close" for="modal-toggle">&#x2715;</label>
         <p>Copy the code below:</p>
-        <textarea><a href="https://yonei.dev"><img src="https://yonei.dev/web_badges/yonei.png" alt="Yonei's badge" /></a></textarea>
+        <textarea><a href="https://yonei.dev"><img src="https://yonei.dev/badges/yonei.png" alt="Yonei's badge" /></a></textarea>
     </div>
 </div>
 
