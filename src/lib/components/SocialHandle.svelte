@@ -21,7 +21,7 @@
         --pill-border-radius: 0.6rem;
         display: flex;
         align-items: center;
-        color: var(--text-color);
+        color: var(--clr-text);
         font-family: "Mononoki", monospace;
         font-size: 1rem;
 
@@ -52,7 +52,7 @@
             background-color: #454545;
             margin-left: 3px;
 
-            svg { color: var(--offwhite-color) }
+            svg { color: var(--clr-offwhite) }
 
             &:hover {
                 background-color: #595959;

@@ -26,7 +26,7 @@
         div {
             display: flex;
             border-radius: 0 0 var(--border-radius) var(--border-radius);
-            border: 1px var(--background-color-alt) solid;
+            border: 1px var(--clr-background-alt) solid;
             border-top: none;
             padding: 0 2px 2px 2px;
             background: repeating-linear-gradient(
@@ -45,7 +45,7 @@
                 font-family: sans-serif;
                 font-size: 0.8rem;
                 border-radius: inherit;
-                background-color: var(--background-color-alt);
+                background-color: var(--clr-background-alt);
                 padding: 0 7px;
                 padding-bottom: 3px;
 
@@ -53,7 +53,7 @@
                     display: flex;
                     align-items: center;
                     text-decoration: none;
-                    color: var(--secondary-color);
+                    color: var(--clr-secondary);
                 }
             }
         }

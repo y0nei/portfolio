@@ -24,7 +24,7 @@
             background-color: rgba(187, 211, 139, 0.2);
             transition: 0.1s;
             user-select: none;
-            color: var(--text-color);
+            color: var(--clr-text);
             display: flex;
             align-items: center;
             gap: 0.33rem;

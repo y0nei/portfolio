@@ -82,7 +82,7 @@
             gap: 0.33rem;
         }
         &-badges .info-icon {
-            --hover-color: var(--secondary-color);
+            --clr-hover: var(--clr-secondary);
             width: .85rem;
             height: .85rem;
             padding: 3px;
@@ -92,7 +92,7 @@
                 font-size: 0.85rem;
                 bottom: 160%;
                 padding: 5px;
-                color: var(--background-color);
+                color: var(--clr-background);
             }
 
             div.svg-container {
@@ -120,8 +120,8 @@
 
             a:last-child {
                 gap: 0.33rem;
-                color: var(--background-color);
-                background-color: var(--accent-color);
+                color: var(--clr-background);
+                background-color: var(--clr-accent);
             }
         }
 

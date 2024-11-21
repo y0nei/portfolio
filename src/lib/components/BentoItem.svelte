@@ -26,7 +26,7 @@
             margin: 5px;
 
             .badge-header {
-                color: var(--text-color);
+                color: var(--clr-text);
                 display: flex;
                 align-items: center;
                 gap: 0.33rem;
@@ -43,7 +43,7 @@
             display: flex;
             flex-direction: column;
             font-family: "Rubik";
-            color: var(--text-color);
+            color: var(--clr-text);
             background-color: #323235;
             border: 1px solid #454549;
             border-radius: var(--border-radius);

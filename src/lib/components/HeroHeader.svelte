@@ -9,7 +9,7 @@
 
 <style lang="scss">
     header {
-        color: var(--text-color);
+        color: var(--clr-text);
         font-family: "Rubik", sans-serif;
         // font-size: clamp(2.4rem, 6vw + 1rem, 5rem);
         font-size: clamp(2.2rem, 10vw, 4.5rem);
@@ -20,17 +20,17 @@
             white-space: nowrap;
         }
         h1 b {
-            color: var(--accent-color);
+            color: var(--clr-accent);
             font-weight: 900;
 
             background: linear-gradient(
                 -135deg,
-                var(--text-color) 0%,
-                var(--text-color) 45%,
+                var(--clr-text) 0%,
+                var(--clr-text) 45%,
                 #424242 49%,
                 #424242 50%,
-                var(--accent-color) 50%,
-                var(--accent-color) 100%
+                var(--clr-accent) 50%,
+                var(--clr-accent) 100%
             );
             background-size: 250% 100%;
             background-clip: text;

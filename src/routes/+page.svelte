@@ -32,15 +32,15 @@
 	:root {
         /* Other cool colors: #233531 #F3EEE8 */
 
-		--accent-color: #BBD38B;
-        --accent-color-dark: #30422E;
-        --secondary-color: #8BBBD3;  /* Triadic to accent */
+		--clr-accent: #BBD38B;
+        --clr-accent-dark: #30422E;
+        --clr-secondary: #8BBBD3;  /* Triadic to accent */
 
-		--offwhite-color: #F9F4EA;
-		--background-color: #1F1F21;
-		--background-color-alt: #3A393B;
+		--clr-offwhite: #F9F4EA;
+		--clr-background: #1F1F21;
+		--clr-background-alt: #3A393B;
 
-		--text-color: var(--offwhite-color);
+		--clr-text: var(--clr-offwhite);
         --border-radius: 0.75rem;
 	}
 </style>

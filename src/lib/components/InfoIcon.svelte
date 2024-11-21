@@ -17,8 +17,8 @@ import Icon from "$lib/components/IconLoader.svelte";
         height: 1.2rem;
         padding: 5px;
         border-radius: 100%;
-        color: var(--background-color);
-        background-color: var(--offwhite-color);
+        color: var(--clr-background);
+        background-color: var(--clr-offwhite);
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
         user-select: none;
 

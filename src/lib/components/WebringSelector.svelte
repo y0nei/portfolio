@@ -41,12 +41,12 @@
                 user-select: none;
                 transition: 150ms;
                 text-decoration: none;
-                color: var(--offwhite-color);
+                color: var(--clr-offwhite);
 
                 &:hover {
-                    background-color: var(--secondary-color);
+                    background-color: var(--clr-secondary);
                     cursor: pointer;
-                    color: var(--background-color);
+                    color: var(--clr-background);
                 }
 
                 &:first-child {

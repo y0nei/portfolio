@@ -3,7 +3,7 @@
 <style lang="scss">
     a {
         font-family: "Rubik";
-        color: var(--text-color);
+        color: var(--clr-text);
 
         flex: 1;
         display: flex;
@@ -12,10 +12,10 @@
         border: none;
         padding: 7px 12px;
         border-radius: var(--border-radius);
-        background-color: var(--background-color-alt);
+        background-color: var(--clr-background-alt);
         width: 100%;
         text-decoration: none;
-        color: var(--text-color);
+        color: var(--clr-text);
         cursor: pointer;
 
         &:hover {

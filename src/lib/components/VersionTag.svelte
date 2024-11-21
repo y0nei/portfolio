@@ -14,7 +14,7 @@ export let hash: string;
         position: absolute;
         bottom: 0;
         right: 0;
-        color: var(--offwhite-color);
+        color: var(--clr-offwhite);
         font-family: sans-serif;
         font-size: 0.72rem;
         background-color: #323235;
@@ -25,7 +25,7 @@ export let hash: string;
 
         a {
             text-decoration: none;
-            color: var(--secondary-color);
+            color: var(--clr-secondary);
 
             &:hover {
                 text-decoration: underline;

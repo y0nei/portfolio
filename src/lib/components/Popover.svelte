@@ -27,8 +27,8 @@
         transition-duration: 150ms;
         opacity: 0;
         visibility: hidden;
-        background-color: var(--hover-color);
-        color: var(--text-color);
+        background-color: var(--clr-hover);
+        color: var(--clr-text);
         text-align: center;
         border-radius: calc(var(--border-radius) / 2);
         display: flex;
@@ -48,12 +48,12 @@
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: var(--hover-color) transparent transparent transparent;
+            border-color: var(--clr-hover) transparent transparent transparent;
         }
     }
 
     .wrap-collapsible {
-        color: var(--text-color);
+        color: var(--clr-text);
 
         input[type="checkbox"] {
             display: none;

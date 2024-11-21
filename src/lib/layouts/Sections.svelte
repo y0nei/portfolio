@@ -21,7 +21,7 @@
     }
 
     section#home {
-        background-color: var(--background-color);
+        background-color: var(--clr-background);
 
         .home-wrapper {
             display: flex;

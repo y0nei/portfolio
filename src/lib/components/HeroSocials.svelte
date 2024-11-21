@@ -22,7 +22,7 @@ const iconColors: {[key: string]: string} = {
 
 <div class="socialsContainer">
     {#each iconmap as [name, link]}
-    <div style="--hover-color: {iconColors[name.toLocaleLowerCase()]};"
+    <div style="--clr-hover: {iconColors[name.toLocaleLowerCase()]};"
          class="icon-{name.toLowerCase()}"
     >
         <a href={link} target="_blank">
@@ -76,11 +76,11 @@ const iconColors: {[key: string]: string} = {
                 transition: 150ms;
                 background: white;
                 border-radius: var(--border-radius);
-                background-color: var(--offwhite-color);
+                background-color: var(--clr-offwhite);
                 white-space: nowrap;
 
                 &:hover {
-                    background-color: var(--hover-color);
+                    background-color: var(--clr-hover);
 
                     .show-tooltip {
                         opacity: 1;
@@ -94,22 +94,24 @@ const iconColors: {[key: string]: string} = {
         }
 
         // For better contrast between hover-color and text color
-        .icon-bluesky, .icon-mastodon, .icon-telegram, .icon-instagram {
-            .popover-tooltip { color: #000 }
-        }
-        .icon-twitter, .icon-github {
-            &:hover svg { fill: white }
+        .icon {
+            &-bluesky, &-mastodon, &-telegram {
+                .popover-tooltip { color: #000 }
+            }
+            &-twitter, &-github {
+                &:hover svg { fill: white }
+            }
         }
 
         // Overrides for PopoverTooltip content
         .iceshrimp-tooltip {
-            --link-color: #A8D3F9;
-            --link-hover-color: #85C7E8;
+            --clr-link: #A8D3F9;
+            --clr-link-hover: #85C7E8;
             bottom: 160%;
             padding: 5px;
             min-width: 150px;
             font-size: 0.85rem;
-            color: var(--background-color);
+            color: var(--clr-background);
 
             & > p a {
                 color: #064e79;
@@ -125,20 +127,20 @@ const iconColors: {[key: string]: string} = {
                 padding: 3px 0;
                 background-color: rgba(0,0,0,0.3);
                 border-radius: 5px;
-                color: var(--link-color);
+                color: var(--clr-link);
 
                 &:hover {
                     background-color: rgba(0,0,0,0.4);
-                    color: var(--link-hover-color);
+                    color: var(--clr-link-hover);
                     cursor: pointer;
 
                     svg {
-                        color: var(--link-hover-color);
+                        color: var(--clr-link-hover);
                     }
                 }
 
                 svg {
-                    color: var(--link-color);
+                    color: var(--clr-link);
                     margin-top: 2px;
                 }
             }
