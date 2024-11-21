@@ -15,7 +15,7 @@ const iconColors: {[key: string]: string} = {
     liberapay: "#F6C915",
     instagram: "#E4405F",
     codeberg: "#2185D0",
-    github: "#181717",
+    github: "#364049",  // Darker tone: #2e363e
     gitlab: "#FC6D26"
 }
 </script>
@@ -97,7 +97,7 @@ const iconColors: {[key: string]: string} = {
         .icon-bluesky, .icon-mastodon, .icon-telegram, .icon-instagram {
             .popover-tooltip { color: #000 }
         }
-        .icon-twitter {
+        .icon-twitter, .icon-github {
             &:hover svg { fill: white }
         }
 

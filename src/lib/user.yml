@@ -3,15 +3,7 @@ socials:
   Twitter: "https://x.com/y0nei"
   Mastodon: "https://wetdry.world/@y0nei"
   Telegram: "https://t.me/y0nei"
-  Instagram: "https://www.instagram.com/y0nei_"
-
-git:
-  - service: Codeberg
-    link: "https://codeberg.org/y0nei"
-  - service: GitHub
-    link: "https://github.com/y0nei"
-  - service: GitLab
-    link: "https://gitlab.com/y0nei"
+  GitHub: "https://github.com/y0nei"
 
 handles:
 - service: GPG
