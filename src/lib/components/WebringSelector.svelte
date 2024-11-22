@@ -1,10 +1,14 @@
 <script lang="ts">
-    export let name: string;
-    export let href: {
-        previous: string;
-        random: string;
-        next: string;
+    interface Props {
+        name: string,
+        href: {
+            previous: string,
+            random: string,
+            next: string
+        }
     };
+
+    let { name, href }: Props = $props();
 </script>
 
 <div>

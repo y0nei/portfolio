@@ -1,7 +1,4 @@
 <script lang="ts">
-    export let name: string;
-    export let size: number = 28;
-
     let iconMap = new Map<string, string>()
 
     const icons = import.meta.glob(
@@ -13,6 +10,13 @@
         const key: string = obj.slice(14, -4);
         iconMap.set(key, icons[obj] as string)
     }
+
+    interface Props {
+        name: string,
+        size?: number
+    }
+
+    let { name, size = 28 }: Props = $props();
 </script>
 
 <div style:width={size+"px"} class="svg-container">

@@ -1,19 +1,28 @@
 <script lang="ts">
+    import type { Snippet } from "svelte";
+
     // TODO: Maybe add multiple types like with_button, collapsable, tooltip
-    export let collapsible: {
-        title: string;
+    interface Props {
+        collapsible?: {
+            title: string
+        },
+        collapse?: Snippet,
+        children: Snippet,
+        [key: string]: unknown
     }
+
+    let { collapsible, collapse, children, ...rest }: Props = $props();
 </script>
 
-<span class="popover-tooltip {$$props.class || ''}">
-    <slot />
-    {#if $$slots.collapsible && collapsible.title != undefined}
+<span class="popover-tooltip {rest.class}">
+    {@render children()}
+    {#if collapse && collapsible?.title != undefined}
         <div class="wrap-collapsible">
             <input id="collapsible" class="toggle" type="checkbox">
             <label for="collapsible" class="lbl-toggle">{collapsible.title}</label>
             <div class="collapsible-content">
                 <div class="content-inner">
-                    <slot name="collapsible" />
+                    {@render collapse()}
                 </div>
             </div>
         </div>

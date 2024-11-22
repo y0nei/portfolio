@@ -1,20 +1,29 @@
 <script lang="ts">
-    export let hollow: boolean = false;
-    export let name: string | any = undefined;
+    import type { Snippet } from "svelte";
+
+    interface Props {
+        name: string,
+        hollow?: boolean,
+        header?: Snippet,
+        additional?: Snippet,
+        children: Snippet
+    }
+
+    let { hollow = false, name, header, additional, children }: Props = $props();
 </script>
 
 <div class:section={hollow ? undefined : true}
      class="bento-item {name && 'section-' + name}"
 >
-    {#if $$slots.header}
+    {#if header}
         <header>
             <div class="badge-header">
-                <slot name="header" />
+                {@render header()}
             </div>
-            <slot name="additional" />
+            {@render additional?.()}
         </header>
     {/if}
-    <slot />
+    {@render children()}
 </div>
 
 <style lang="scss" global>

@@ -1,35 +1,34 @@
 <script lang="ts">
-import Icon from "$lib/components/IconLoader.svelte";
-import Popover from "$lib/components/Popover.svelte";
+    import Icon from "$lib/components/IconLoader.svelte";
+    import Popover from "$lib/components/Popover.svelte";
+    import userdata from "$lib/user.yml";
 
-import userdata from "$lib/user.yml";
+    let iconmap = new Map<string, string>(Object.entries(userdata.socials))
 
-let iconmap = new Map<string, string>(Object.entries(userdata.socials))
-
-const iconColors: {[key: string]: string} = {
-    bluesky: "#0285FF",
-    twitter: "#000000",
-    mastodon: "#6364FF",
-    telegram: "#26A5E4",
-    "ko-fi": "#FF5E5B",
-    liberapay: "#F6C915",
-    instagram: "#E4405F",
-    codeberg: "#2185D0",
-    github: "#364049",  // Darker tone: #2e363e
-    gitlab: "#FC6D26"
-}
+    const iconColors: Record<string, string> = {
+        bluesky: "#0285FF",
+        twitter: "#000000",
+        mastodon: "#6364FF",
+        telegram: "#26A5E4",
+        "ko-fi": "#FF5E5B",
+        liberapay: "#F6C915",
+        instagram: "#E4405F",
+        codeberg: "#2185D0",
+        github: "#364049",  // Darker tone: #2e363e
+        gitlab: "#FC6D26"
+    }
 </script>
 
 <div class="socialsContainer">
     {#each iconmap as [name, link]}
-    <div style="--clr-hover: {iconColors[name.toLocaleLowerCase()]};"
-         class="icon-{name.toLowerCase()}"
-    >
-        <a href={link} target="_blank">
-            <Icon name={name.toLocaleLowerCase()} size={30} />
-            <Popover class="show-tooltip">{name}</Popover>
-        </a>
-    </div>
+        <div style="--clr-hover: {iconColors[name.toLocaleLowerCase()]};"
+             class="icon-{name.toLowerCase()}"
+        >
+            <a href={link} target="_blank">
+                <Icon name={name.toLocaleLowerCase()} size={30} />
+                <Popover class="show-tooltip">{name}</Popover>
+            </a>
+        </div>
     {/each}
 </div>
 

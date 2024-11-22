@@ -5,29 +5,19 @@
 </script>
 
 <div class="marquee-wrapper">
-    <slot />
     <div class="badge-marquee">
-        <ul>
-            {#each socials.web_badges as item}
-                <li>
-                    <a href={item.src} target="_blank">
-                        <img src={item.path.startsWith("http") ? item.path : badge_path + item.path}
-                            alt={item.name} />
-                    </a>
-                </li>
-            {/each}
-        </ul>
-        <!-- Mirror of the content above -->
-        <ul aria-hidden="true">
-            {#each socials.web_badges as item}
-                <li>
-                    <a href={item.src} target="_blank">
-                        <img src={item.path.startsWith("http") ? item.path : badge_path + item.path}
-                            alt={item.name} />
-                    </a>
-                </li>
-            {/each}
-        </ul>
+        {#each {length: 2} as _, i}
+            <ul aria-hidden={i === 1 ? "true" : undefined}>
+                {#each socials.web_badges as item}
+                    <li>
+                        <a href={item.src} target="_blank">
+                            <img src={item.path.startsWith("http") ? item.path : badge_path + item.path}
+                                 alt={item.name} />
+                        </a>
+                    </li>
+                {/each}
+            </ul>
+        {/each}
     </div>
 </div>
 

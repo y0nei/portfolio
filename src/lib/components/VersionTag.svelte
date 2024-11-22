@@ -1,5 +1,5 @@
 <script lang="ts">
-export let hash: string;
+    let { hash }: { hash: string } = $props();
 </script> 
 
 <span>

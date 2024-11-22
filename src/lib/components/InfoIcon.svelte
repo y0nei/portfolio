@@ -1,10 +1,13 @@
 <script lang="ts">
-import Icon from "$lib/components/IconLoader.svelte";
+    import type { SvelteHTMLElements } from "svelte/elements";
+    import Icon from "$lib/components/IconLoader.svelte";
+
+    let { children }: SvelteHTMLElements["span"] = $props();
 </script>
 
-<span class="info-icon {$$props.class || ''}">
+<span class="info-icon">
     <Icon name="question-mark" />
-    <slot />
+    {@render children?.()}
 </span>
 
 <style lang="scss">

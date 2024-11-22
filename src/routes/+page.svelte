@@ -1,8 +1,8 @@
 <script lang="ts">
+    import "minireset.css";
     import Sections from "$lib/layouts/Sections.svelte";
     import Hero from "$lib/layouts/Hero.svelte";
 	import BentoGrid from "$lib/layouts/BentoGrid.svelte";
-    import "minireset.css";
     import VersionTag from "$lib/components/VersionTag.svelte";
     import UnderConstruction from "$lib/components/UnderConstruction.svelte";
 

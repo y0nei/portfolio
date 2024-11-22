@@ -1,10 +1,14 @@
 <script lang="ts">
     import SocialHandle from "$lib/components/SocialHandle.svelte";
-
     import userdata from "$lib/user.yml";
 
     // Custom sizes for better optical fit
-    const icon_sizes = { gpg: 25, email: 26, discord: 28, matrix: 26 }
+    const icon_sizes: Record<string, number> = {
+        gpg: 25,
+        email: 26,
+        discord: 28,
+        matrix: 26
+    };
 </script>
 
 {#each userdata.handles as e}

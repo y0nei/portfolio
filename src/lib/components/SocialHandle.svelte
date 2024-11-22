@@ -3,9 +3,13 @@
     import { copy } from "svelte-copy";
     import Icon from "$lib/components/IconLoader.svelte";
 
-    export let platform: string;
-    export let value: string;
-    export let iconSize: number = 30;
+    interface Props {
+        platform: string,
+        value: string,
+        iconSize: number,
+    }
+
+    let { platform, value, iconSize = 30 }: Props = $props();
 </script>
 
 <div class="social-handle">

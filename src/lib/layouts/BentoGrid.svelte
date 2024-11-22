@@ -16,25 +16,29 @@
         <Handles />
     </BentoItem>
     <BentoItem name="badges">
-        <svelte:fragment slot="header">
+        {#snippet header()}
             <p>Web Badges</p>
             <InfoIcon>
                 <Popover collapsible={{title: "Submissions & Content"}}>
                     Fun retro web badges found around the internet, along with badges
                     of cool people and friends of mine. <br>
-                    <svelte:fragment slot="collapsible">
+                    {#snippet collapse()}
                         Please contact me if you'd like
                         your badge added, if any of those people are secretly awful
                         or the websites contain hateful content.
-                    </svelte:fragment>
+                    {/snippet}
                 </Popover>
             </InfoIcon>
-        </svelte:fragment>
-        <GetMyBadge slot="additional"/>
+        {/snippet}
+        {#snippet additional()}
+            <GetMyBadge />
+        {/snippet}
         <BadgeMarquee />
     </BentoItem>
     <BentoItem name="webrings">
-        <p slot="header">Webrings</p>
+        {#snippet header()}
+            <p>Webrings</p>
+        {/snippet}
         <div class="webring-wrapper">
             <WebringSelector name="CSS Joy" href={{
                 previous: "https://webri.ng/webring/cssjoy/previous?via=https://yonei.dev/",
