@@ -10,7 +10,7 @@ const config = {
 		alias : {
 			"$icons": "static/icons"
 		}
-	},
+	}
 };
 
 export default config;
