@@ -11,6 +11,10 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
+<svelte:head>
+	<title>Yonei</title>
+</svelte:head>
+
 <Sections>
 	<section id="home">
 		<UnderConstruction />
