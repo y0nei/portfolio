@@ -13,6 +13,7 @@
 		<li>
 			<a href="blog/{post.slug}">{post.title}</a>
 			<p class="date">{post.date}</p>
+			<!-- TODO: Add filtering option for tags -->
 			{#if post.tags}
 				{#each post.tags as tag}
 					<span>&num;{tag}</span>

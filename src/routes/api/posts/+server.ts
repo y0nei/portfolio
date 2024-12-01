@@ -5,6 +5,7 @@ import type { RequestHandler } from "./$types";
 async function getPosts() {
 	let posts: Post[] = [];
 
+	// TODO: Also parse nested folders for better organization
 	const imports = import.meta.glob("$posts/*.md", { eager: true });
 
 	for (const path in imports) {
