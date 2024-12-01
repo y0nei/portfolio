@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { formatDate } from "$lib/utils/formatDate";
     import type { PageData } from "./$types";
 
 	let { data }: { data: PageData } = $props()
@@ -12,7 +13,7 @@
 	{#each data.posts as post}
 		<li>
 			<a href="blog/{post.slug}">{post.title}</a>
-			<p class="date">{post.date}</p>
+			<p class="date">{formatDate(post.date, "short")}</p>
 			<!-- TODO: Add filtering option for tags -->
 			{#if post.tags}
 				{#each post.tags as tag}

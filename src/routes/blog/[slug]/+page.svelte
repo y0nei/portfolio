@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { formatDate } from "$lib/utils/formatDate";
 	import type { PageData } from "./$types";
 
 	let { data }: { data: PageData } = $props();
@@ -13,7 +14,7 @@
 <article>
 	<hgroup>
 		<h1>{data.meta.title}</h1>
-		<p>Published at {data.meta.date}</p>
+		<p>Published on {formatDate(data.meta.date)}</p>
 	</hgroup>
 
 	<div class="tags">
