@@ -11,8 +11,11 @@
 
 <ul>
 	{#each data.posts as post}
+		{@const collectionQuery = post.collection ? "?collection=" + post.collection : undefined}
 		<li>
-			<a href="blog/{post.slug}">{post.title}</a>
+			<a href="blog/{post.slug}{collectionQuery}">
+				{post.title}
+			</a>
 			<p class="date">{formatDate(post.date, "short")}</p>
 			<!-- TODO: Add filtering option for tags -->
 			{#if post.tags}
