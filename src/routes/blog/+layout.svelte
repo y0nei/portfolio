@@ -2,15 +2,24 @@
     import type { Snippet } from "svelte";
     import Icon from "$lib/components/IconLoader.svelte";
     import HeaderButton from "$lib/components/blog/headerButton.svelte";
+    import { page } from '$app/stores';
+
+    const fileSource: string | null = $derived($page.data.source);
 
 	let { children }: { children: Snippet } = $props();
 </script>
 
+<!-- TODO: Add view on GitHub button for article page -->
 <header>
     <HeaderButton href="/">
         <Icon name="arrow-left" size={20} />
         home
     </HeaderButton>
+    {#if fileSource}
+        <HeaderButton href={fileSource}>
+            View Source
+        </HeaderButton>
+    {/if}
 </header>
 
 <div class="blog-content">
