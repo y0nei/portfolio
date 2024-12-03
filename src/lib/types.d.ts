@@ -5,4 +5,5 @@ export type Post = {
 	tags?: string[]
 	published: boolean
 	slug: string  // Parsed automatically
+	collection?: string
 }

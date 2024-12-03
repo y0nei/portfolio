@@ -5,16 +5,26 @@ import type { RequestHandler } from "./$types";
 async function getPosts() {
 	let posts: Post[] = [];
 
-	// TODO: Also parse nested folders for better organization
-	const imports = import.meta.glob("$posts/*.md", { eager: true });
+	const imports = {
+		...import.meta.glob("$posts/*.md", { eager: true }),
+		...import.meta.glob("$posts/*/*.md", { eager: true })
+	};
 
 	for (const path in imports) {
 		const file = imports[path];
-		const slug = path.split("/").at(-1)?.replace(".md", "");
+		const pathParts = path.split("/");
+		const slug = pathParts.at(-1)?.replace(".md", "");
+
+		// Check if the path has enough parts to contain a nested folder
+		const collection = pathParts.length > 3 ? pathParts[2] : undefined;
 
 		if (file && typeof file === "object" && "metadata" in file && slug) {
 			const metadata = file.metadata as Omit<Post, "slug">;
 			const post = { ...metadata, slug } satisfies Post;
+
+			if (collection) {
+				post.collection = collection
+			}
 
 			if (post.published) {
 				posts.push(post);
