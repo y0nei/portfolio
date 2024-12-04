@@ -31,6 +31,9 @@ web_badges:
 - name: Freeplay
   path: "https://freeplay.floof.company/assets/buttons/free.gif"
   src: "https://freeplay.floof.company"
+- name: Giiki
+  path: "https://giikis2.nekoweb.org/assets/badges/giikis2.png"
+  src: "https://giikis2.nekoweb.org"
 - name: Yonei
   path: yonei.png
   src: "https://yonei.dev"
