@@ -3,6 +3,9 @@ import adapter from "svelte-adapter-bun";
 import { sveltePreprocess } from "svelte-preprocess";
 import { mdsvex, escapeSvelte } from "mdsvex";
 import { createHighlighter } from "shiki";
+import rehypeUnwrapImages from "rehype-unwrap-images";
+import rehypeSlug from "rehype-slug";
+import remarkToc from "remark-toc";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -16,7 +19,9 @@ const mdsvexOptions = {
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang: lang, theme: "github-dark" }))
 			return `{@html \`${html}\` }`
 		}
-	}
+	},
+	remarkPlugins: [[remarkToc, { tight: true }]],
+	rehypePlugins: [rehypeSlug, rehypeUnwrapImages]
 }
 
 /** @type {import('@sveltejs/kit').Config} */
