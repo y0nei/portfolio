@@ -23,6 +23,7 @@
     "mdsvex": "^0.12.3",
     "minireset.css": "^0.0.7",
     "sass": "^1.80.4",
+    "shiki": "^1.24.0",
     "svelte": "^5",
     "svelte-adapter-bun": "^0.5.2",
     "svelte-check": "^3.8.6",
