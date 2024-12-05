@@ -9,17 +9,10 @@
 <style lang="scss">
     a {
         display: flex;
-        text-decoration: none;
-        color: white;
-        font-family: "Rubik";
-        font-weight: 450;
-        font-size: 1.15rem;
         width: fit-content;
         align-items: center;
-        text-transform: uppercase;
         gap: 0.2rem;
-        padding: 4px 6px;
-        padding-right: 10px;
+        padding: 4px 7px;
 
         background-color: var(--clr-background-alt);
         border-radius: calc(var(--border-radius) / 1.5);
@@ -28,5 +21,13 @@
         &:hover {
             background-color: var(--clr-accent-dark);
         }
+
+        :global(.svg-container) {
+            margin-right: 2px;
+
+            :global(svg) {
+                fill: white;
+            }
+        };
     }
 </style>

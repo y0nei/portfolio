@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
+    import ViewSource from "$lib/components/blog/ViewSource.svelte";
     import Icon from "$lib/components/IconLoader.svelte";
-    import HeaderButton from "$lib/components/blog/headerButton.svelte";
     import { page } from '$app/stores';
 
     const fileSource: string | null = $derived($page.data.source);
@@ -9,16 +9,16 @@
 	let { children }: { children: Snippet } = $props();
 </script>
 
-<!-- TODO: Add view on GitHub button for article page -->
 <header>
-    <HeaderButton href="/">
-        <Icon name="arrow-left" size={20} />
-        home
-    </HeaderButton>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+    </nav>
     {#if fileSource}
-        <HeaderButton href={fileSource}>
+        <ViewSource href={fileSource}>
+            <Icon name="github" size={16}/>
             View Source
-        </HeaderButton>
+        </ViewSource>
     {/if}
 </header>
 
@@ -34,9 +34,31 @@
     header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 100%;
-        padding: 1rem;
-        border-bottom: 1px solid var(--clr-background-alt);
+        height: 4rem;
+        padding: 0 25%;
+
+        nav {
+            display: inherit;
+            gap: 1.75rem;
+
+            a {
+                font-size: 1.1rem;
+
+                &:hover {
+                    color: var(--clr-accent);
+                }
+            }
+        }
+
+        :global(a) {
+            text-decoration: none;
+            color: var(--clr-offwhite);
+            font-family: "Rubik";
+            font-size: 1rem;
+            width: fit-content;
+        }
     }
 
     .blog-content {
