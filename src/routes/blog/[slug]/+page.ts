@@ -21,6 +21,7 @@ export const load: PageLoad = async ({ params, url, parent }) => {
 		return {
 			content: post.default,
 			meta: post.metadata,
+			collection: collection,
 			source: gitFileSource,
 		}
 	} catch (e) {
