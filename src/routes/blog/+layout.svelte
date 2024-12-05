@@ -63,6 +63,5 @@
 
     .blog-content {
         margin: 3% 25%;
-        border: 1px solid white;
     }
 </style>
