@@ -6,6 +6,8 @@ import { createHighlighter } from "shiki";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import remarkToc from "remark-toc";
+import remarkSubSuper from "remark-sub-super";
+import remarkIns from "remark-ins";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -20,7 +22,7 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`
 		}
 	},
-	remarkPlugins: [[remarkToc, { tight: true }]],
+	remarkPlugins: [[remarkToc, { tight: true }], remarkSubSuper, remarkIns],
 	rehypePlugins: [rehypeSlug, rehypeUnwrapImages]
 }
 
