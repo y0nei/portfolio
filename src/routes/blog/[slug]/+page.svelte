@@ -21,7 +21,7 @@
 				<p>Published on {formatDate(data.meta.date)}</p>
 			</div>
 			{#if data.collection}
-				<p class="collection">Part of <span>{data.collection}</span> collection</p>
+				<p class="collection">Part of <span>{data.collection.replace(/^\[+|\]+$/g, '')}</span> collection</p>
 			{/if}
 		</div>
 		{#if data.meta.description}

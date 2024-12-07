@@ -22,7 +22,8 @@ async function getPosts() {
 			const metadata = file.metadata as Omit<Post, "slug">;
 			const post = { ...metadata, slug } satisfies Post;
 
-			if (collection) {
+			// Set collections based on a reserved folder prefix & postfix character
+			if (collection && collection.startsWith("[") && collection.endsWith("]")) {
 				post.collection = collection
 			}
 

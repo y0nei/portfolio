@@ -23,7 +23,7 @@
 				{#if post.collection}
 					<span>
 						collection:&nbsp;
-						<p class="collection">{post.collection}</p>
+						<p class="collection">{post.collection.replace(/^\[+|\]+$/g, '')}</p>
 					</span>
 				{/if}
 			</div>
