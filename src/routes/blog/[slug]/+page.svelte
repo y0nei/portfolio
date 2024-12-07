@@ -24,6 +24,9 @@
 				<p class="collection">Part of <span>{data.collection}</span> collection</p>
 			{/if}
 		</div>
+		{#if data.meta.description}
+			<p class="description">{data.meta.description}</p>
+		{/if}
 	</hgroup>
 
 	{#if data.meta.tags}
@@ -49,6 +52,10 @@
 			h1 {
 				font-size: 3rem;
 				margin-bottom: 0.5rem;
+			}
+
+			.description {
+				margin-top: 0.75rem;
 			}
 
 			& > div {
