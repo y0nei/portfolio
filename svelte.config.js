@@ -5,7 +5,8 @@ import { mdsvex, escapeSvelte } from "mdsvex";
 import { createHighlighter } from "shiki";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
-import remarkToc from "remark-toc";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkToc from "$lib/remarkToc";
 import remarkSubSuper from "remark-sub-super";
 import remarkIns from "remark-ins";
 import remarkFootnotes from "remark-footnotes";
@@ -23,8 +24,8 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`
 		}
 	},
-	remarkPlugins: [[remarkToc, { tight: true }], remarkSubSuper, remarkIns, remarkFootnotes],
-	rehypePlugins: [rehypeSlug, rehypeUnwrapImages]
+	remarkPlugins: [[remarkToc, { tight: true, maxDepth: 3 }], remarkSubSuper, remarkIns, remarkFootnotes],
+	rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeUnwrapImages]
 }
 
 /** @type {import('@sveltejs/kit').Config} */
