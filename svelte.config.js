@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import remarkToc from "remark-toc";
 import remarkSubSuper from "remark-sub-super";
 import remarkIns from "remark-ins";
+import remarkFootnotes from "remark-footnotes";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -22,7 +23,7 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`
 		}
 	},
-	remarkPlugins: [[remarkToc, { tight: true }], remarkSubSuper, remarkIns],
+	remarkPlugins: [[remarkToc, { tight: true }], remarkSubSuper, remarkIns, remarkFootnotes],
 	rehypePlugins: [rehypeSlug, rehypeUnwrapImages]
 }
 
