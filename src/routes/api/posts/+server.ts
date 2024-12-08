@@ -16,15 +16,19 @@ async function getPosts() {
 		const slug = pathParts.at(-1)?.replace(".md", "");
 
 		// Check if the path has enough parts to contain a nested folder
-		const collection = pathParts.length > 3 ? pathParts[2] : undefined;
+		const nested = pathParts.length > 3 ? pathParts[2] : undefined;
 
 		if (file && typeof file === "object" && "metadata" in file && slug) {
 			const metadata = file.metadata as Omit<Post, "slug">;
 			const post = { ...metadata, slug } satisfies Post;
 
 			// Set collections based on a reserved folder prefix & postfix character
-			if (collection && collection.startsWith("[") && collection.endsWith("]")) {
-				post.collection = collection
+			if (nested) {
+				if (nested.startsWith("[") && nested.endsWith("]")) {
+					post.collection = nested;
+				} else {
+					post.inFolder = nested;
+				}
 			}
 
 			if (post.published) {

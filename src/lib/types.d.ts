@@ -6,4 +6,5 @@ export type Post = {
 	published: boolean
 	slug: string  // Parsed automatically
 	collection?: string
+	inFolder: string
 }
