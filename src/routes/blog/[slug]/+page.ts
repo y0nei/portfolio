@@ -19,7 +19,11 @@ export const load: PageLoad = async ({ params, url, parent }) => {
 			post = await import(`$posts/${params.slug}.md`);
 		}
 
-		const gitFileSource = gitHTTPUrl + "/posts" + path + url.pathname.replace("/blog", "") + ".md";
+		let gitFileSource: string = gitHTTPUrl + "/posts" + path;
+		if (postData[0].inFolder) {
+			gitFileSource = gitFileSource + "/" + postData[0].inFolder;
+		}
+		gitFileSource = gitFileSource + url.pathname.replace("/blog", "") + ".md";
 
 		return {
 			content: post.default,

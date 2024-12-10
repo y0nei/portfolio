@@ -15,7 +15,7 @@
         <a href="/blog">Blog</a>
     </nav>
     {#if fileSource}
-        <ViewSource href={fileSource}>
+        <ViewSource href={fileSource?.replace("[", "%5B").replace("]", "%5D")}>
             <Icon name="github" size={16}/>
             View Source
         </ViewSource>
