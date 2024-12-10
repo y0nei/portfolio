@@ -1,5 +1,5 @@
 import { escapeSvelte } from "mdsvex";
-import { createHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -13,7 +13,7 @@ const mdsvexOptions = {
 	extension: ".md",
 	highlight: {
 		highlighter: async (code, lang) => {
-			const highlighter = await createHighlighter({
+			const highlighter = await getSingletonHighlighter({
 				themes: ["github-dark"],
 				langs: [lang]
 			});
