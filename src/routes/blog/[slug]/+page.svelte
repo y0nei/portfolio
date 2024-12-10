@@ -2,6 +2,8 @@
 	import { formatDate } from "$lib/utils/formatDate";
 	import type { PageData } from "./$types";
 	import Icon from "$lib/components/IconLoader.svelte";
+	import "$lib/markdown.scss";
+	import "@fontsource/mononoki";
 
 	let { data }: { data: PageData } = $props();
 </script>
