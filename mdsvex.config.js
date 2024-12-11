@@ -1,5 +1,12 @@
 import { escapeSvelte } from "mdsvex";
 import { getSingletonHighlighter } from "shiki";
+import {
+	transformerNotationHighlight,
+	transformerNotationWordHighlight,
+	transformerNotationFocus,
+	transformerNotationDiff
+} from "@shikijs/transformers";
+
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -19,7 +26,15 @@ const mdsvexOptions = {
 			});
 			const html = escapeSvelte(highlighter.codeToHtml(code, {
                 lang: lang,
-                theme: "github-dark"
+                theme: "github-dark",
+				transformers: [
+					// BUG: Shiki somehow wont apply meta transformers since meta
+					// string parsing doesn't work, only notation transformers work(?)
+					transformerNotationHighlight(),
+					transformerNotationWordHighlight(),
+					transformerNotationFocus(),
+					transformerNotationDiff()
+				]
             }));
 			return `{@html \`${html}\` }`;
 		}
