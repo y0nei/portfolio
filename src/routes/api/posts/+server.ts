@@ -5,10 +5,7 @@ import type { RequestHandler } from "./$types";
 async function getPosts() {
 	let posts: Post[] = [];
 
-	const imports = {
-		...import.meta.glob("$posts/*.md", { eager: true }),
-		...import.meta.glob("$posts/*/*.md", { eager: true })
-	};
+	const imports = import.meta.glob(["$posts/*.md", "$posts/*/*.md"], { eager: true });
 
 	for (const path in imports) {
 		const file = imports[path];
