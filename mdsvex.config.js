@@ -10,7 +10,7 @@ import {
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkToc from "$lib/remarkToc";
+import remarkToc from "./src/lib/remarkToc.js";
 import remarkSubSuper from "remark-sub-super";
 import remarkIns from "remark-ins";
 import remarkFootnotes from "remark-footnotes";

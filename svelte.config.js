@@ -2,7 +2,7 @@
 import adapter from "svelte-adapter-bun";
 import { sveltePreprocess } from "svelte-preprocess";
 import { mdsvex } from "mdsvex";
-import mdsvexOptions from "./mdsvex.config";
+import mdsvexOptions from "./mdsvex.config.js";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
