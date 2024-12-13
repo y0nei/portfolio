@@ -1,6 +1,6 @@
 <script lang="ts">
     import "minireset.css";
-    import "$lib/variables.scss";
+    import "$lib/styles/variables.scss";
 
 	let { children } = $props();
 </script>

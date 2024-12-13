@@ -1,26 +1,16 @@
 <script lang="ts">
-    let iconMap = new Map<string, string>()
-
-    const icons = import.meta.glob(
-        "$icons/*.svg",
-        { eager: true, query: "?raw", import: "default" }
-    )
-
-    for (const obj in icons) {
-        const key: string = obj.slice(14, -4);
-        iconMap.set(key, icons[obj] as string)
-    }
+    import { page } from "$app/stores";
 
     interface Props {
         name: string,
-        size?: number
+        size?: number,
     }
 
     let { name, size = 28 }: Props = $props();
 </script>
 
 <div style:width={size+"px"} class="svg-container">
-    {@html iconMap.get(name)}
+    {@html $page.data.iconMap.get(name)}
 </div>
 
 <style lang="scss">
