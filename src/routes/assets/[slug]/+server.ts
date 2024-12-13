@@ -17,7 +17,12 @@ async function getImage(fileName: string) {
 };
 
 export const GET: RequestHandler = async ({ params }) => {
-    const imagePath = await getImage(params.slug);
+    let imagePath = await getImage(params.slug);
+
+    // Escape special characters if assets are under a collection
+    if (imagePath.includes("%5B") || imagePath.includes("%5D")) {
+        imagePath = imagePath.replace("%5B", "\[").replace("%5D", "\]")
+    }
 
     if (imagePath) {
         return new Response(await Bun.file(path.join(searchForWorkspaceRoot(process.cwd()), imagePath)).arrayBuffer());
