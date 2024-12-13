@@ -54,7 +54,7 @@
     </BentoItem>
     <BentoItem name="buttons" hollow>
         <BentoButton href="https://status.mossycab.in/status/all" target="_blank">Service status</BentoButton>
-        <BentoButton href="#">Blog <Icon name="blog" size={18} /></BentoButton>
+        <BentoButton href="/blog">Blog <Icon name="blog" size={18} /></BentoButton>
     </BentoItem>
 </div>
 
