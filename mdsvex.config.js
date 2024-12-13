@@ -36,10 +36,10 @@ const mdsvexOptions = {
 				],
 				meta: { __raw: metastring }
             }));
-			return `{@html \`<div class="shiki-block" data-lang="${lang}">
-				${withTitle ? `<h1 class="shiki-block-title">${withTitle[1]}</h1>` : ''}
+			return `{@html \`<figure class="shiki-block" data-lang="${lang}">
+				${withTitle ? `<figcaption class="shiki-block-title">${withTitle[1]}</figcaption>` : ''}
 				${html}
-			</div>\` }`;
+			</figure>\` }`;
 		}
 	},
 	remarkPlugins: [
