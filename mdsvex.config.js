@@ -19,7 +19,8 @@ import remarkFootnotes from "remark-footnotes";
 const mdsvexOptions = {
 	extension: ".md",
 	highlight: {
-		highlighter: async (code, lang, meta) => {
+		highlighter: async (code, lang, metastring) => {
+			const withTitle = (metastring || '').match(/title="([^"]+)"/);
 			const highlighter = await getSingletonHighlighter({
 				themes: ["github-dark"],
 				langs: [lang]
@@ -31,13 +32,14 @@ const mdsvexOptions = {
 					transformerNotationFocus(),
 					transformerNotationDiff(),
 					transformerMetaHighlight(),
-					transformerMetaWordHighlight(),
+					transformerMetaWordHighlight()
 				],
-				meta: {
-					__raw: meta
-				}
+				meta: { __raw: metastring }
             }));
-			return `{@html \`<div class="code-block" data-lang="${lang}">${html}</div>\` }`;
+			return `{@html \`<div class="shiki-block" data-lang="${lang}">
+				${withTitle ? `<h1 class="shiki-block-title">${withTitle[1]}</h1>` : ''}
+				${html}
+			</div>\` }`;
 		}
 	},
 	remarkPlugins: [
