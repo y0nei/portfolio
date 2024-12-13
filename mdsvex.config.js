@@ -1,10 +1,10 @@
 import { escapeSvelte } from "mdsvex";
 import { getSingletonHighlighter } from "shiki";
 import {
-	transformerNotationHighlight,
-	transformerNotationWordHighlight,
 	transformerNotationFocus,
-	transformerNotationDiff
+	transformerNotationDiff,
+	transformerMetaHighlight,
+	transformerMetaWordHighlight
 } from "@shikijs/transformers";
 
 import rehypeUnwrapImages from "rehype-unwrap-images";
@@ -19,7 +19,7 @@ import remarkFootnotes from "remark-footnotes";
 const mdsvexOptions = {
 	extension: ".md",
 	highlight: {
-		highlighter: async (code, lang) => {
+		highlighter: async (code, lang, meta) => {
 			const highlighter = await getSingletonHighlighter({
 				themes: ["github-dark"],
 				langs: [lang]
@@ -28,15 +28,16 @@ const mdsvexOptions = {
                 lang: lang,
                 theme: "github-dark",
 				transformers: [
-					// BUG: Shiki somehow wont apply meta transformers since meta
-					// string parsing doesn't work, only notation transformers work(?)
-					transformerNotationHighlight(),
-					transformerNotationWordHighlight(),
 					transformerNotationFocus(),
-					transformerNotationDiff()
-				]
+					transformerNotationDiff(),
+					transformerMetaHighlight(),
+					transformerMetaWordHighlight(),
+				],
+				meta: {
+					__raw: meta
+				}
             }));
-			return `{@html \`${html}\` }`;
+			return `{@html \`<div class="code-block" data-lang="${lang}">${html}</div>\` }`;
 		}
 	},
 	remarkPlugins: [
