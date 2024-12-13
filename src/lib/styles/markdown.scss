@@ -97,20 +97,76 @@ article .content {
     }
 
     // Codeblocks
-    .shiki {
-        border-radius: calc(var(--border-radius) / 2);
-        border: 1px solid grey;
+    figure.shiki-block {
         overflow: hidden;
-        overflow-x: scroll;
-        padding: 0.75rem;
         margin: 1rem 0;
+        border: 1px solid grey;
+        border-radius: calc(var(--border-radius) / 2);
 
-        code {
-            background-color: initial;
-            padding: initial;
+        figcaption {
+            font-family: "Mononoki", monospace;
+            font-size: 0.8rem;
+            color: var(--clr-offwhite);
+            padding: 0.1rem 0.6rem;
+            background-color: var(--clr-background-alt);
+            border-top-left-radius: calc(var(--border-radius) / 2);
+            border-top-right-radius: calc(var(--border-radius) / 2);
         }
 
-        // TODO: Highlighted lines support
+        .shiki {
+            overflow: hidden;
+            overflow-x: scroll;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+
+            code {
+                display: block;
+                min-width: 100%;
+                background-color: initial;
+                padding: initial;
+            }
+
+            .line {
+                position: relative;
+                padding-left: 0.75rem;
+                display: inline-block;
+                width: 100%;
+
+                &.highlighted {
+                    background-color: #32373e;
+                }
+
+                .highlighted-word {
+                    padding: 0 0.15rem;
+                    border: 1px solid gray;
+                    border-radius: calc(var(--border-radius) / 2);
+                }
+
+                &.diff {
+                    &.add {
+                        background-color: rgba(54, 158, 42, 0.33);
+
+                        &::before {
+                            content: "+";
+                            position: absolute;
+                            left: 0.25rem;
+                            color: rgb(54, 158, 42);
+                        }
+                    }
+                    &.remove {
+                        background-color: rgba(197, 71, 71, 0.33);
+                        opacity: 0.7;
+
+                        &::before {
+                            content: "-";
+                            position: absolute;
+                            left: 0.25rem;
+                            color: rgb(197, 71, 71);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // Tables (with rounded borders)
