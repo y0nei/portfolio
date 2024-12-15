@@ -7,17 +7,17 @@ async function getImage(fileName: string) {
         "$posts/**/*.png",
         "$posts/**/*.jpg",
         "$posts/**/*.gif"
-    ], { eager: true });
+    ], { eager: true, import: "default" });
 
     for (const path in imports) {
         if (fileName === path.split("/").at(-1)) {
-            return imports[path].default;
+            return imports[path] as string;
         };
     };
 };
 
 export const GET: RequestHandler = async ({ params }) => {
-    let imagePath: string = await getImage(params.slug);
+    let imagePath = await getImage(params.slug);
 
     if (imagePath) {
         // Escape special characters if assets are under a collection
