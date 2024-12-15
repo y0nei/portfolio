@@ -6,14 +6,14 @@ socials:
   GitHub: "https://github.com/y0nei"
 
 handles:
-- service: GPG
-  value: "89A8EAB009DF28DC"
-- service: Matrix
-  value: "@y0nei:matrix.org"
-- service: Email
-  value: "y0nei@proton.me"
-- service: Discord
-  value: "y0nei"
+  - service: GPG
+    value: "89A8EAB009DF28DC"
+  - service: Matrix
+    value: "@y0nei:matrix.org"
+  - service: Email
+    value: "y0nei@proton.me"
+  - service: Discord
+    value: "y0nei"
 
 donations:
   - service: Ko-fi
@@ -22,24 +22,24 @@ donations:
     link: "https://liberapay.com/Yonei"
 
 web_badges:
-- name: Snewberry
-  path: "https://snewberry.neocities.org/snewbutton.gif"
-  src: "https://snewberry.neocities.org"
-- name: Toastyfen
-  path: "https://toastyfen.neocities.org/resources/toastyfen.gif"
-  src: "https://toastyfen.neocities.org"
-- name: Freeplay
-  path: "https://freeplay.floof.company/assets/buttons/free.gif"
-  src: "https://freeplay.floof.company"
-- name: Giiki
-  path: "https://giikis2.nekoweb.org/assets/badges/giikis2.png"
-  src: "https://giikis2.nekoweb.org"
-- name: Yonei
-  path: yonei.png
-  src: "https://yonei.dev"
-- name: '"Made with my own two paws" badge'
-  path: paws.png
-- name: '"Get Linux now! badge" badge'
-  path: linuxnow.gif
-- name: '"Powered by the void" badge'
-  path: void.gif
+  - name: Snewberry
+    path: "https://snewberry.neocities.org/snewbutton.gif"
+    src: "https://snewberry.neocities.org"
+  - name: Toastyfen
+    path: "https://toastyfen.neocities.org/resources/toastyfen.gif"
+    src: "https://toastyfen.neocities.org"
+  - name: Freeplay
+    path: "https://freeplay.floof.company/assets/buttons/free.gif"
+    src: "https://freeplay.floof.company"
+  - name: Giiki
+    path: "https://giikis2.nekoweb.org/assets/badges/giikis2.png"
+    src: "https://giikis2.nekoweb.org"
+  - name: Yonei
+    path: yonei.png
+    src: "https://yonei.dev"
+  - name: '"Made with my own two paws" badge'
+    path: paws.png
+  - name: '"Get Linux now! badge" badge'
+    path: linuxnow.gif
+  - name: '"Powered by the void" badge'
+    path: void.gif
