@@ -3,7 +3,7 @@
     import Popover from "$lib/components/Popover.svelte";
     import userdata from "$lib/user.yml";
 
-    let iconmap = new Map<string, string>(Object.entries(userdata.socials))
+    let iconmap = new Map(Object.entries(userdata.socials))
 
     const iconColors: Record<string, string> = {
         bluesky: "#0285FF",
