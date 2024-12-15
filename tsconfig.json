@@ -11,7 +11,7 @@
 		"strict": true,
 		"moduleResolution": "bundler",
 		"types": [
-			"@modyfi/vite-plugin-yaml/modules",
+			"unplugin-yaml/types",
 			"@types/bun"
 		]
 	}

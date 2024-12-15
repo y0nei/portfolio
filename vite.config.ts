@@ -1,10 +1,10 @@
 import { sveltekit } from "@sveltejs/kit/vite";
-import ViteYaml from "@modyfi/vite-plugin-yaml";
 import { defineConfig, searchForWorkspaceRoot } from "vite";
+import YAMLPlugin from "unplugin-yaml/vite";
 import path from "path";
 
 export default defineConfig({
-	plugins: [sveltekit(), ViteYaml()],
+	plugins: [sveltekit(), YAMLPlugin()],
 	server: {
 		fs: {
         	allow: [
