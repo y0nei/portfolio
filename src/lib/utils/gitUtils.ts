@@ -8,7 +8,6 @@ export function getGitCommitHash() {
 }
 
 export function getGitHTTPUrl(blob: boolean = true): string {
-    let url: string;
     let repoURL: string;
     let branch: string;
 
@@ -26,17 +25,15 @@ export function getGitHTTPUrl(blob: boolean = true): string {
         throw new Error("Could not get Git URL, are you in a Git repository? " + e);
     }
 
-    if (blob) {
-        branch = "blob/" + branch
+    // Include blob entry in path
+    branch = blob ? "blob/" + branch : branch
+
+    if (repoURL.startsWith("git@")) {
+        repoURL = repoURL.replace(":", "/").replace("git@", "https://");
+    }
+    if (repoURL.endsWith(".git")) {
+        repoURL = repoURL.replace(".git", "/");
     }
 
-    if (repoURL.startsWith("git@github.com")) {
-        url = "https://github.com/" + repoURL.split(":")[1].replace(".git", "/") + branch;
-    } else if (repoURL.startsWith("http")) {
-        url = repoURL.replace(".git", "/") + branch;
-    } else {
-        throw new Error("Unsupported Git URL format: " + repoURL);
-    }
-
-    return url;
+    return repoURL + branch;
 }
