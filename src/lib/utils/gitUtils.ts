@@ -33,7 +33,7 @@ export function getGitHTTPUrl(blob: boolean = true): string {
     if (repoURL.startsWith("git@github.com")) {
         url = "https://github.com/" + repoURL.split(":")[1].replace(".git", "/") + branch;
     } else if (repoURL.startsWith("http")) {
-        url = repoURL + "/" + branch;
+        url = repoURL.replace(".git", "/") + branch;
     } else {
         throw new Error("Unsupported Git URL format: " + repoURL);
     }
