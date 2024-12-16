@@ -102,49 +102,6 @@
             }
         }
 
-        // Overrides for PopoverTooltip content
-        .iceshrimp-tooltip {
-            --clr-link: #A8D3F9;
-            --clr-link-hover: #85C7E8;
-            bottom: 160%;
-            padding: 5px;
-            min-width: 150px;
-            font-size: 0.85rem;
-            color: var(--clr-background);
-
-            & > p a {
-                color: #064e79;
-                text-decoration: underline;
-                cursor: pointer;
-            }
-
-            .info-tooltip-button {
-                display: flex;
-                justify-content: center;
-                text-decoration: none;
-                margin-top: 5px;
-                padding: 3px 0;
-                background-color: rgba(0,0,0,0.3);
-                border-radius: 5px;
-                color: var(--clr-link);
-
-                &:hover {
-                    background-color: rgba(0,0,0,0.4);
-                    color: var(--clr-link-hover);
-                    cursor: pointer;
-
-                    svg {
-                        color: var(--clr-link-hover);
-                    }
-                }
-
-                svg {
-                    color: var(--clr-link);
-                    margin-top: 2px;
-                }
-            }
-        }
-
         @media screen and (max-width: 600px) {
             --icon-size: 40px;
 
