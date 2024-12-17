@@ -105,7 +105,7 @@
             }
 
             &:hover {
-                background-color: lightgreen;  // temporary
+                background-color: var(--clr-accent);
 
                 .popover-tooltip {
                     opacity: 1;

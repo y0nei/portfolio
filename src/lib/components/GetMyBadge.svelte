@@ -114,8 +114,8 @@
                 cursor: auto;
                 visibility: visible;
 
-                background-color: #323235;
-                border: 1px solid #454549;
+                background-color: var(--clr-bento-background);
+                border: 1px solid var(--clr-bento-border);
                 border-radius: calc(var(--border-radius) / 2);
                 box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
             }

@@ -17,9 +17,11 @@
         color: var(--clr-offwhite);
         font-family: sans-serif;
         font-size: 0.72rem;
-        background-color: #323235;
-        border: 1px solid #454549;
-        padding: 2px 6px;
+        background-color: var(--clr-bento-background);
+        border: 1px solid var(--clr-bento-border);
+        border-bottom: none;
+        border-right: none;
+        padding: 2px 6px 4px 6px;
 
         border-top-left-radius: calc( var(--border-radius) / 2);
 

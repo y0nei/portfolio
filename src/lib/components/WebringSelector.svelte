@@ -22,7 +22,7 @@
 
 <style lang="scss">
     div {
-        background-color: #454549;
+        background-color: var(--clr-bento-border);
         border-radius: calc(var(--border-radius) - 5px);
         padding: 5px;
         font-size: 0.75rem;
@@ -41,7 +41,7 @@
 
             a {
                 padding: 2px 5px;
-                background-color: gray;
+                background-color: #6b6b72;
                 user-select: none;
                 transition: 150ms;
                 text-decoration: none;
@@ -54,12 +54,12 @@
                 }
 
                 &:first-child {
-                    border-right: 2px solid #454549;
+                    border-right: 2px solid var(--clr-bento-border);
                     border-top-left-radius: calc(var(--border-radius) - 7px);
                     border-bottom-left-radius: calc(var(--border-radius) - 7px);
                 }
                 &:last-child {
-                    border-left: 2px solid #454549;
+                    border-left: 2px solid var(--clr-bento-border);
                     border-top-right-radius: calc(var(--border-radius) - 7px);
                     border-bottom-right-radius: calc(var(--border-radius) - 7px);
                 }

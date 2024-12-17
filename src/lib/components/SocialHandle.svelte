@@ -22,7 +22,11 @@
 
 <style lang="scss" global>
    .social-handle {
+        --clr-pill-background: #242424;
+        --clr-pill-border: #58585e;
+        --clr-pill-button: #454549;
         --pill-border-radius: 0.6rem;
+
         display: flex;
         align-items: center;
         color: var(--clr-text);
@@ -33,8 +37,8 @@
             display: inherit;
             align-items: inherit;
             justify-content: center;
-            background-color: #242424;
-            border: 1px dashed #555555;
+            background-color: var(--clr-pill-background);
+            border: 1px dashed var(--clr-pill-border);
             border-radius: var(--pill-border-radius);
             padding: 5px;
             margin-left: 10px;
@@ -53,13 +57,13 @@
             height: 26px;
             aspect-ratio: 1;
             border-radius: calc(var(--pill-border-radius) - 4px);
-            background-color: #454545;
+            background-color: var(--clr-pill-button);
             margin-left: 3px;
 
             svg { color: var(--clr-offwhite) }
 
             &:hover {
-                background-color: #595959;
+                background-color: var(--clr-pill-border);
                 cursor: pointer;
             }
 

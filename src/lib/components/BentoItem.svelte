@@ -43,7 +43,7 @@
                 font-size: 0.9rem;
                 padding: 5px 8px;
                 border-radius: calc(var(--border-radius) - 5px);
-                background-color: #454549;
+                background-color: var(--clr-bento-border);
                 box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
             }
         }
@@ -53,8 +53,8 @@
             flex-direction: column;
             font-family: "Rubik";
             color: var(--clr-text);
-            background-color: #323235;
-            border: 1px solid #454549;
+            background-color: var(--clr-bento-background);
+            border: 1px solid var(--clr-bento-border);
             border-radius: var(--border-radius);
         }
     }
