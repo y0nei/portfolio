@@ -64,4 +64,37 @@
     .blog-content {
         margin: 3% 25%;
     }
+
+    @media only screen and (max-width: 1000px) {
+        header {
+            padding: 0 18%;
+        }
+        .blog-content {
+            margin: 3% 18%;
+        }
+    }
+    @media only screen and (max-width: 750px) {
+        header {
+            padding: 0 15%;
+        }
+        .blog-content {
+            margin: 3% 15%;
+        }
+    }
+    @media only screen and (max-width: 580px) {
+        header {
+            padding: 0 8%;
+        }
+        .blog-content {
+            margin: 3% 8%;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        header {
+            padding: 0 5%;
+        }
+        .blog-content {
+            margin: 3% 5%;
+        }
+    }
 </style>
