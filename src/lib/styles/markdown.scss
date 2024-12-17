@@ -13,6 +13,7 @@ article .content {
 
     h1, h2, h3, h4, h5, h6 {
         font-weight: bold;
+        width: fit-content;
 
         a::after {
             content: "#";
@@ -92,6 +93,7 @@ article .content {
         font-family: "Mononoki", monospace;
         font-size: 0.8rem;
         padding: 0.15rem 0.25rem;
+        border: 1px solid #496546;
         background-color: var(--clr-accent-dark);
         border-radius: calc(var(--border-radius) / 2);
     }
@@ -100,7 +102,7 @@ article .content {
     figure.shiki-block {
         overflow: hidden;
         margin: 1rem 0;
-        border: 1px solid grey;
+        border: 1px solid var(--clr-bento-border);
         border-radius: calc(var(--border-radius) / 2);
 
         figcaption {
@@ -123,6 +125,7 @@ article .content {
                 display: block;
                 min-width: 100%;
                 background-color: initial;
+                border: initial;
                 padding: initial;
             }
 
@@ -170,7 +173,6 @@ article .content {
     }
 
     // Tables (with rounded borders)
-    // TODO: Pick some better colors
     table {
         overflow: hidden;
         background-color: var(--clr-background-alt);
@@ -195,7 +197,7 @@ article .content {
         border-color: inherit;
 
         &:nth-child(2n) {
-            background-color: gray;
+            background-color: var(--clr-bento-border);
         }
     }
     th, td {
