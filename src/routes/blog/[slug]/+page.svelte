@@ -14,7 +14,7 @@
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<article>
+<article class="markdown-article">
 	<hgroup>
 		<h1>{data.meta.title}</h1>
 		<div>
@@ -44,8 +44,8 @@
 	</div>
 </article>
 
-<style lang="scss">
-	article {
+<style lang="scss" global>
+	article.markdown-article {
 		color: var(--clr-offwhite);
 		// TODO: Find a different font
 		font-family: "Rubik";
@@ -101,6 +101,7 @@
 
 		ul.tags {
 			display: flex;
+			flex-wrap: wrap;
 			gap: 0.25rem;
 			margin-top: 1rem;
 
@@ -115,6 +116,20 @@
 
 		.content {
 			margin-top: 3rem;
+		}
+
+		@media only screen and (max-width: 500px) {
+			hgroup {
+				h1 {
+					font-size: 2.7rem;
+				}
+
+				& > div {
+					flex-direction: column;
+					align-items: initial;
+					gap: 0.5rem;
+				}
+			}
 		}
 	}
 </style>
