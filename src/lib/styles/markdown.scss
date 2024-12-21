@@ -1,6 +1,6 @@
 article .content {
-    // TODO: Find a better font
-    font-family: "Rubik", sans-serif;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 1.05rem;
     line-height: 1.618; // Golden ratio :nerd_emoji:
 
     // Headings
@@ -17,6 +17,7 @@ article .content {
 
         a::after {
             content: "#";
+            font-family: "Rubik", sans-serif;
             display: inline-block;
             font-weight: initial;
             opacity: 0;

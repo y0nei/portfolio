@@ -4,6 +4,7 @@
 	import Icon from "$lib/components/IconLoader.svelte";
 	import "$lib/styles/markdown.scss";
 	import "@fontsource/mononoki";
+	import "@fontsource/atkinson-hyperlegible";
 
 	let { data }: { data: PageData } = $props();
 </script>
