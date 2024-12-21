@@ -122,8 +122,7 @@ article .content {
             padding-bottom: 0.75rem;
 
             code {
-                display: block;
-                min-width: 100%;
+                display: grid;
                 background-color: initial;
                 border: initial;
                 padding: initial;
@@ -132,8 +131,6 @@ article .content {
             .line {
                 position: relative;
                 padding-left: 0.75rem;
-                display: inline-block;
-                width: 100%;
 
                 &.highlighted {
                     background-color: #32373e;
