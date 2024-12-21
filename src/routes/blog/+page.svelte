@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { formatDate } from "$lib/utils/formatDate";
+	import "@fontsource/atkinson-hyperlegible";
     import type { PageData } from "./$types";
 
 	let { data }: { data: PageData } = $props()
@@ -28,7 +29,7 @@
 				{/if}
 			</div>
 			{#if post.description}
-				<p>{post.description}</p>
+				<p class="description">{post.description}</p>
 			{/if}
 			<!-- TODO: Add filtering option for tags -->
 			{#if post.tags}
@@ -46,13 +47,11 @@
 	ul {
 		display: flex;
 		flex-direction: column;
-
 	}
 
 	li {
 		color: var(--clr-offwhite);
-		// TODO: Find a different font
-		font-family: "Rubik";
+		font-family: "Atkinson Hyperlegible", sans-serif;
 
 		// Separator
 		border-bottom: 1px dashed var(--clr-background-alt);
@@ -67,6 +66,7 @@
 
 		header {
 			font-size: 2.75rem;
+			font-family: "Rubik", sans-serif;
 
 			a {
 				text-decoration: none;
@@ -106,6 +106,10 @@
 					margin-right: calc(0.25rem + var(--_gap));
 				}
 			}
+		}
+
+		.description {
+			margin-top: 0.75rem;
 		}
 
 		ul.tags {

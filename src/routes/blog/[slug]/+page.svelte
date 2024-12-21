@@ -48,17 +48,17 @@
 <style lang="scss" global>
 	article.markdown-article {
 		color: var(--clr-offwhite);
-		// TODO: Find a different font
-		font-family: "Rubik";
+		font-family: "Atkinson Hyperlegible", sans-serif;
 
 		hgroup {
 			h1 {
+				font-family: "Rubik", sans-serif;
 				font-size: 3rem;
-				margin-bottom: 0.5rem;
 			}
 
 			.description {
-				margin-top: 0.75rem;
+				font-size: 1.1rem;
+				margin-top: 1rem;
 			}
 
 			& > div {
@@ -90,7 +90,7 @@
 					background-color: var(--clr-accent-dark);
 					width: fit-content;
 					padding: 4px 8px;
-					font-size: 0.75rem;
+					font-size: 0.78rem;
 					border-radius: 10rem;
 
 					span {
@@ -104,7 +104,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.25rem;
-			margin-top: 1rem;
+			margin-top: 0.5rem;
 
 			li {
 				background-color: var(--clr-background-alt);
