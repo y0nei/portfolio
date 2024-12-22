@@ -1,15 +1,15 @@
 article .content {
-    // TODO: Find a better font
-    font-family: "Rubik", sans-serif;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 1.05rem;
     line-height: 1.618; // Golden ratio :nerd_emoji:
 
     // Headings
     h1 { font-size: 2.25rem }
-    h2 { font-size: 1.75rem }
-    h3 { font-size: 1.5rem }
-    h4 { font-size: 1.25rem }
-    h5 { font-size: 1rem }
-    h6 { font-size: 0.85rem }
+    h2 { font-size: 1.85rem }
+    h3 { font-size: 1.55rem }
+    h4 { font-size: 1.33rem }
+    h5 { font-size: 1.15rem }
+    h6 { font-size: 1rem }
 
     h1, h2, h3, h4, h5, h6 {
         font-weight: bold;
@@ -17,6 +17,7 @@ article .content {
 
         a::after {
             content: "#";
+            font-family: "Rubik", sans-serif;
             display: inline-block;
             font-weight: initial;
             opacity: 0;
@@ -122,8 +123,7 @@ article .content {
             padding-bottom: 0.75rem;
 
             code {
-                display: block;
-                min-width: 100%;
+                display: grid;
                 background-color: initial;
                 border: initial;
                 padding: initial;
@@ -132,8 +132,6 @@ article .content {
             .line {
                 position: relative;
                 padding-left: 0.75rem;
-                display: inline-block;
-                width: 100%;
 
                 &.highlighted {
                     background-color: #32373e;

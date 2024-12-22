@@ -11,6 +11,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
+    "@fontsource/atkinson-hyperlegible": "^5.1.0",
     "@fontsource/mononoki": "^5.1.0",
     "svelte-copy": "^1.4.2"
   },
@@ -22,6 +23,7 @@
     "@types/bun": "^1.1.13",
     "mdast-util-toc": "^7.1.0",
     "mdsvex": "^0.12.3",
+    "mdsvex-reading-time": "^1.0.5",
     "minireset.css": "^0.0.7",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",

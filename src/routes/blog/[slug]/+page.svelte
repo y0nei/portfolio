@@ -4,6 +4,7 @@
 	import Icon from "$lib/components/IconLoader.svelte";
 	import "$lib/styles/markdown.scss";
 	import "@fontsource/mononoki";
+	import "@fontsource/atkinson-hyperlegible";
 
 	let { data }: { data: PageData } = $props();
 </script>
@@ -14,7 +15,7 @@
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<article>
+<article class="markdown-article">
 	<hgroup>
 		<h1>{data.meta.title}</h1>
 		<div>
@@ -39,25 +40,29 @@
 		</ul>
 	{/if}
 
+	<div class="spacer">
+		<span>{data.meta.readingTime.text}</span>
+	</div>
+
 	<div class="content">
-		<data.content />
+		{@html data.content}
 	</div>
 </article>
 
-<style lang="scss">
-	article {
+<style lang="scss" global>
+	article.markdown-article {
 		color: var(--clr-offwhite);
-		// TODO: Find a different font
-		font-family: "Rubik";
+		font-family: "Atkinson Hyperlegible", sans-serif;
 
 		hgroup {
 			h1 {
+				font-family: "Rubik", sans-serif;
 				font-size: 3rem;
-				margin-bottom: 0.5rem;
 			}
 
 			.description {
-				margin-top: 0.75rem;
+				font-size: 1.1rem;
+				margin-top: 1rem;
 			}
 
 			& > div {
@@ -89,7 +94,7 @@
 					background-color: var(--clr-accent-dark);
 					width: fit-content;
 					padding: 4px 8px;
-					font-size: 0.75rem;
+					font-size: 0.78rem;
 					border-radius: 10rem;
 
 					span {
@@ -101,8 +106,9 @@
 
 		ul.tags {
 			display: flex;
+			flex-wrap: wrap;
 			gap: 0.25rem;
-			margin-top: 1rem;
+			margin-top: 0.5rem;
 
 			li {
 				background-color: var(--clr-background-alt);
@@ -113,8 +119,53 @@
 			}
 		}
 
-		.content {
-			margin-top: 3rem;
+		.spacer {
+			display: flex;
+			position: relative;
+			justify-content: center;
+			user-select: none;
+			margin-top: 2rem;
+			margin-bottom: 3rem;
+
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: -2px;
+				width: 100%;
+				height: 1px;
+				background: linear-gradient(
+					to right,
+					transparent 0%,
+					var(--clr-bento-border) 15%,
+					var(--clr-bento-border) 95%,
+					transparent 100%
+				);
+			}
+
+			span {
+				position: absolute;
+				top: -0.5rem;
+				font-family: "Mononoki", monospace;
+				font-size: 0.75rem;
+				padding: 0.1rem 0.3rem;
+				border: 1px solid var(--clr-bento-border);
+				background-color: var(--clr-background-alt);
+				border-radius: calc(var(--border-radius) / 2);
+			}
+		}
+
+		@media only screen and (max-width: 500px) {
+			hgroup {
+				h1 {
+					font-size: 2.7rem;
+				}
+
+				& > div {
+					flex-direction: column;
+					align-items: initial;
+					gap: 0.5rem;
+				}
+			}
 		}
 	}
 </style>
