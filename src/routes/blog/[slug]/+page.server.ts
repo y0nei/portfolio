@@ -21,19 +21,18 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 			post = await import(`$posts/${params.slug}.md`);
 		}
 
-		const gitFileSource = path.join(
-            gitHTTPUrl,
+		const gitFileSource = new URL(path.join(
             "posts",
-            collection || "",
+            encodeURIComponent(collection || ""),
             postData[0].inFolder || "",
-            url.pathname.replace("/blog", "")
-        ) + ".md";
+            url.pathname.replace("/blog", "") + ".md"
+        ), gitHTTPUrl + "/");
 
 		return {
 			content: render(post.default).body,
 			meta: post.metadata,
 			collection,
-			source: gitFileSource,
+			source: gitFileSource.href,
 		}
 	} catch (e) {
 		error(404, `Post ${params.slug} not found`)
