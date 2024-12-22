@@ -14,6 +14,7 @@ import remarkToc from "./src/lib/remarkToc.js";
 import remarkSubSuper from "remark-sub-super";
 import remarkIns from "remark-ins";
 import remarkFootnotes from "remark-footnotes";
+import readingTime from "mdsvex-reading-time";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -46,7 +47,8 @@ const mdsvexOptions = {
         [remarkToc, { tight: true, maxDepth: 3 }],
         remarkSubSuper,
         remarkIns,
-        remarkFootnotes
+        remarkFootnotes,
+		readingTime
     ],
 	rehypePlugins: [
         rehypeSlug,
