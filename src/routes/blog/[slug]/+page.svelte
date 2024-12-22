@@ -45,7 +45,7 @@
 	</div>
 
 	<div class="content">
-		<data.content />
+		{@html data.content}
 	</div>
 </article>
 

@@ -1,15 +1,26 @@
 import { error } from "@sveltejs/kit";
+import { render } from "svelte/server";
 import type { PageServerLoad } from "./$types";
 import path from "path";
 
-// NOTE: Process some variables server side & leave Markdown dynamic importing and PageData
-// passing in `+page.ts`, since Vite dynamic imports won't resolve the Promise in this file.
 export const load: PageServerLoad = async ({ params, url, parent }) => {
 	const collection = url.searchParams.get("collection");
 	const { gitHTTPUrl, posts } = await parent();
 
 	try {
         const postData = posts.filter(post => post.slug === params.slug);
+
+		// NOTE: Have to define a separate import each time due to Vite import limitations
+		// https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
+		let post;
+		if (collection) {
+			post = await import(`$posts/${collection}/${params.slug}.md`);
+		} else if (postData[0].inFolder) {
+			post = await import(`$posts/${postData[0].inFolder}/${params.slug}.md`);
+		} else {
+			post = await import(`$posts/${params.slug}.md`);
+		}
+
 		const gitFileSource = path.join(
             gitHTTPUrl,
             "posts",
@@ -19,7 +30,8 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
         ) + ".md";
 
 		return {
-            inFolder: postData[0].inFolder,
+			content: render(post.default).body,
+			meta: post.metadata,
 			collection,
 			source: gitFileSource,
 		}
