@@ -12,7 +12,8 @@
 
 <ul>
 	{#each data.posts as post}
-		{@const collectionQuery = post.collection ? "?collection=" + post.collection : undefined}
+		{@const rawCollectionName = post.collection?.replace(/^\[+|\]+$/g, '')}
+		{@const collectionQuery = post.collection ? "?collection=" + rawCollectionName : undefined}
 		<li>
 			<header>
 				<a href="blog/{post.slug}{collectionQuery}">
@@ -24,7 +25,7 @@
 				{#if post.collection}
 					<span>
 						collection:&nbsp;
-						<p class="collection">{post.collection.replace(/^\[+|\]+$/g, '')}</p>
+						<p class="collection">{rawCollectionName}</p>
 					</span>
 				{/if}
 			</div>

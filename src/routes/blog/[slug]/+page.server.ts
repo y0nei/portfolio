@@ -5,6 +5,7 @@ import path from "path";
 
 export const load: PageServerLoad = async ({ params, url, parent }) => {
 	const collection = url.searchParams.get("collection");
+	const collectionFolder = collection ? `[${collection}]` : "";
 	const { gitHTTPUrl, posts } = await parent();
 
 	try {
@@ -14,7 +15,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 		// https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
 		let post;
 		if (collection) {
-			post = await import(`$posts/${collection}/${params.slug}.md`);
+			post = await import(`$posts/${collectionFolder}/${params.slug}.md`);
 		} else if (postData[0].inFolder) {
 			post = await import(`$posts/${postData[0].inFolder}/${params.slug}.md`);
 		} else {
@@ -23,7 +24,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 
 		const gitFileSource = new URL(path.join(
             "posts",
-            encodeURIComponent(collection || ""),
+            encodeURIComponent(collectionFolder),
             postData[0].inFolder || "",
             url.pathname.replace("/blog", "") + ".md"
         ), gitHTTPUrl + "/");

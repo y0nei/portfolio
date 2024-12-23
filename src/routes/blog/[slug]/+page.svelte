@@ -5,14 +5,33 @@
 	import "$lib/styles/markdown.scss";
 	import "@fontsource/mononoki";
 	import "@fontsource/atkinson-hyperlegible";
+	import { page } from "$app/stores";
 
 	let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
 	<title>{data.meta.title}</title>
+	<meta name="title" property="og:title" content={data.meta.title} />
+	<meta name="description" property="og:description" content={data.meta.description} />
+	<meta name="author" content="Yonei" />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
+	<meta property="og:url" content={"https://yonei.dev" + $page.url.pathname + $page.url.search} />
+	<meta property="og:site_name" content="Yonei's Blog" />
+	<meta property="article:author" content="https://yonei.dev">
+	<meta property="article:published_time" content={data.meta.date} />
+
+	{#if data.meta.tags}
+		{#each data.meta.tags as tag}
+			<meta property="article:tag" content={tag}>
+		{/each}
+	{/if}
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@y0nei" />
+	<meta name="twitter:creator" content="@y0nei" />
+	<meta name="twitter:title" content={data.meta.title} />
+	<meta name="twitter:description" content={data.meta.description} />
 </svelte:head>
 
 <article class="markdown-article">
@@ -24,7 +43,7 @@
 				<p>Published on {formatDate(data.meta.date)}</p>
 			</div>
 			{#if data.collection}
-				<p class="collection">Part of <span>{data.collection.replace(/^\[+|\]+$/g, '')}</span> collection</p>
+				<p class="collection">Part of <span>{data.collection}</span> collection</p>
 			{/if}
 		</div>
 		{#if data.meta.description}
