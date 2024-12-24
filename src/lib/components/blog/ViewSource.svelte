@@ -1,10 +1,14 @@
 <script lang="ts">
     import type { HTMLAnchorAttributes } from "svelte/elements";
+    import Icon from "$lib/components/IconLoader.svelte";
 
-    let { children, ...rest }: HTMLAnchorAttributes = $props();
+    let { href }: HTMLAnchorAttributes = $props();
 </script>
 
-<a {...rest}>{@render children?.()}</a>
+<a href={href}>
+    <Icon name="github" size={16}/>
+    View Source
+</a>
 
 <style lang="scss">
     a {
