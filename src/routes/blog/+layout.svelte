@@ -23,25 +23,17 @@
         display: flex;
         flex-direction: column;
         padding: 0 25%;
-    }
 
-    @media only screen and (max-width: 1000px) {
-        .blog-wrapper {
+        @media only screen and (max-width: 1000px) {
             padding: 0 18%;
         }
-    }
-    @media only screen and (max-width: 750px) {
-        .blog-wrapper {
+        @media only screen and (max-width: 750px) {
             padding: 0 15%;
         }
-    }
-    @media only screen and (max-width: 580px) {
-        .blog-wrapper {
+        @media only screen and (max-width: 580px) {
             padding: 0 8%;
         }
-    }
-    @media only screen and (max-width: 500px) {
-        .blog-wrapper {
+        @media only screen and (max-width: 500px) {
             padding: 0 5%;
         }
     }

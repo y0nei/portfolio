@@ -49,6 +49,10 @@
 			h1 {
 				font-family: "Rubik", sans-serif;
 				font-size: 3rem;
+
+				@media only screen and (max-width: 500px) {
+					font-size: 2.7rem;
+				}
 			}
 
 			.description {
@@ -72,10 +76,10 @@
 						color: gray;
 					}
 
-					:global(.svg-container) {
+					.svg-container {
 						margin-bottom: 2px;
 
-						:global(svg) {
+						svg {
 							fill: #808080;
 						}
 					}
@@ -92,6 +96,12 @@
 						color: var(--clr-accent);
 					}
 				}
+
+				@media only screen and (max-width: 500px) {
+					flex-direction: column;
+					align-items: initial;
+					gap: 0.5rem;
+				}
 			}
 		}
 
@@ -107,20 +117,6 @@
 				padding: 4px 6px;
 				font-size: 0.9rem;
 				border-radius: calc(var(--border-radius) / 1.5);
-			}
-		}
-
-		@media only screen and (max-width: 500px) {
-			hgroup {
-				h1 {
-					font-size: 2.7rem;
-				}
-
-				& > div {
-					flex-direction: column;
-					align-items: initial;
-					gap: 0.5rem;
-				}
 			}
 		}
     }

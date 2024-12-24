@@ -5,13 +5,13 @@
     let { href }: HTMLAnchorAttributes = $props();
 </script>
 
-<a href={href}>
+<a href={href} class="view-source">
     <Icon name="github" size={16}/>
     View Source
 </a>
 
-<style lang="scss">
-    a {
+<style lang="scss" global>
+    .view-source {
         display: flex;
         width: fit-content;
         align-items: center;
@@ -26,12 +26,12 @@
             background-color: var(--clr-accent-dark);
         }
 
-        :global(.svg-container) {
+        .svg-container {
             margin-right: 2px;
 
-            :global(svg) {
+            svg {
                 fill: white;
             }
-        };
+        }
     }
 </style>
