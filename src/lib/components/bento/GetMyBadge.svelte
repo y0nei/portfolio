@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Icon from "$lib/components/IconLoader.svelte";
+    import Icon from "$lib/components/Icon.svelte";
 </script>
 
 <div class="get-mine-modal">

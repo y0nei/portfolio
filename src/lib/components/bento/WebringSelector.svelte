@@ -16,7 +16,7 @@
     <span>
         <a class="webring-previous" href={href.previous}>&laquo;</a>
         <a class="webring-random" href={href.random}>Random</a>
-        <a class="webring-next" href={href.random}>&raquo;</a>
+        <a class="webring-next" href={href.next}>&raquo;</a>
     </span>
 </div>
 

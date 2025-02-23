@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from "$lib/components/IconLoader.svelte";
+	import Icon from "$lib/components/Icon.svelte";
 	import { formatDate } from "$lib/utils/formatDate";
 
     interface Props {

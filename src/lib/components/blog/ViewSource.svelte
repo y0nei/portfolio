@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { HTMLAnchorAttributes } from "svelte/elements";
-    import Icon from "$lib/components/IconLoader.svelte";
+    import Icon from "$lib/components/Icon.svelte";
 
     let { href }: HTMLAnchorAttributes = $props();
 </script>

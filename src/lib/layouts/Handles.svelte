@@ -1,5 +1,5 @@
 <script lang="ts">
-    import SocialHandle from "$lib/components/SocialHandle.svelte";
+    import SocialHandle from "$lib/components/bento/SocialHandle.svelte";
     import userdata from "$lib/user.yml";
 
     // Custom sizes for better optical fit
