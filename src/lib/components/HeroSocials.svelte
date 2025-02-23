@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Icon from "$lib/components/IconLoader.svelte";
+    import Icon from "$lib/components/Icon.svelte";
     import Popover from "$lib/components/Popover.svelte";
     import userdata from "$lib/user.yml";
 

@@ -1,14 +1,14 @@
 <script lang="ts">
-    import Icon from "$lib/components/IconLoader.svelte";
+    import Icon from "$lib/components/Icon.svelte";
     import InfoIcon from "$lib/components/InfoIcon.svelte";
     import Popover from "$lib/components/Popover.svelte";
 
-    import BentoItem from "$lib/components/BentoItem.svelte";
+    import BentoItem from "$lib/components/bento/BentoItem.svelte";
     import Handles from "$lib/layouts/Handles.svelte";
-    import BadgeMarquee from "$lib/components/BadgeMarquee.svelte";
-    import GetMyBadge from "$lib/components/GetMyBadge.svelte"
-    import WebringSelector from "$lib/components/WebringSelector.svelte";
-    import BentoButton from "$lib/components/BentoButton.svelte";
+    import BadgeMarquee from "$lib/components/bento/BadgeMarquee.svelte";
+    import GetMyBadge from "$lib/components/bento/GetMyBadge.svelte"
+    import WebringSelector from "$lib/components/bento/WebringSelector.svelte";
+    import BentoButton from "$lib/components/bento/BentoButton.svelte";
 </script>
 
 <div class="bento-grid">

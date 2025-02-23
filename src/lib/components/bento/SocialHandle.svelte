@@ -1,7 +1,7 @@
 <script lang="ts">
     import "@fontsource/mononoki";
     import { copy } from "svelte-copy";
-    import Icon from "$lib/components/IconLoader.svelte";
+    import Icon from "$lib/components/Icon.svelte";
 
     interface Props {
         platform: string,
