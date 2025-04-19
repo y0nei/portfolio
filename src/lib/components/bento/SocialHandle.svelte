@@ -3,6 +3,18 @@
     import { copy } from "svelte-copy";
     import Icon from "$lib/components/Icon.svelte";
 
+    let copynotif: HTMLElement;
+    function copiedAnimation() {
+        copynotif.querySelector(".svg-container:first-child")?.animate(
+            [ { opacity: 1 }, { opacity: 0 }, { opacity: 0 }, { opacity: 0 } ],
+			{ duration: 600, direction: 'alternate', iterations: 2 },
+        )
+        copynotif.querySelector(".svg-container:last-child")?.animate(
+            [ { opacity: 0 }, { opacity: 1 }, { opacity: 1 }, { opacity: 1 } ],
+			{ duration: 450, direction: 'alternate', iterations: 2, delay: 150 },
+        )
+    }
+
     interface Props {
         platform: string,
         value: string,
@@ -16,7 +28,10 @@
     <Icon name={platform.toLocaleLowerCase()} size={iconSize} />
     <span>
         <p>{value}</p>
-        <button use:copy={value}><Icon name="copy" size={16} /></button>
+        <button bind:this={copynotif} use:copy={value} onclick={copiedAnimation}>
+            <Icon name="copy" size={16} />
+            <Icon name="check" size={20} />
+        </button>
     </span>
 </div>
 
@@ -52,6 +67,7 @@
         button {
             border: none;
             display: inherit;
+            position: relative;
             justify-content: inherit;
             align-items: inherit;
             height: 26px;
@@ -60,7 +76,17 @@
             background-color: var(--clr-pill-button);
             margin-left: 3px;
 
-            svg { color: var(--clr-offwhite) }
+            .svg-container {
+                position: absolute;
+
+                &:last-child {
+                    opacity: 0;
+
+                    svg { color: var(--clr-accent) };
+                }
+            }
+
+            svg { color: var(--clr-offwhite) };
 
             &:hover {
                 background-color: var(--clr-pill-border);
