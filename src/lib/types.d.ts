@@ -7,4 +7,5 @@ export type Post = {
 	slug: string  // Parsed automatically
 	collection?: string
 	inFolder: string
+	coverImage?: Base64URLString  // Parsed automatically
 }
