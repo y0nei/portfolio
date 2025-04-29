@@ -28,13 +28,13 @@
             padding: 0 18%;
         }
         @media only screen and (max-width: 750px) {
-            padding: 0 15%;
+            padding: 0 10%;
         }
         @media only screen and (max-width: 580px) {
-            padding: 0 8%;
+            padding: 0 7%;
         }
         @media only screen and (max-width: 500px) {
-            padding: 0 5%;
+            padding: 0 3%;
         }
     }
 </style>
