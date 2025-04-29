@@ -7,15 +7,23 @@
             title: string,
             date: Date,
             description?: string,
-            tags?: string[]
+            tags?: string[],
+			coverImageAlt?: string
         },
-        collection: Nullable<string>
+        collection: Nullable<string>,
+		cover?: Base64URLString
     }
 
-    let { meta, collection }: Props = $props();
+    let { meta, collection, cover }: Props = $props();
 </script>
 
 <div class="article-header">
+	{#if cover}
+		<div class="cover-image">
+			<img src={"data:image/png;base64," + cover}
+				 alt={meta.coverImageAlt} />
+		</div>
+	{/if}
 	<hgroup>
 		<h1>{meta.title}</h1>
 		<div>
@@ -44,6 +52,42 @@
 <style lang="scss" global>
     .article-header {
 		font-family: "Atkinson Hyperlegible", sans-serif;
+		position: relative;
+		padding: 1rem;
+
+		border: 1px solid var(--clr-bento-background);
+        border-radius: var(--border-radius);
+		overflow: hidden;
+
+		.cover-image {
+			position: absolute;
+			object-fit: cover;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			background-color: var(--clr-blog-card);
+
+			img {
+				pointer-events: none;
+				opacity: 0.5;
+				border-radius: var(--border-radius);
+				position: absolute;
+				object-fit: cover;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+
+				mask-image: linear-gradient(
+					120deg,
+					rgba(0,0,0,0),
+					rgba(0,0,0,0.1),
+					rgba(0,0,0,1)
+				);
+			}
+		}
 
 		hgroup {
 			h1 {

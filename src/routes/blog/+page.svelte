@@ -21,6 +21,7 @@
 <style lang="scss">
 	ul {
 		display: flex;
+		align-items: center;
 		flex-direction: column;
 	}
 </style>

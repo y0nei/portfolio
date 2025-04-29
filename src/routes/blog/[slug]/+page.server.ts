@@ -34,6 +34,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 			meta: post.metadata,
 			collection,
 			source: gitFileSource.href,
+			coverImage: postData[0].coverImage
 		}
 	} catch (e) {
 		error(404, `Post ${params.slug} not found`)
