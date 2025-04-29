@@ -16,7 +16,8 @@
 <li>
 	{#if post.coverImage}
 		<div class="cover-image">
-			<img src={"data:image/png;base64," + post.coverImage} alt=""/>
+			<img src={"data:image/png;base64," + post.coverImage}
+				 alt={post.coverImageAlt} />
 		</div>
 	{/if}
 	<div class="post-card-content">

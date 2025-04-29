@@ -8,4 +8,5 @@ export type Post = {
 	collection?: string
 	inFolder: string
 	coverImage?: Base64URLString  // Parsed automatically
+	coverImageAlt: string
 }
