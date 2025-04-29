@@ -35,7 +35,7 @@
 </svelte:head>
 
 <article >
-	<ArticleHeader meta={data.meta} collection={data.collection} />
+	<ArticleHeader meta={data.meta} collection={data.collection} cover={data.coverImage}/>
 	<ReadingTime time={data.meta.readingTime.text} />
 
 	<div class="content">
