@@ -14,9 +14,11 @@
 </script>
 
 <li>
-	<div class="cover-image">
-		<img src={"data:image/png;base64," + post.coverImage} alt=""/>
-	</div>
+	{#if post.coverImage}
+		<div class="cover-image">
+			<img src={"data:image/png;base64," + post.coverImage} alt=""/>
+		</div>
+	{/if}
 	<div class="post-card-content">
 		<header>
 			<a href="blog/{post.slug}{collection?.query}">
@@ -88,10 +90,13 @@
 				height: 100%;
 			}
 
+			& + .post-card-content {
+				margin-left: 0;
+			}
 		}
 
 		.post-card-content {
-			margin: 1rem 1rem 1rem 0rem;
+			margin: 1rem;
 
 			header {
 				font-size: 2.75rem;
@@ -156,8 +161,13 @@
 		}
 
 		@media only screen and (max-width: 580px) {
-			.cover-image { display: none }
-			.post-card-content { margin: 1rem }
+			.cover-image {
+				display: none;
+
+				& + .post-card-content {
+					margin-left: 1rem;
+				}
+			}
 		}
 	}
 </style>
