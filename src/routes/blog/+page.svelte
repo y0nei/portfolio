@@ -12,9 +12,8 @@
 <ul>
 	{#each data.posts as post}
 		{@const collectionName = post.collection?.replace(/^\[+|\]+$/g, '')}
-		{@const collectionQuery = post.collection ? "?collection=" + collectionName : undefined}
 
-		<Post post={post} collection={{name: collectionName, query: collectionQuery}} />
+		<Post post={post} collection={collectionName} />
 	{/each}
 </ul>
 
