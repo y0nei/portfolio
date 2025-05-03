@@ -13,7 +13,7 @@
 <li>
 	{#if post.coverImage}
 		<div class="cover-image">
-			<img src={"data:image/png;base64," + post.coverImage}
+			<img src="blog/{collection ? collection + "/" : ""}{post.slug}/cover"
 				 alt={post.coverImageAlt} />
 		</div>
 	{/if}
