@@ -4,7 +4,7 @@ import type { PageServerLoad } from "./$types";
 import path from "path";
 
 export const load: PageServerLoad = async ({ params, url, parent }) => {
-	const collection = url.searchParams.get("collection");
+	const collection = params.collection;
 	const collectionFolder = collection ? `[${collection}]` : "";
 	const { gitHTTPUrl, posts } = await parent();
 
@@ -24,9 +24,9 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 
 		const gitFileSource = new URL(path.join(
             "posts",
-            encodeURIComponent(collectionFolder),
+			encodeURIComponent(collectionFolder),
             postData[0].inFolder || "",
-            url.pathname.replace("/blog", "") + ".md"
+            url.pathname.replace(`/blog${url.pathname.includes(String(collection)) ? "/" + collection : ""}`, "") + ".md"
         ), gitHTTPUrl + "/");
 
 		return {
@@ -40,4 +40,3 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 		error(404, `Post ${params.slug} not found`)
 	}
 }
-

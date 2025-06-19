@@ -1,5 +1,5 @@
 import path from "path";
-import { json } from "@sveltejs/kit";
+import { error, json } from "@sveltejs/kit";
 import { searchForWorkspaceRoot } from "vite";
 import type { Post } from "$lib/types";
 import type { RequestHandler } from "./$types";
@@ -16,7 +16,7 @@ async function getCoverPath(nestedDir: string) {
 	};
 }
 
-async function getPosts() {
+async function getPosts(slug?: string) {
 	let posts: Post[] = [];
 
 	const imports = import.meta.glob(["$posts/*.md", "$posts/*/*.md"], { eager: true });
@@ -75,6 +75,8 @@ async function getPosts() {
 		};
 	};
 
+	slug && (posts = posts.filter(item => item.slug === slug));
+
     // TODO: Move this out and add more filtering options
 	posts = posts.sort((first, second) =>
         new Date(second.date).getTime() - new Date(first.date).getTime()
@@ -83,7 +85,18 @@ async function getPosts() {
 	return posts;
 };
 
-export const GET: RequestHandler = async () => {
-    const posts = await getPosts();
-    return json(posts);
+export const GET: RequestHandler = async ({ url }) => {
+	const slug = url.searchParams.get("slug");
+
+	try {
+        const posts: Post[] = await getPosts(slug || undefined);
+
+        if (posts.length === 0) {
+            throw new Error("No posts found");
+        }
+
+        return json(posts);
+    } catch (e) {
+        return error(404, e.message);
+	}
 };

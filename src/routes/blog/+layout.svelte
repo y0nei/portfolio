@@ -9,10 +9,14 @@
 	let { children }: { children: Snippet } = $props();
 </script>
 
-<div class="blog-wrapper">
-    <BlogHeader gitSource={fileSource} />
+{#if $page.url.pathname.includes("/cover")}
     {@render children()}
-</div>
+{:else}
+    <div class="blog-wrapper">
+        <BlogHeader gitSource={fileSource} />
+        {@render children()}
+    </div>
+{/if}
 
 <style lang="scss" global>
     body {

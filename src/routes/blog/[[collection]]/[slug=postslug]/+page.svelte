@@ -22,9 +22,10 @@
 	<meta property="article:published_time" content={data.meta.date} />
 
 	{#if data.coverImage}
-		<meta property="og:image" content={"data:image/png;base64," + data.coverImage} />
-		<!-- INFO: Serving OpenGraph images as Base64 can cause issues for some websites -->
-		<meta property="og:image:secure_url" content={"data:image/png;base64," + data.coverImage} />
+		{@const coverImgURL = $page.url + "/cover"}
+
+		<meta property="og:image" content={coverImgURL} />
+		<meta property="og:image:secure_url" content={coverImgURL} />
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:alt" content={data.meta.coverImageAlt} />
 	{/if}

@@ -4,10 +4,7 @@
 
     interface Props {
         post: Post,
-        collection?: {
-            name?: string,
-            query?: string
-        }
+        collection?: string
     }
 
     let { post, collection }: Props = $props();
@@ -16,13 +13,13 @@
 <li>
 	{#if post.coverImage}
 		<div class="cover-image">
-			<img src={"data:image/png;base64," + post.coverImage}
+			<img src="blog/{collection ? collection + "/" : ""}{post.slug}/cover"
 				 alt={post.coverImageAlt} />
 		</div>
 	{/if}
 	<div class="post-card-content">
 		<header>
-			<a href="blog/{post.slug}{collection?.query}">
+			<a href="blog/{collection ? collection + "/" : ""}{post.slug}">
 				{post.title}
 			</a>
 		</header>
@@ -31,7 +28,7 @@
 			{#if post.collection}
 				<span>
 					collection:&nbsp;
-					<p class="collection">{collection?.name}</p>
+					<p class="collection">{collection}</p>
 				</span>
 			{/if}
 		</div>
