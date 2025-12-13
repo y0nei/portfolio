@@ -3,7 +3,7 @@
     <p class="description">
         I like coding things, art, tinkering with systems, learning random stuff
         & being silly on the internet.<br>
-        Working in B2B Sales and breaking websites in my free time.
+        Working in IT while spending romantic nights with localhost.
     </p>
 </header>
 
