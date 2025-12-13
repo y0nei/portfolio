@@ -22,6 +22,7 @@ RUN bun --bun run build
 FROM base AS release
 COPY --from=install /temp/dev/node_modules node_modules
 COPY --from=prerelease /usr/src/app/.git .
+COPY --from=prerelease /usr/src/app/.env .
 COPY --from=prerelease /usr/src/app/build .
 
 # Add git so webapp can parse current commit hash
